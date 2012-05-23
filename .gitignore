@@ -33,4 +33,5 @@ nosetests.xml
 .mr.developer.cfg
 
 # Settings
-local_settings.py
+juliobs/local_settings.py
+juliobs/arquivos/static
