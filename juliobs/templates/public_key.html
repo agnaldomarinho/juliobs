@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}PGP Public Key{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Minha PGP Public Key</h1>
+    <h4>PGP Public Key</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<p>Caso vocês queiram enviar emails ou arquivos sigilosos para mim, utilizem a seguinte chave PGP:</p>
+<br>
+<pre>-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+mQENBE9MXLsBCADC7FHRGS33S6nseqH0EZ3LuqLPTdcglbrkT+8ZlC3MCXShNTkb
+5clFbfY+by1CJxTzuHavLWSy+uCX49EbZeqJIDFBFpModQ021VAIMZILzZG6JrFd
+xkp/uRW2jdWPfWp/bOEUpPMmIS884Dw2x9sVmnCa1tZxAAbkJE5/NCZn9YoPCVOg
+WogDYOOdf2RCH7wPDeKtC6F8ctrf9QG0C1HLDA9mvIHfay+Zm5mMI+1FVboPFD5H
+3qoSRqh2qICcFD/a9i7DhgHADJJ1bp4pCTeEd+qiqlZE+P3H6snmqcngctoVtWVg
+2Laa6O/tlMLnpwmmVVTGOxvOY3yHfdpgZb55ABEBAAG0KEp1bGlvIEJhdGlzdGEg
+U2lsdmEgPGp1bGlvYjkxQGdtYWlsLmNvbT6JATgEEwECACIFAk9MXLsCGwMGCwkI
+BwMCBhUIAgkKCwQWAgMBAh4BAheAAAoJEE/UeXNxue8p2+IIALWWgFzDzOJjdnH8
+uHH0KWsbfvBN/Rbb7hg746U3MApvKEQ5D6ciwOo76rh3sLNopZd8rDAmRtBY+4ac
+MyklZNGwBI6IkCtaYFm0du0oUV7dH0sDbSMkYRnyeGu6zDRwUR6gFzgnlWrzrCJK
+k+XqpxccCXvQ1LCxORyELLzflLEDfpkJ6vCCARFFCD8i47VRDbT7G/uAV65yWNH6
+tpYYtOVOx9UZ7OWjPK8ahOYicP+QJzt6hE5bE2Oxw2+TNZZkbhqvC0u9QHxvX3dk
+F/a8VNtNb7Uge+KnROr/f26WpgZvhAQ6BKxNanf7562nFp8CR7wJaZsjlg5cZjAh
+2+GissO5AQ0ET0xcuwEIAMZhzqfYAekmZNbQGdX04QsGnwwydG8gl67J7f/ToASv
+YOG9ZuU30D3eXHowdkXN4zywSbSlWGEv2SAQmMZTXQBdTMqI2ZmQcWt6TTbkyrgG
+OJvi32OMqwtv6gTM0hR9XfrA+U3WIRjRbkCHfapdHGAuI8Voo4k6IMqh6mJYAlc5
+vS37GKXtR1Qk4djGaYMleUpQHzuF2E1V3v2IO3jueUMpas3b7ROpPGPzrcLXbkUI
+UlFocxYW7GsuNqjARsHJu1mVhk8AAfp8h0wqqPGGIsCU/GhWi9Kah/82jENni70T
+joYp79Z/aFnn0yQIPb5a/2uBzrNqZn3eRc/Zd/Gabx8AEQEAAYkBHwQYAQIACQUC
+T0xcuwIbDAAKCRBP1HlzcbnvKXjbB/9Yka/q5j1hsMdmtpWKfyLx1qp2uXuj51/x
+BzVdZMoVScdlu2RlQPNdf2icxU4K83JCO0jvwMRAGRdkrRIHyq29JvDlD8fpWp+X
+2A2yzZp2q6tDnT7xax9v9z3S8NaR8YKQh6c9d3oQCZwlMmKLu8/q9Y2ZijK45lGQ
+LnG0m2rD9NsK2kx/19Yk8Hvsv4iLZfHb5AP6ASjHRilclxch8CG5cS6BbifArSAW
+RHlBhIBN8M06bN065CGlA4vboUecqPtD54D/QljmZCWo3fX8Xfb7SCGa3ap9SNKi
+gsricFoOf92ebLDS+i7OYcmAKGcZSCOoeVCsLP/07zaJDfr9t03J
+=1NLh
+-----END PGP PUBLIC KEY BLOCK-----</pre>
+<br>
+<a href="{% static "julio_pubkey.asc" %}"><h3>Download</h3></a>
+{% endblock %}

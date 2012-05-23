@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}QR Code{% endblock %}
+
+{% block header %}
+<header>
+    <h1>QR Code</h1>
+    <h4>QR Code</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<p>{% trans 'QR Code for this website' %}</p>
+<ul>
+    <li><h3>Extra Large</h3>
+    <br><img src="{% static "images/qrcode/qrcode_xl.png" %}"
+    alt="QR Code XL" title="QR Code XL">
+
+    <li><h3>Large</h3>
+    <br><img src="{% static "images/qrcode/qrcode_l.png" %}"
+    alt="QR Code L" title="QR Code L">
+    <br>
+
+    <li><h3>Medium</h3>
+    <br><img src="{% static "images/qrcode/qrcode_m.png" %}"
+    alt="QR Code M" title="QR Code M">
+    <br>
+
+    <li><h3>Small</h3>
+    <br><img src="{% static "images/qrcode/qrcode_s.png" %}"
+    alt="QR Code S" title="QR Code S">
+
+    <li><h3>Unicode</h3>
+    <br><pre>
+█▀▀▀▀▀█  ▀▀█▄ █ ▄ █▀▀▀▀▀█
+█ ███ █ ▄▀██  █▄█ █ ███ █
+█ ▀▀▀ █ ▀▄█ ▀█▄ █ █ ▀▀▀ █
+▀▀▀▀▀▀▀ ▀▄▀ █▄▀▄▀ ▀▀▀▀▀▀▀
+▀█ ▄ █▀▀ ▀█ ▀ ██   ▄██▄▄ 
+██▄▀█▄▀ ▀▀▄█▀ ▄█▄▀▄█ █ ▀█
+██▄█  ▀  ██ ▄██▄▀ ▀▄   ▄▀
+█ ▄▀ ▀▀█▄█▄ ▄████▄▄ ▀▀▄▀█
+▀ ▀▀▀▀▀▀▄ █ ▀ ▀██▀▀▀█ █  
+█▀▀▀▀▀█ █▄▀▄▀▀█▄█ ▀ █▀  ▀
+█ ███ █  █▀▀▄▄ ▀▀██▀▀█▀▄█
+█ ▀▀▀ █ ▄▀▄ ▄█▀▀▄▄ █▄ ▀ █
+▀▀▀▀▀▀▀ ▀ ▀▀▀▀  ▀    ▀  ▀</pre>
+</ul>
+<br>
+{% endblock %}

@@ -18,11 +18,15 @@ urlpatterns = patterns('',
         RedirectView.as_view(url='http://blog.juliobs.com/%(post)s', permanent=True)),
 
     (r'^$', homepage),
+    (r'^music_library/$', music_library),
+    (r'^horario/$', TemplateView.as_view(template_name='horario.html')),
+    (r'^pgp/$', TemplateView.as_view(template_name='public_key.html')),
+    (r'^stuff-i-use/$', TemplateView.as_view(template_name='stuff_i_use.html')),
+    (r'^qrcode/$', TemplateView.as_view(template_name='qrcode.html')),
     (r'^torrents/$', torrents),
     (r'^projetos/$', projetos),
     (r'^projetos/(.*)$', programas),
     (r'^ira/$', ira),
-    (r'^horario/$', TemplateView.as_view(template_name='horario.html')),
 
   # Robots & Humans
     (r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt')),

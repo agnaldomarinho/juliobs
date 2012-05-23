@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}Stuf I Use{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Stuff I Use</h1>
+    <h4>Stuff I Use</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<article>
+    Baseado em http://paulstamatiou.com/stuff-i-use e usethis.com
+
+    {%trans 'This page features a frequently updated list of applications, productis and services I personally use on a regular basis' %}
+
+    {%trans 'Last update:' %} {{ last_update }}
+
+    <br><h3>Services</h3>
+    <ul>
+        <li>Bluehost
+        <li>Github
+        <li>NewsBlur
+    </ul>
+
+    <br><h3>Software</h3>
+    <ul>
+        <li>Arch Linux
+        <li>zsh
+        <li>Awesome WM
+        <li>urxvt
+        <li>Vim
+        <li>Chromium
+        <li>GNU Privacy Guard
+        <li>LastPass
+        <li>rTorrent + ruTorrent + rssdler
+        <li>MPD + ncmpcpp
+    </ul>
+
+    <br><h3>Computer Setup</h3>
+    <ul>
+        <li>Acer Aspire Timeline AS3810T-6376
+        <li>2 x 2TB Seagate external HDs
+        <li>LG 32LE4600 (as monitor)
+    </ul>
+
+    <br><h3>Hardware/Gadgets</h3>
+    <ul>
+        <li>iPhone 3G
+        <li>iPod Video 30GB
+        <li>ATH-CK52 in-ear headphones
+        <li>AKG K55 headphones
+        <li>Sony Cybershot DSC-HX1
+        <li>Wacom Bamboo Pen (CTL460)
+    </ul>
+</article>
+{% endblock %}

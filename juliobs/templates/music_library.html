@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Music Library{% endblock %}
+
+{% block header %}
+<header>
+    <h1>My Music Library</h1>
+    <h4>Music Library</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<pre>{{ music_list|safe }}</pre>
+{% endblock %}
