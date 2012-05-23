@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}Julio Batista Silva - Homepage{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Julio Batista Silva</h1>
+    <h4>{% trans "Welcome" %}</h4>
+</header>
+{% endblock %}
+
+{%block content %}
+    <nav>
+    <a href="/projetos/">{% trans 'Projects' %}</a>
+        <a href="http://blog.juliobs.com/">{% trans 'Blog' %}</a>
+        <a href="/fotos/gallery">{% trans 'Photos' %}</a>
+        <a href='pgp/' title='PGP Public Key'>{% trans 'PGP' %}</a>
+        <a href='horario/' title='Horario'>{% trans 'Horário' %}</a>
+        <a href='music_library/' title='Biblioteca de Músicas'>{% trans 'Music Lib' %}</a>
+        <a href='contato/' title='Contato'>{% trans 'Contact' %}</a>
+    </nav>
+
+    <article id="pessoal">
+        <h2>{% trans 'About me' %}</h2>
+        <aside id="foto">
+            <figure id="minhafoto">
+                <img src="{% static "images/julio.jpg" %}" width="100" height="100" alt="Julio" />
+                <figcaption>Julio</figcaption>
+            </figure>
+        </aside>
+
+        {% blocktrans %}
+        <p>Julio Batista Silva, born in São José dos Campos - SP, graduated in
+        2008 from <a href="http://cejw.yolasite.com/">Embraer Juarez Wanderley 
+            High School</a> and now studies Computer Engineering at <a
+            href="http://www.ufscar.br/">Federal University of São Carlos
+            (UFSCar)</a>.</p>
+        {% endblocktrans %}
+
+        <br><br>
+        <p>{% trans 'For more information, visit:' %}</p>
+        <ul>
+            <li><a href="http://juliobs.com">Website</a>
+            <li><a href="http://juliobs.com/blog">Blog</a>
+            <li><a href="http://www.facebook.com/profile.php?id=1075455928">Facebook</a>
+            <li><a href="http://www.flickr.com/photos/jbsilva/">Flickr</a>
+            <li><a href="https://github.com/jbsilva">Github</a>
+            <li><a href="https://plus.google.com/116773273318937618516">Google+</a>
+            <li><a href="http://www.imdb.com/mymovies/list?l=42033539">Imdb</a>
+            <li><a href="http://www.lastfm.com.br/user/julioforus">Last.fm</a>
+            <li><a href="http://j.mp/9r9xWG">Orkut</a>
+            <li><a href="http://twitter.com/9jb">Twitter</a>
+            <li><a href="http://weheartit.com/julio">Weheartit</a>
+            <li><a href="http://www.youtube.com/user/Julioforus">Youtube</a>
+        </ul>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </article>
+{% endblock %}

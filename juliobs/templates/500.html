@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}500 - Server Error{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Erro 500</h1>
+    <h4>Fuuuuuuu!</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<article>
+   <h2>Ocorreu um erro no servidor :(</h2>
+   <div>
+       <p>Desculpe, mas a página que você estava tentando ver produziu um erro.</p>
+       <p>Isto pode ter ocorrido por um dos seguintes motivos:</p>
+       <ul>
+           <li>Má sorte</li>
+           <li>Culpa do Julio</li>
+       </ul>
+   </div>
+</article>
+{% endblock %}

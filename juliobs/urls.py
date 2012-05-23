@@ -1,17 +1,25 @@
 from django.conf.urls import patterns, include, url
+from views import *
+from django.contrib import admin
+from django.views.generic.base import TemplateView
+from django.views.generic.base import RedirectView
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'juliobs.views.home', name='home'),
-    # url(r'^juliobs/', include('juliobs.foo.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^i18n/', include('django.conf.urls.i18n')),
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    (r'^$', homepage),
+
+    (r'^blog/(?P<post>.*)$',
+        RedirectView.as_view(url='http://blog.juliobs.com/%(post)s', permanent=True)),
+
+  # Robots & Humans
+    (r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt')),
+    (r'^humans.txt$', TemplateView.as_view(template_name='humans.txt')),
+    (r'^erro_500$', TemplateView.as_view(template_name='500.html')),
+    (r'^erro_404$', TemplateView.as_view(template_name='404.html')),
 )

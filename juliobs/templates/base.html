@@ -1,0 +1,112 @@
+{% load static from staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="author" href="humans.txt" />
+        {% block favicon %}
+        <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+        {% endblock %}
+
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+        {% endblock %}
+
+        {% block scripts %}{% endblock %}
+
+        {# Google Analytics #}
+        <script>
+            var _gaq=[['_setAccount','UA-26693793-2'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </head>
+    {% endblock %}
+
+    <body>
+        {% block header %}
+        <header id="header">
+            <h1>{% block nome %}{% endblock %}</h1>
+            <h2>{% block subtitulo %}{% endblock %}</h2>
+            <h4>Welcome</h4>
+        </header>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+        <footer>
+            <h6>Julio Batista Silva</h6>
+            <h6><a href="/">Home</a> - <a href="/projetos">Projetos</a></h6>
+
+            {% block i18n %}
+            <div id="i18n">
+                <form action="/django/i18n/setlang/" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}" />
+                    <select name="language">
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option value="{{ language.code }}">{{ language.name_local }} ({{ language.code }})</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Go" />
+                </form>
+
+                {% get_current_language as lang %}
+                <p>Atual: {{ lang|language_name }} ({{ lang|language_name_local }})</p>
+            </div>
+            {% endblock %}
+
+            <p>
+                <a href="http://www.vim.org">
+                    <img src="{% static "images/vim.png" %}"
+                    alt="Created with Vim" title="Created with Vim"
+                    height="32" />
+                </a>
+
+                <a href="http://www.djangoproject.com/">
+                    <img src="{% static "images/logos/django_powered.gif" %}"
+                    alt="Powered by Django" title="Powered by Django"
+                    height="32" />
+                </a>
+
+                <a href="http://validator.w3.org/check?uri=referer">
+                    <img src="{% static "images/logos/i_heart_validator.png" %}"
+                    alt="Valid HTML 5" title="Valid HTML 5"
+                    height="32" />
+                </a>
+
+                <a href='http://opensource.org/'>
+                    <img src="{% static "images/logos/opensource.png" %}"
+                    alt="Open Source" title="Open Source"
+                    height="32" />
+                </a>
+
+                <a href='http://www.catb.org/hacker-emblem/'>
+                    <img src="{% static "images/logos/hacker_emblem.png" %}"
+                    alt='hacker emblem' title="hacker emblem"
+                    height="32" />
+                </a>
+
+                <a href="http://www.w3.org/html/logo/">
+                    <img src="{% static "images/logos/HTML5_Logo_32.png" %}"
+                    alt="HTML5 Powered" title="HTML5 Powered"
+                    height="32" />
+                </a>
+
+                <a href="/qrcode">
+                    <img src="{% static "images/qrcode/qrcode_l.png" %}"
+                    alt="QR Code" title="QR Code"
+                    height="32" />
+                </a>
+            </p>
+        </footer>
+        {% endblock %}
+    </body>
+</html>

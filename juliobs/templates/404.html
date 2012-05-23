@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}404 - Página não encontrada{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Erro 404</h1>
+    <h4>Fuuuuuuu!</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<article>
+   <h2>Página não encontrada :(</h2>
+   <div>
+       <p>Desculpe, mas a página que você estava tentando ver não existe.</p>
+       <p>Isto pode ter ocorrido por um dos seguintes motivos:</p>
+       <ul>
+           <li>Má sorte</li>
+           <li>Link desatualizado</li>
+           <li>Culpa do Julio?</li>
+       </ul>
+   </div>
+</article>
+{% endblock %}
