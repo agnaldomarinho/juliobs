@@ -1,0 +1,591 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        
+        <title>Gerador de Curriculum</title>
+
+        <link rel="stylesheet" type="text/css" href="curriculum.css" media="all" />
+        <script src="autobarra.js"></script>
+        <script src="verifica_data.js"></script>
+    </head>
+
+<body>
+    
+<form id="pagina" name="dados" method='post' action='gerador.php' onSubmit="return verificaData()">
+    
+    <h1><center>Curriculum Vitae</center></h1>
+    
+    <div class="categoria">
+    <h2>1 - Dados Pessoais</h2>
+
+        Nome: 
+        <input name="nome" type="text" id="nome">
+        <br>
+        
+        Sexo:
+        <select name="sexo" id="sexo">
+            <option value="o">Masculino</option>
+            <option value="a">Feminino</option>
+        </select>
+        <br>
+
+        Nascimento: 
+        <input name="nascimento" type="text" id="nascimento" size="10" maxlength="10" onKeyPress="javascript:autoBarra(this,this.value)">
+        <br>
+        
+        Estado Civil: 
+        <select name="est_civil" id="est_civil">
+          <option value="Solteir">Solteiro (a)</option>
+          <option value="Casad">Casado (a)</option>
+          <option value="Divorcidad">Divorciado (a)</option>
+          <option value="Viuv">Viuvo (a)</option>
+        </select>
+        <br>
+
+        Número de Filhos:
+        <select name="filhos" id="filhos">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <br>
+
+        Naturalidade:
+        <input name="naturalidade" type="text" id="naturalidade" value="Brasileiro">
+        <br>
+
+        Endereço: 
+        <input name="rua" type="text" id="rua">
+
+        Número: 
+        <input name="numero" type="text" id="numero" size="5">
+        <br>
+        
+        Complemento:
+        <input name="complemento" type="text" id="complemento">
+        <br>
+
+        Bairro: 
+        <input name="bairro" type="text" id="bairro" size="20">
+        <br>
+        
+        Cep: 
+        <input name="cep" type="text" id="cep" size="20">
+        <br>
+
+        Cidade: 
+        <input name="cidade" type="text" id="cidade" size="20">
+        <br>
+
+        Estado: 
+        <select name="estado" id="estado">
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="ES">ES</option>
+            <option value="DF">DF</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP" selected>SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+        </select>
+        <br>
+        
+        País:
+        <select name=pais id=pais>
+            <option value="África do Sul">África do Sul</option>
+            <option value="Albânia">Albânia</option>
+            <option value="Alemanha">Alemanha</option>
+            <option value="Andorra">Andorra</option>
+            <option value="Angola">Angola</option>
+            <option value="Anguilla">Anguilla</option>
+            <option value="Antigua">Antigua</option>
+            <option value="Arábia Saudita">Arábia Saudita</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Armênia">Armênia</option>
+            <option value="Aruba">Aruba</option>
+            <option value="Austrália">Austrália</option>
+            <option value="Áustria">Áustria</option>
+            <option value="Azerbaijão">Azerbaijão</option>
+            <option value="Bahamas">Bahamas</option>
+            <option value="Bahrein">Bahrein</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Barbados">Barbados</option>
+            <option value="Bélgica">Bélgica</option>
+            <option value="Benin">Benin</option>
+            <option value="Bermudas">Bermudas</option>
+            <option value="Botsuana">Botsuana</option>
+            <option value="Brasil" selected>Brasil</option>
+            <option value="Brunei">Brunei</option>
+            <option value="Bulgária">Bulgária</option>
+            <option value="Burkina Fasso">Burkina Fasso</option>
+            <option value="botão">botão</option>
+            <option value="Cabo Verde">Cabo Verde</option>
+            <option value="Camarões">Camarões</option>
+            <option value="Camboja">Camboja</option>
+            <option value="Canadá">Canadá</option>
+            <option value="Cazaquistão">Cazaquistão</option>
+            <option value="Chade">Chade</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Cidade do Vaticano">Cidade do Vaticano</option>
+            <option value="Colômbia">Colômbia</option>
+            <option value="Congo">Congo</option>
+            <option value="Coréia do Sul">Coréia do Sul</option>
+            <option value="Costa do Marfim">Costa do Marfim</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Croácia">Croácia</option>
+            <option value="Dinamarca">Dinamarca</option>
+            <option value="Djibuti">Djibuti</option>
+            <option value="Dominica">Dominica</option>
+            <option value="EUA">EUA</option>
+            <option value="Egito">Egito</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Emirados Árabes">Emirados Árabes</option>
+            <option value="Equador">Equador</option>
+            <option value="Eritréia">Eritréia</option>
+            <option value="Escócia">Escócia</option>
+            <option value="Eslováquia">Eslováquia</option>
+            <option value="Eslovênia">Eslovênia</option>
+            <option value="Espanha">Espanha</option>
+            <option value="Estônia">Estônia</option>
+            <option value="Etiópia">Etiópia</option>
+            <option value="Fiji">Fiji</option>
+            <option value="Filipinas">Filipinas</option>
+            <option value="Finlândia">Finlândia</option>
+            <option value="França">França</option>
+            <option value="Gabão">Gabão</option>
+            <option value="Gâmbia">Gâmbia</option>
+            <option value="Gana">Gana</option>
+            <option value="Geórgia">Geórgia</option>
+            <option value="Gibraltar">Gibraltar</option>
+            <option value="Granada">Granada</option>
+            <option value="Grécia">Grécia</option>
+            <option value="Guadalupe">Guadalupe</option>
+            <option value="Guam">Guam</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Guiana">Guiana</option>
+            <option value="Guiana Francesa">Guiana Francesa</option>
+            <option value="Guiné-bissau">Guiné-bissau</option>
+            <option value="Haiti">Haiti</option>
+            <option value="Holanda">Holanda</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Hungria">Hungria</option>
+            <option value="Iêmen">Iêmen</option>
+            <option value="Ilhas Cayman">Ilhas Cayman</option>
+            <option value="Ilhas Cook">Ilhas Cook</option>
+            <option value="Ilhas Curaçao">Ilhas Curaçao</option>
+            <option value="Ilhas Marshall">Ilhas Marshall</option>
+            <option value="Ilhas Turks & Caicos">Ilhas Turks & Caicos</option>
+            <option value="Ilhas Virgens (brit.)">Ilhas Virgens (brit.)</option>
+            <option value="Ilhas Virgens(amer.)">Ilhas Virgens(amer.)</option>
+            <option value="Ilhas Wallis e Futuna">Ilhas Wallis e Futuna</option>
+            <option value="Índia">Índia</option>
+            <option value="Indonésia">Indonésia</option>
+            <option value="Inglaterra">Inglaterra</option>
+            <option value="Irlanda">Irlanda</option>
+            <option value="Islândia">Islândia</option>
+            <option value="Israel">Israel</option>
+            <option value="Itália">Itália</option>
+            <option value="Jamaica">Jamaica</option>
+            <option value="Japão">Japão</option>
+            <option value="Jordânia">Jordânia</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Líbano">Líbano</option>
+            <option value="Liechtenstein">Liechtenstein</option>
+            <option value="Lituânia">Lituânia</option>
+            <option value="Luxemburgo">Luxemburgo</option>
+            <option value="Macau">Macau</option>
+            <option value="Macedônia">Macedônia</option>
+            <option value="Madagascar">Madagascar</option>
+            <option value="Malásia">Malásia</option>
+            <option value="Malaui">Malaui</option>
+            <option value="Mali">Mali</option>
+            <option value="Malta">Malta</option>
+            <option value="Marrocos">Marrocos</option>
+            <option value="Martinica">Martinica</option>
+            <option value="Mauritânia">Mauritânia</option>
+            <option value="Mauritius">Mauritius</option>
+            <option value="México">México</option>
+            <option value="Moldova">Moldova</option>
+            <option value="Mônaco">Mônaco</option>
+            <option value="Montserrat">Montserrat</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Nicarágua">Nicarágua</option>
+            <option value="Niger">Niger</option>
+            <option value="Nigéria">Nigéria</option>
+            <option value="Noruega">Noruega</option>
+            <option value="Nova Caledônia">Nova Caledônia</option>
+            <option value="Nova Zelândia">Nova Zelândia</option>
+            <option value="Omã">Omã</option>
+            <option value="Palau">Palau</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Papua-nova Guiné">Papua-nova Guiné</option>
+            <option value="Paquistão">Paquistão</option>
+            <option value="Peru">Peru</option>
+            <option value="Polinésia Francesa">Polinésia Francesa</option>
+            <option value="Polônia">Polônia</option>
+            <option value="Porto Rico">Porto Rico</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Quênia">Quênia</option>
+            <option value="Rep. Dominicana">Rep. Dominicana</option>
+            <option value="Rep. Tcheca">Rep. Tcheca</option>
+            <option value="Reunion">Reunion</option>
+            <option value="Romênia">Romênia</option>
+            <option value="Ruanda">Ruanda</option>
+            <option value="Rússia">Rússia</option>
+            <option value="Saipan">Saipan</option>
+            <option value="Samoa Americana">Samoa Americana</option>
+            <option value="Senegal">Senegal</option>
+            <option value="Serra Leone">Serra Leone</option>
+            <option value="Seychelles">Seychelles</option>
+            <option value="Singapura">Singapura</option>
+            <option value="Síria">Síria</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="St. Kitts & Nevis">St. Kitts & Nevis</option>
+            <option value="St. Lúcia">St. Lúcia</option>
+            <option value="St. Vincent">St. Vincent</option>
+            <option value="Sudão">Sudão</option>
+            <option value="Suécia">Suécia</option>
+            <option value="Suiça">Suiça</option>
+            <option value="Suriname">Suriname</option>
+            <option value="Tailândia">Tailândia</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="Tanzânia">Tanzânia</option>
+            <option value="Togo">Togo</option>
+            <option value="Trinidad & Tobago">Trinidad & Tobago</option>
+            <option value="Tunísia">Tunísia</option>
+            <option value="Turquia">Turquia</option>
+            <option value="Ucrânia">Ucrânia</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Uruguai">Uruguai</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Vietnã">Vietnã</option>
+            <option value="Zaire">Zaire</option>
+            <option value="Zâmbia">Zâmbia</option>
+            <option value="Zimbábue">Zimbábue</option>
+        </select>
+        <br>
+        
+        DDD:
+        <input name="tel_ddd" type="text" id="ddd" size="2">
+
+        Telefone: 
+        <input name="telefone" type="text" id="telefone">
+        <br>
+        
+        DDD:
+        <input name="cel_ddd" type="text" id="ddd" size="2">
+
+        Celular: 
+        <input name="celular" type="text" id="celular">
+        <br>
+
+        E-mail: 
+        <input name="email" type="text" id="email">
+        <br>
+
+        Link para o Lattes:
+        <input name="lattes" type="text" id="lattes">
+        <br>
+    </div> 
+
+    <div class="categoria">
+    <h2>2 - Objetivo Profissional</h2>
+
+    <ul>
+        <li> Escreva o cargo que pretende ocupar ou a área de atuação.</li>
+        <li> Objetivos num futuro emprego/estágio, sucinto e em poucas linhas</li>
+    </ul>
+    
+    <textarea name="objetivos" cols="100" rows="10" id="objetivos"></textarea>
+    <br>
+    </div>
+
+    <div class="categoria">
+    <h2>3 - Formação Acadêmica</h2>
+
+    Escolaridade:
+    <select name="escolaridade" id="escolaridade">
+      <option value="Ensino Médio Completo">Ensino Médio</option>
+      <option value="Técnico">Técnico</option>
+      <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
+      <option value="Ensino Superior Completo">Ensino Superior Completo</option>
+      <option value="Especialização, Pós-Graduação/Lato Sensu">Especialização, Pós-Graduação/Lato Sensu</option>
+      <option value="Mestrado, Pós-Graduação/Stricto Sensu">Mestrado, Pós-Graduação/Stricto Sensu</option>
+      <option value="Doutorado">Doutorado</option>
+      <option value="Pós-doutorado">Pós-doutorado</option>
+    </select>
+    <br>
+
+    Escola onde concluiu o Ensino Médio:
+    <input name="escola_em" type="text" id="escola_em" value="Colégio Engº Juarez de Siqueira Britto Wanderley">
+    <br>
+    Ano de conclusão do Ensino Médio:
+    <input name="ano_em" type="text" id="ano_em">
+    <br>
+
+    IES onde cursou a Graduação:
+    <input name="ies_gradua" type="text" id="ies_gradua">
+    <br>
+
+    Ano de conclusão da Graduação:
+    <input name="ano_gradua" type="text" id="ano_gradua">
+    <br>
+
+    Curso de Graduação:
+    <input name="curso_gradua" type="text" id="curso_gradua">
+    <br>
+
+    IES onde cursou Mestrado:
+    <input name="ies_mestrado" type="text" id="ies_mestrado">
+    <br>
+
+    Título:
+    <input name="titulo_mestrado" type="text" id="titulo_mestrado">
+    <br>
+
+    Área de pesquisa:
+    <input name="area_mestrado" type="text" id="area_mestrado">
+    <br>
+
+    Especialidade:
+    <input name="espec_mestrado" type="text" id="espec_mestrado">
+    <br>
+
+    Ano de conclusão do Mestrado:
+    <input name="ano_mestrado" type="text" id="ano_mestrado">
+    <br>
+
+    IES onde cursou Doutorado:
+    <input name="ies_doutorado" type="text" id="ies_doutorado">
+    <br>
+
+    Título:
+    <input name="titulo_doutorado" type="text" id="titulo_doutorado">
+    <br>
+
+    Área de pesquisa:
+    <input name="area_doutorado" type="text" id="area_doutorado">
+    <br>
+
+    Especialidade:
+    <input name="espec_doutorado" type="text" id="espec_doutorado">
+    <br>
+
+    Ano de conclusão do Doutorado:
+    <input name="ano_doutorado" type="text" id="ano_doutorado">
+    <br>
+
+    Cursos de especialização:
+    <input name="especializacao" type="text" id="especializacao">
+    <br>
+
+    </div>
+
+    <div class="categoria">
+    <h2>4 - Complementos</h2>
+    <ul>
+        <li>Cursos adicionais, palestras, seminários e afins.</li>
+        <li>Habilidades pessoais.
+        <li>Habilidades com informática, informe nível de conhecimento - noções ou domínio em programação, ambientes, etc.</li>
+        <li>Se souber usar a Internet coloque.</li> 
+        <li>Cursos extra-curriculares.</li>
+        <li>Certificações (Linux, Microsoft e etc).</li>
+        <li>Não relacione cursos em excesso ou fora do objetivo profissional.</li>
+        <li>Não relacione cursos cuja tecnologia caiu em desuso.</li>
+        <li>Relacione palestras e seminários relevantes.</li>
+    </ul>
+    <br>
+
+    <textarea name="complementos" cols="100" rows="10" id="complementos"></textarea>
+    <br>
+    </div>
+
+    <div class="categoria">
+    <h2>5 - Atividades Didáticas</h2>
+    
+    <ul>
+        <li>Monitoria</li>
+        <li>Estágio Docente</li>
+        <li>Professor de ensino fundamental, médio e técnico</li>
+        <li>Professor de terceiro grau/superior</li>
+        <li>Professor em cursos de extensão</li>
+        <li>Palestras que você ministrou</li>
+    </ul>
+
+    <textarea name="ativ_didaticas" cols="100" rows="10" id="ativ_didaticas"></textarea>
+    </div>
+
+    <div class="categoria">
+    <h2>6 - Atividades Científicas</h2>
+    <ul>
+        <li>Participação em Congresso Científico</li>
+        <li>Resumos apresentados em Congressos Nacionais ou Internacionais</li>
+        <li>Resumos publicados em revistas indexadas e não indexadas</li>
+        <li>Artigos completos publicados (ou aceitos) em revistas científicas especializadas</li>
+        <li>(Natureza do prêmio, título do trabalho, Instituição/Congresso, local, data).</li>
+    </ul>
+
+    <textarea name="ativ_cientificas" cols="100" rows="10" id="ativ_cientificas"></textarea>
+    </div>
+
+    <div class="categoria">
+    <h2>7 - Experiência Profissional</h2>
+    <ul>
+        <li>Inicie pelos cargos mais recentes.</li>
+        <li>Coloque somente os três últimos empregos ou os mais importantes para a vaga em aberto ou em relação ao seu objetivo profissional.</li>
+        <li>Indique Ano de entrada e saída, nome da empresa, o cargo ocupado</li>
+        <li>Para cada cargo faça uma breve descrição das atividades e realizações, grau de responsabilidade e resultados obtidos. Não se limite a dizer qual era o seu cargo e sim contar o que fez na prática, pois isso é o que vai fazer a diferença. Este erro grande parte das pessoas cometem. Use verbos de ação: realizei, implantei, organizei etc. Destaque suas realizações que resultaram em benefício para a empresa. Exemplo: redução de custos, redução de despesas administrativas, melhor relacionamento com o mercado.</li>
+        <li>Aqueles que nunca tiveram emprego devem indicar: experiências de trabalho, remuneradas ou não, que tenham desenvolvido em tempo parcial ou sem vínculo empregatício. Indique estágios realizados (quando, onde e a função desempenhada).</li>
+        <li>Não explique porque saiu dos empregos anteriores ou porque deseja sair do atual.</li>
+        <li>Não informe pretensão salarial ou último salário. Exceto se for solicitado pela empresa.</li>
+        <li>Identifique os diferenciais (incluindo bolsas de estudo, pesquisas, projetos de iniciação científica etc</li>
+        <li>Não coloque atividades que não estejam coerentes com seu objetivo. Exemplo: Você é candidato a uma vaga de Analista de Planejamento de Manufatura, porém trabalhou em vendas durante um período.</li>
+        <li>Se foi promovido várias vezes enfatize estes fatos. Exemplos: Gerente Comercial da Divisão Metais.</li>
+        <li>Fui o responsável por vendas, marketing, exportação, importação, desenvolvimento de produtos e mercados e serviço de atendimento ao cliente.</li>
+    </ul>
+    
+    <h3>Experiência 1</h3>
+    Função: 
+    <input name="exp1_funcao" type="text" id="exp1_funcao">
+    <br> 
+    Empresa: 
+    <input name="exp1_empresa" type="text" id="exp1_empresa"> 
+    <br>
+    Período: 
+    <input name="exp1_entrada" type="text" id="exp1_entrada" size="10" maxlength="10">
+    a 
+    <input name="exp1_saida" type="text" id="exp1_saida" size="10" maxlength="10">
+    <br>
+    Detalhes:
+    <textarea name="exp1_detalhes" cols="50" rows="5" id="exp1_detalhes"></textarea>
+    <br>
+
+    <h3>Experiência 2</h3>
+    Função: 
+    <input name="exp2_funcao" type="text" id="exp2_funcao">
+    <br>
+    Empresa: 
+    <input name="exp2_empresa" type="text" id="exp2_empresa"> 
+    <br>
+    Período: 
+    <input name="exp2_entrada" type="text" id="exp2_entrada" size="10" maxlength="10">
+    a 
+    <input name="exp2_saida" type="text" id="exp2_saida" size="10" maxlength="10">
+    <br>
+    Detalhes:
+    <textarea name="exp2_detalhes" cols="50" rows="5" id="exp2_detalhes"></textarea>
+    <br>
+
+    <h3>Experiência 3</h3>
+    Função: 
+    <input name="exp3_funcao" type="text" id="exp3_funcao">
+    <br>
+    Empresa: 
+    <input name="exp3_empresa" type="text" id="exp3_empresa"> 
+    <br>
+    Período: 
+    <input name="exp3_entrada" type="text" id="exp3_entrada" size="10" maxlength="10">
+    a 
+    <input name="exp3_saida" type="text" id="exp3_saida" size="10" maxlength="10">
+    <br>
+    Detalhes:
+    <textarea name="exp3_detalhes" cols="50" rows="5" id="exp3_detalhes"></textarea>
+    <br>
+    </div>
+
+    <div class="categoria">
+    <h2>8 - Viagens</h2>
+    <ul>
+        <li>Cite viagens ao exterior (mesmo que seja por turismo comprovando que adquiriu vivência fora do país, assimilou novas culturas e aprimorou determinado idioma).</li>
+    </ul>
+    <br>
+    <center>
+        Local (1):
+        <input name="viagem1" type="text" id="viagem1" size="15">
+        Motivo:
+        <input name="motivo1" type="text" id="motivo1" size="15">
+        de
+        <input name="v1_inicio" type="text" id="v1_inicio" size="10">
+        a
+        <input name="v1_fim" type="text" id="v1_fim" size="10"> 
+        <br>
+
+        Local (2):
+        <input name="viagem2" type="text" id="viagem2" size="15">
+        Motivo:
+        <input name="motivo2" type="text" id="motivo2" size="15">
+        de
+        <input name="v2_inicio" type="text" id="v2_inicio" size="10">
+        a
+        <input name="v2_fim" type="text" id="v2_fim" size="10"> 
+        <br>
+        
+        Local (3):
+        <input name="viagem3" type="text" id="viagem3" size="15">
+        Motivo:
+        <input name="motivo3" type="text" id="motivo3" size="15">
+        de
+        <input name="v3_inicio" type="text" id="v3_inicio" size="10">
+        a
+        <input name="v3_fim" type="text" id="v3_fim" size="10"> 
+        <br>
+    </center>
+    </div>
+    
+    <div class="categoria">
+    <h2>9 - Outras Atividades</h2>
+    <ul>
+        <li>Indique eventuais atividades desenvolvidas (atividades culturais, desportivas, sindicais, sociais, voluntárias e associativas.</li>
+    </ul>
+
+    <textarea name="outras_ativ" cols="100" rows="10" id="outras_ativ"></textarea>
+    <br><br>
+    </div>
+
+    <div class="categoria">
+        <h2>Formato da data no rodapé: <h1>
+            <select name="formato_data" id="formato_data">
+              <option value="0">Terça-feira, 01 de Janeiro de 2010</option>
+              <option value="1">01/01/2010</option>
+          </select>
+    </div>
+    
+    <input type="submit" name="Submit" value="Enviar">
+</form>
+
+<div id="rodape">
+    <a href="http://www.vim.org"><img src="../../../files/images/vim.png" alt="Created with Vim"></a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+Nome: Lamb
+	Genero: Rock
+	Artista: Parangolé
+	Titulo: Rebolation
+	Formato: MP3
+	Bitrate: 192kbps
+	Ano: 2009
+	Info: shareaza
+
+---------------------
+
+Nome: Camila
+	Genero: Pop-Punk
+	Artista: Zebrahead
+	Titulo: MFZB
+	Formato: MP3
+	Bitrate: 
+	Ano: 
+	Info: 
+
+---------------------
+
+Nome: Henrique Tyago Fernandes de Sousa
+	Genero: 70s
+	Artista: Blondie
+	Titulo: Parallel Lines
+	Formato: MP3
+	Bitrate: ???
+	Ano: 1978
+	Info: Procura mano!!!!!!
+
+---------------------
+
+Nome: 
+	Genero: Classic Rock
+	Artista: Jethro Tull!!!!!!!
+	Titulo: 
+	Formato: MP3
+	Bitrate: 
+	Ano: 
+	Info: 
+
+---------------------
+
+Nome: Troll
+	Genero: Experimental
+	Artista: Bonde do Tigrão
+	Titulo: Ressurreição
+	Formato: FLAC
+	Bitrate: Lossless
+	Ano: 2005
+	Info: http://www.vagalume.com.br/bonde-do-tigrao/discografia/
+
+---------------------
+
+Nome: Julio
+	Genero: 60s
+	Artista: Kate Bush
+	Titulo: The Whole Story
+	Formato: FLAC
+	Bitrate: Lossless
+	Ano: 1986
+	Info: Só testando mesmo
+hahah
+
+---------------------
+

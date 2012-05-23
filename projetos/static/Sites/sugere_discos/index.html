@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        
+        <title>Sugestões de Álbums (Albums Suggestions)</title>
+
+    </head>
+
+<body>
+    
+<form id="sugestoes" name="sugestoes" method='post' action='gravar.php'>
+    
+    <center><h2>Deixe sua recomendação (Leave your recommendation)</h2>
+    <h3>Pode deixar alguns campos em branco (you can leave some fields blank)</h3></center>
+    
+<!-- ===================================== Nome do Sugeridor ==================================== -->
+    <table style="margin-left:auto;margin-right:auto;" border="1" width="700" cellspacing="0" cellpadding="5"> 
+        <tr>
+            <td style="text-align:left; width:200px;">Seu nome (Your name):</td>
+            <td style="text-align:letf;">
+                <input type="text" name="nome" maxlength="200" id="nome" value="" />
+            </td>
+        </tr>
+<!-- =================================== Nome do Sugeridor END ================================== -->
+
+<!-- ============================================= Genero======================================== -->
+        <tr>
+            <td style="text-align:left;width:100px;">Genero (Category):</td> 
+            <td style="text-align:left;">
+                <select name="genero" id="genero">
+                    <option value="60s">60s</option>
+                    <option value="70s">70s</option>
+                    <option value="80s">80s</option>
+                    <option value="90s">90s</option>
+                    <option value="Acoustic">Acoustic</option>
+                    <option value="Alternative">Alternative</option>
+                    <option value="Ambient">Ambient</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Audiobook Fiction">Audiobook Fiction</option>
+                    <option value="Audiobook Non Fiction">Audiobook Non Fiction</option>
+                    <option value="Avant-Garde">Avant-Garde</option>
+                    <option value="Bluegrass">Bluegrass</option>
+                    <option value="Blues">Blues</option>
+                    <option value="Breaks">Breaks</option>
+                    <option value="Classic Rock">Classic Rock</option>
+                    <option value="Classical">Classical</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Comics">Comics</option>
+                    <option value="Components">Components</option>
+                    <option value="Country">Country</option>
+                    <option value="Dance">Dance</option>
+                    <option value="Disco">Disco</option>
+                    <option value="Dream Pop">Dream Pop</option>
+                    <option value="Drum 'n' Bass">Drum 'n' Bass</option>
+                    <option value="Dubstep">Dubstep</option>
+                    <option value="Electronic">Electronic</option>
+                    <option value="Emo">Emo</option>
+                    <option value="Experimental">Experimental</option>
+                    <option value="Folk">Folk</option>
+                    <option value="Funk">Funk</option>
+                    <option value="Garage">Garage</option>
+                    <option value="Goth">Goth</option>
+                    <option value="Grime">Grime</option>
+                    <option value="Grindcore">Grindcore</option>
+                    <option value="Grunge">Grunge</option>
+                    <option value="Hardcore">Hardcore</option>
+                    <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+                    <option value="House">House</option>
+                    <option value="IDM">IDM</option>
+                    <option value="Indie">Indie</option>
+                    <option value="Industrial">Industrial</option>
+                    <option value="J-Music">J-Music</option>
+                    <option value="Jazz">Jazz</option>
+                    <option value="Kids">Kids</option>
+                    <option value="Latin">Latin</option>
+                    <option value="Lounge">Lounge</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Misc">Misc</option>
+                    <option value="Musical">Musical</option>
+                    <option value="New Wave">New Wave</option>
+                    <option value="No Wave">No Wave</option>
+                    <option value="Noise">Noise</option>
+                    <option value="Noiserock">Noiserock</option>
+                    <option value="OST">OST</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Pop-Punk">Pop-Punk</option>
+                    <option value="Post-Punk">Post-Punk</option>
+                    <option value="Post-Rock">Post-Rock</option>
+                    <option value="Pre-60s">Pre-60s</option>
+                    <option value="Progressive Rock">Progressive Rock</option>
+                    <option value="Protopunk">Protopunk</option>
+                    <option value="Psychedelic">Psychedelic</option>
+                    <option value="Psytrance">Psytrance</option>
+                    <option value="Punk">Punk</option>
+                    <option value="R 'n' B">R 'n' B</option>
+                    <option value="Reggae">Reggae</option>
+                    <option value="Remixes">Remixes</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Screamo">Screamo</option>
+                    <option value="Sheet music">Sheet music</option>
+                    <option value="Ska">Ska</option>
+                    <option value="Soul">Soul</option>
+                    <option value="Synthpop">Synthpop</option>
+                    <option value="Techno">Techno</option>
+                    <option value="Trance">Trance</option>
+                    <option value="Trip Hop">Trip Hop</option>
+                    <option value="UK Garage">UK Garage</option>
+                    <option value="Video Game Music">Video Game Music</option>
+                    <option value="World/Ethnic">World/Ethnic</option>
+                    <option value="Xmas">Xmas</option>
+                </select>
+            </td> 
+	    </tr> 
+<!-- ============================================== TIPO END ==================================== -->
+
+<!-- ============================================= Artista ====================================== -->
+        <tr> 
+            <td style="text-align:left;width:100px;">Artista (Artist):</td> 
+            <td style="text-align:left;">
+                <input type="text" name="artista" maxlength="200" id="artista" value="" /> 
+            </td> 
+        </tr> 
+<!-- ========================================== Artista END ===================================== -->
+
+
+<!-- ========================================== Titulo ========================================== -->
+        <tr> 
+            <td style="text-align:left;width:100px;">Título do Álbum (Album Title):</td> 
+            <td style="text-align:left;">
+                <input type="text" name="titulo" maxlength="200" id="titulo" value="" /> 
+            </td> 
+        </tr> 
+<!-- ========================================== Titulo END ====================================== -->
+
+
+<!-- ========================================== Formato ========================================= -->
+        <tr> 
+            <td style="text-align:left;width:100px;">Formato (Format):</td> 
+            <td style="text-align:left;">
+                
+                <select name="formato" id="formato" onchange="if(this.options[this.selectedIndex].text.substring(0,4) == 'FLAC'){document.getElementById('bitrate').value='Lossless';document.getElementById('bitrate').readOnly=true;}else if(this.options[this.selectedIndex].text.substring(0,3) == 'Any'){document.getElementById('bitrate').value='Any';document.getElementById('bitrate').readOnly=true;}else{document.getElementById('bitrate').value='';document.getElementById('bitrate').readOnly=false;}">
+
+                    <option value="Any">Any</option>
+                    <option value="MP3" selected="selected">MP3</option>
+                    <option value="FLAC">FLAC</option>
+
+                </select> 
+            </td> 
+        </tr>
+<!-- ========================================== Formato END ==================================== -->
+
+<!-- ========================================== Bitrate  ======================================= -->
+        <tr> 
+            <td style="text-align:left;width:200px;">Bitrate:</td> 
+            <td style="text-align:left;">
+                <input type="text" name="bitrate" maxlength="200" id="bitrate" size="5" value="" /> 
+            </td> 
+        </tr> 
+<!-- ========================================== Bitrate END ==================================== -->
+    
+    
+<!-- ============================================ Ano ========================================== -->
+        <tr> 
+            <td style="text-align:left;width:200px;">Ano (Year):</td> 
+            <td style="text-align:left;"> 
+                <input type="text" name="ano" value="" size="4" maxlength="4" /> 
+            </td> 
+        </tr>
+<!-- =========================================== Ano END ====================================== -->
+
+<!-- ==================================== Informacoes extras ================================== -->
+        <tr> 
+            <td style="text-align:left;width:200px;" valign="top">Info / Links:</td> 
+            <td style="text-align:left;">
+                <textarea name="info" rows="5" cols="60"></textarea>
+            </td> 
+        </tr> 
+<!-- ================================= Informacoes extras END ================================= -->
+
+
+<!-- =========================================== Enviar ====================================== -->
+        <tr> 
+            <td colspan="2" style="text-align:center;"><input type="submit" value="Enviar!" /></td> 
+        </tr> 
+<!-- ========================================= Enviar END ===================================== -->
+    </table>
+</form> 
+
+<center>
+    <a href="http://www.vim.org"><img src="../../../files/images/vim.png" alt="Created with Vim"></a>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+/*
+   =================================================
+         Layout de Curriculum para impresssão
+    Autor: Julio Batista Silva
+   =================================================
+*/
+
+#pagina
+{
+    margin: 0 auto;
+    font-size: 10px;
+}
+
+#cabecalho
+{
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    height: 120px;
+}
+
+#cabecalho h1
+{
+    font-size: 28px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+#cabecalho h2
+{
+    margin-left: 25px;
+    line-height: 7px;
+    font-size: 10px;
+}
+
+.esquerda
+{
+    float: left;
+}
+
+.direita
+{
+    text-align: left;
+    float: right;
+}
+
+.categoria
+{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 2em;
+    padding-bottom: 0em;
+}
+
+.categoria h2
+{
+    font-size: 15px;
+}
+
+.categoria pre
+{
+    margin-left: 20px;
+}
+
+.formacao
+{
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+.experiencia, .viagem
+{
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+.experiencia, .viagem h3
+{
+    font-size: 12px;
+}
+
+.experiencia h4, .viagem h4
+{
+    font-size: 100%;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+.experiencia h5, .viagem h5
+{
+    position: absolute;
+    right: 0;
+    top: 0.35em;
+}
+
+.fim
+{
+    border: none;
+}
+
+#rodape
+{
+    font-size: 80%;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+
+#rodape p
+{
+    margin-bottom: 0;
+    text-align: center;
+}

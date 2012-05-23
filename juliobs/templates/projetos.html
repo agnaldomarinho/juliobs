@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Projetos{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Projetos</h1>
+    <h4>Tudo FOSS</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<br>
+<ul>
+    <ul>
+        <li><p>Aqui deixo alguns dos meus códigos mais simples. Para outros
+        projetos veja meu <a href="https://github.com/jbsilva">Github</a>.</p>
+    </ul>
+
+    <br>
+    <li><h3>Dotfiles</h3>
+    <ul>
+        <li><a href="https://github.com/jbsilva/dotfiles">Github</a>
+    </ul>
+
+    <br>
+    <li><h3>Sites</h3>
+    <ul>
+        {% for site in sites|dictsort:"nome" %}
+        <li><a href="{{ site.link }}">{{ site.nome }}</a>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <li><h3>Programas</h3>
+    <ul>
+        {% regroup programas|dictsort:"linguagem" by linguagem as linguagens %}
+
+        {% for linguagem in linguagens %}
+        <li><h4>{{ linguagem.grouper }}</h4>
+        <ul>
+            {% for programa in linguagem.list|dictsort:"nome" %}
+            <li><a href="{{ programa.link }}">{{ programa.nome }}</a>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </ul>
+</ul>
+{% endblock %}

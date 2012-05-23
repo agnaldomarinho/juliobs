@@ -1,0 +1,61 @@
+<!-- Baseado no tradutor UOL, utilizando o api do Babylon -->
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+        <title>Traduzator</title>
+    </head>
+        
+    <body  color="#fece66" bgcolor="#ccccff">
+        <form action="javascript:void(0)" method="GET" target="bot" name="traducao">
+
+            <font size="2" face="arial">
+
+                Digite a palavra em inglês:<br/>
+
+                <input name="link_babylon" value="0" type="hidden">
+                <input name="palavra_in" size="20" type="Text">
+
+                <br/><br/>Traduzir para:<br/>
+
+                <script language="JavaScript">
+                    function traduzir(lang)
+                    {
+                        palavra = "" ;
+
+                        if (document.traducao.lang.options[document.traducao.lang.selectedIndex].value !="sel")
+                        {
+                            lang = document.traducao.lang.options[document.traducao.lang.selectedIndex].value
+                        }
+
+                        for (i=0; i < document.traducao.palavra_in.value.length; i++)
+                        {
+                            palavra = (document.traducao.palavra_in.value.charAt(i) == " ") ? palavra + "-" : palavra + document.traducao.palavra_in.value.charAt(i) ;
+                        }
+
+                        if (document.traducao.lang.options[document.traducao.lang.selectedIndex].value !="sel")
+                        {
+                            link_babylon = "http://bis.babylon.com/?rt=ol&tid=pop&term=" + palavra + "&tl=" + lang;
+                            // Redireciona o frame de baixo para o resultado do babylon
+                            parent.bot.location.href= link_babylon;
+                        }
+                    }
+                </script>
+
+                <select name="lang" class="input" onchange="traduzir()">
+                    <option selected="selected" value="sel">Selecione...</option>
+                    <option value="pt">Português</option>
+                    <option value="de">Alemão</option>
+                    <option value="zhs">Chinês (S)</option>
+                    <option value="zht">Chinês (T)</option>
+                    <option value="es">Espanhol</option>
+                    <option value="fr">Francês</option>
+                    <option value="he">Hebráico</option>
+                    <option value="nl">Holandês</option>
+                    <option value="en">Inglês (US)</option>
+                    <option value="it">Italiano</option>
+                    <option value="ja">Japonês</option>
+                </select>
+            </font>
+        </form>
+    </body>
+</html>

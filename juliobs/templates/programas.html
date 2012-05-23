@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}{{ arquivo }}{% endblock %}
+
+{% block stylesheets %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/pygments.css" %}">
+{% endblock %}
+
+{% block header %}
+<header>
+    <h1>{{ nome }}</h1>
+    <h4>OpenSource</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+    {% if erros %}
+        <h3>Erro! Arquivo inexistente.</h3>
+    {% else %}
+        <div id="codigo">
+            {{ codigo|safe }}
+        </div>
+    {% endif %}
+{% endblock %}
