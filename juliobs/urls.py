@@ -4,18 +4,19 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 from django.views.generic.base import RedirectView
 
+from torrents.views import torrents
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     (r'^i18n/', include('django.conf.urls.i18n')),
-
-    (r'^$', homepage),
-
     (r'^blog/(?P<post>.*)$',
         RedirectView.as_view(url='http://blog.juliobs.com/%(post)s', permanent=True)),
+
+    (r'^$', homepage),
+    (r'^torrents/$', torrents),
 
   # Robots & Humans
     (r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt')),
