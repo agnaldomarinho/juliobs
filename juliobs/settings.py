@@ -4,6 +4,9 @@ import os
 import django
 import local_settings as ls
 
+DEBUG = ls.DEBUG
+TEMPLATE_DEBUG = DEBUG
+
 ADMINS = ls.ADMINS
 
 MANAGERS = ADMINS
