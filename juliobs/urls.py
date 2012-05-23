@@ -6,6 +6,7 @@ from django.views.generic.base import RedirectView
 
 from torrents.views import torrents
 from projetos.views import projetos, programas
+from ira.views import ira
 
 admin.autodiscover()
 
@@ -20,6 +21,7 @@ urlpatterns = patterns('',
     (r'^torrents/$', torrents),
     (r'^projetos/$', projetos),
     (r'^projetos/(.*)$', programas),
+    (r'^ira/$', ira),
 
   # Robots & Humans
     (r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt')),

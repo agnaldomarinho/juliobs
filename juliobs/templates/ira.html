@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}IRA{% endblock %}
+
+{% block scripts %}
+    {% ifequal etapa 'mostrar_ira' %}
+    <script type="text/javascript" src="{% static "ira/tabela.js" %}"</script>
+    {% endifequal %}
+{% endblock %}
+
+{% block header %}
+<header>
+    <h1>IRA</h1>
+    <h4>Calcule seu IRA!</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+
+{% ifequal etapa 'login' %}
+    {% if errors %}
+    <br />
+    <h5>Corrija os seguintes erros e tente novamente:</h5>
+    <ul>
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor%}
+    </ul>
+    {% endif %}
+
+    <br><h4>Login:</h4>
+    <form name="dados" method="post" action="">{% csrf_token %}
+        RA: <input type="number" name="ra" min="100000" max="999999" autofocus
+        required placeholder="Seu RA"><br>
+        Senha: <input type="password" name="senha" size="20" required
+        placeholder="Senha no ProGrad Web"><br> <input type="submit"
+        name="login" value="Login">
+    </form>
+
+    <br>
+    <ul>
+        <li>Aplicativo em fase de testes!
+        <li>É necessário fornecer seu RA e sua senha do ProgradWeb para que eu
+        possa analisar seu histórico.
+        <li>Embora eu garanto que não armazenarei sua senha ou qualquer outra
+        informação, este site não possui encriptação por SSL, portanto usá-lo
+        em redes desconhecidas pode ser inseguro.
+        <li>Use por sua conta e risco. Não me responsabilizo por nenhum
+        problema relacionado à sua conta no ProGrad Web nem garanto que o
+        cálculo esteja correto.
+        <li>Calculado (levemente) com base na <a
+            href="http://www.ufscar.br/graduacao/regulamento.php">Portaria GR
+            Nº 682/99, de 26 de abril de 1999</a>.
+    </ul>
+{% endifequal %}
+
+{% ifequal etapa 'selecionar_enfase' %}
+    <h5>Selecione a ênfase:</h5>
+    <form name="enfase_form" method="post" action="">{% csrf_token %}
+        <select name="enfase_opt">
+            {% for enfase in enfases %}
+            <option value='{{ enfase.url }}'>{{ enfase.nome }}</option>
+            {% endfor%}
+        </select>
+        <input type="hidden" name="ra" value="{{ ra }}">
+        <input type="hidden" name="senha" value="{{ senha }}">
+        <input type="submit" name="login" value="Enviar">
+    </form>
+{% endifequal %}
+
+
+{% ifequal etapa 'mostrar_ira' %}
+    <h3>Seu ira é: {{ ira }}</h3>
+
+    <input type="button" value="Adicionar disciplina" onclick="addRow('historico')" />
+    <input type="button" value="Deletar disciplina(s)" onclick="deleteRow('historico')" />
+
+    <form name="historico" method="post" action="">{% csrf_token %}
+        <input type="submit" name="previsao" value="Prever IRA">
+        <table name="historico" id="historico" width="100%">
+            <tr>
+                <th>Selecionar</th>
+                <th>Disciplina</th>
+                <th>Nota</th>
+                <th>Resultado</th>
+                <th>Créditos</th>
+            </tr>
+            {% for materia in materias %}
+            <tr class="{% cycle 'clara' 'escura' %}">
+                <td width="5%"><input type="checkbox" name="chk"></td>
+                <td><input type="text" name="nome" value="{{ materia.nome }}" style="width:100%"</td>
+                <td><input type="text" name="nota" value="{{ materia.nota }}" size="4"></td>
+                <td>
+                    <select name="resultado">
+                        <option value="{{ materia.resultado }}" selected>{{ materia.resultado }}</option>
+                        <option value="Afastado">Afastado</option>
+                        <option value="Aprovado">Aprovado</option>
+                        <option value="Reprovado nota">Reprovado</option>
+                        <option value="Cancelado">Cancelado</option>
+                        <option value="Desistente">Desistente</option>
+                        <option value="Pendente">Pendente</option>
+                    </select>
+                </td>
+                <td><input type="text" name="creditos" value="{{ materia.creditos }}" size="4"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+{% endifequal %}
+
+{% endblock %}

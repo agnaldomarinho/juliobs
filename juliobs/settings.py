@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'torrents',
     'projetos',
+    'ira',
 )
 
 # A sample logging configuration. The only tangible logging
