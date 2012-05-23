@@ -1,0 +1,239 @@
+html, button, input, select, textarea
+{
+    font-family: sans-serif; color: #222;
+}
+
+/* Selecao em laranja */
+::-moz-selection { background: #f16529; color: #fff; text-shadow: none; }
+::selection { background: #f16529; color: #fff; text-shadow: none; }
+
+*
+{
+	margin: 0;
+}
+
+body
+{
+	background-color: #FFF;
+	color: #111;
+	font-family: "Trebuchet S",arial,"bitstream vera sans",sans-serif;
+	font-size: 90%;
+    padding: 8%;
+}
+
+h1
+{
+	color: #dfa229;
+	font-size: 380%;
+	text-align: center;
+	border-bottom: 1px solid #dfa229;
+}
+
+h2
+{
+	color: #dfa229;
+	font-size: 250%;
+	text-align: center;
+}
+
+h3
+{
+	color: #dfa229;
+	font-size: 200%;
+	text-align: left;
+}
+
+header h4
+{
+	color: #F47D31;
+    background-color: #FFF;
+    -webkit-box-shadow: 2px 2px 20px #888;
+    -webkit-transform: rotate(-45deg);
+    -moz-box-shadow: 2px 2px 20px #888;
+    -moz-transform: rotate(-45deg);
+    position: absolute;
+    padding: 0px 140px;
+    top: 70px;
+    left: -120px;
+    text-align: center;
+}
+
+h4
+{
+	color: #dfa229;
+	font-size: 150%;
+	text-align: left;
+}
+
+h5
+{
+	color: #dfa229;
+	font-size: 100%;
+	text-align: left;
+}
+
+h6
+{
+	color: #dfa229;
+	font-size: 100%;
+	text-align: center;
+	border-top: 1px solid #dfa229;
+	clear: both;
+}
+
+nav
+{
+	float: left;
+	list-style: none;
+	text-align: center;
+	width: 15em;
+}
+
+nav a
+{
+	background-color: #EEE;
+	color: #000;
+	display: block;
+	font-size: 120%;
+	font-weight: bold;
+	margin: 1em;
+	padding: 1em;
+	text-decoration: none;
+}
+
+nav a:hover
+{
+	background-color: #dfa229;
+}
+
+#i18n
+{
+    text-align: center;
+}
+
+#pessoal
+{
+	border-left: 1px solid #dfa229;
+	margin-left: 16em;
+	padding: 2em;
+}
+
+#pessoal aside
+{
+	float: right;
+	border: 1px solid #dfa229;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+	margin: 1em;
+	padding: 1em;
+}
+
+figcaption
+{
+    text-align: center;
+}
+
+a
+{
+	color: #5ac;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+div.cod
+{
+	text-align: left;
+	margin-left: auto;
+}
+
+footer
+{
+	text-align: center;
+}
+
+/* Código dos programas */
+#codigo
+{
+	font-size: 100%;
+}
+
+/* Classe que cria um box com borda tracejada, útil para códigos */
+.codoc
+{
+	font-size: 12px;
+	border-style: dashed;
+	border-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	padding: 1px;
+	background: #fcfcfc;
+	padding-right: 20px;
+}
+
+/* Tabela historico */
+#historico
+{
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    width:100%;
+    border-collapse:collapse;
+}
+#historico td, #historico th 
+{
+    font-size:1.2em;
+    border:1px solid #98bf21;
+    padding:3px 7px 2px 7px;
+}
+#historico th 
+{
+    font-size:1.4em;
+    text-align:left;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#A7C942;
+    color:#fff;
+}
+#historico tr.escura td 
+{
+    color:#000;
+    background-color:#EAF2D3;
+}
+
+/* Tabela horario */
+#horario
+{
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    width:100%;
+    border-collapse:collapse;
+}
+#horario td, #historico th 
+{
+    text-align: center;
+    font-size:1.2em;
+    border:1px solid #98bf21;
+    padding:3px 7px 2px 7px;
+}
+#horario th 
+{
+    font-size:1.4em;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#A7C942;
+    color:#fff;
+}
+#horario tr.escura td 
+{
+    color:#000;
+    background-color:#EAF2D3;
+}
+
+.jsvalidation
+{
+    margin-left:10px;
+    font-size:10px;
+    color:#FF0000;
+}
