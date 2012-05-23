@@ -1,3 +1,4 @@
+# -*-*- encoding: utf-8 -*-*-
 """
 WSGI config for juliobs project.
 
@@ -14,7 +15,12 @@ framework.
 
 """
 import os
+import sys
 
+# Adiciona caminho do projeto e seu diretório pai ao sys.path (precisa para
+# import juliobs.settings). Também pode ser feito pelo httpd.conf com PythonPath
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "juliobs.settings")
 
 # This application object is used by any WSGI server configured to use this
