@@ -35,13 +35,14 @@ function deleteRow(tableID)
         var table = document.getElementById(tableID);
         var rowCount = table.rows.length;
 
-        for(var i=0; i<rowCount; i++)
+        for(var i=1; i<rowCount; i++)
         {
             var row = table.rows[i];
             var chkbox = row.cells[0].childNodes[0];
-            if(null != chkbox && true == chkbox.checked)
+            if(chkbox != null && chkbox.checked == true)
             {
-                if(rowCount <= 1)
+                // 2, pois a 1a linha é cabeçalho
+                if(rowCount <= 2)
                 {
                     alert("Nao pode deletar todas as linhas.");
                     break;

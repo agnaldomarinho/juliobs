@@ -90,7 +90,7 @@
             {% for materia in materias %}
             <tr class="{% cycle 'clara' 'escura' %}">
                 <td width="5%"><input type="checkbox" name="chk"></td>
-                <td><input type="text" name="nome" value="{{ materia.nome }}" style="width:100%"</td>
+                <td><input type="text" name="nome" value="{{ materia.nome }}" style="width:100%"></td>
                 <td><input type="text" name="nota" value="{{ materia.nota }}" size="4"></td>
                 <td>
                     <select name="resultado">
@@ -103,7 +103,7 @@
                         <option value="Pendente">Pendente</option>
                     </select>
                 </td>
-                <td><input type="text" name="creditos" value="{{ materia.creditos }}" size="4"></td>
+                <td><input type="number" min="0" name="creditos" value="{{ materia.creditos }}"></td>
             </tr>
             {% endfor %}
         </table>

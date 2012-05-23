@@ -187,10 +187,27 @@ def ira(request):
                                     'creditos': creditos}
                             materias.append(materia)
 
-                    # Realiza o cálculo
-                    ira = 1000 * (nota_ponderada / creditos_inscritos) * (2 -
-                            (creditos_cancelados + 2 * creditos_desistentes) / creditos_inscritos)
-                    ira = int(round(ira))
+                    # Se ainda não fez nenhuma disciplina (bixo) faz ira = 0 e
+                    # preenche tabela com uma linha para não dar problema com o
+                    # script de adicionar e deletar linhas
+                    if (creditos_inscritos <= 0):
+                        ira = 0
+                        materia = {'nome': '',
+                                'nota': '',
+                                'resultado': '',
+                                'creditos': ''}
+                        materias.append(materia)
+                    else:
+                        try:
+                            ira = 1000 * (nota_ponderada / creditos_inscritos) * (2 -
+                                    (creditos_cancelados + 2 * creditos_desistentes) / creditos_inscritos)
+                            ira = int(round(ira))
+                        except:
+                            errors.append(sys.exc_info())
+                            return render_to_response('ira.html',
+                                    {'etapa': 'login',
+                                        'errors': errors},
+                                    context_instance=RequestContext(request))
 
                     return render_to_response('ira.html',
                             {'etapa': 'mostrar_ira',
@@ -213,6 +230,9 @@ def ira(request):
 
             materias = []
             for nome, nota, resultado, creditos in (izip(nomes, notas, resultados, cred)):
+                if nome == '':
+                    nome = 'Digite um nome!'
+
                 if resultado != 'Afastado':
                     try:
                         creditos = int(creditos)
@@ -248,10 +268,27 @@ def ira(request):
                         'creditos': creditos}
                 materias.append(materia)
 
-            # Realiza o cálculo
-            ira = 1000 * (nota_ponderada / creditos_inscritos) * (2 -
-                    (creditos_cancelados + 2 * creditos_desistentes) / creditos_inscritos)
-            ira = int(round(ira))
+            # Se ainda não fez nenhuma disciplina (bixo) faz ira = 0 e
+            # preenche tabela com uma linha para não dar problema com o
+            # script de adicionar e deletar linhas
+            if (creditos_inscritos <= 0):
+                ira = 0
+                materia = {'nome': '',
+                        'nota': '',
+                        'resultado': '',
+                        'creditos': ''}
+                materias.append(materia)
+            else:
+                try:
+                    ira = 1000 * (nota_ponderada / creditos_inscritos) * (2 -
+                            (creditos_cancelados + 2 * creditos_desistentes) / creditos_inscritos)
+                    ira = int(round(ira))
+                except:
+                    errors.append(sys.exc_info())
+                    return render_to_response('ira.html',
+                            {'etapa': 'login',
+                                'errors': errors},
+                            context_instance=RequestContext(request))
 
             return render_to_response('ira.html',
                     {'etapa': 'mostrar_ira',
