@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': ls.DB_ENGINE, 
+        'ENGINE': ls.DB_ENGINE,
         'NAME': ls.DB_NAME,
         'USER': ls.DB_USER,
         'PASSWORD': ls.DB_PASSWORD,
@@ -117,7 +117,7 @@ ROOT_URLCONF = 'juliobs.urls'
 WSGI_APPLICATION = 'juliobs.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates"
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(SITE_ROOT, 'templates'),
@@ -135,6 +135,11 @@ INSTALLED_APPS = (
     'torrents',
     'projetos',
     'ira',
+    # 3rd party Apps
+    'imagestore',
+    'sorl.thumbnail',
+    'tagging',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging

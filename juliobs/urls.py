@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     (r'^projetos/$', projetos),
     (r'^projetos/(.*)$', programas),
     (r'^ira/$', ira),
+    (r'^gallery/', include('imagestore.urls', namespace='imagestore')),
 
   # Robots & Humans
     (r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt')),
