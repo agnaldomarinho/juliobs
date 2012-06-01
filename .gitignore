@@ -35,3 +35,4 @@ nosetests.xml
 # Settings
 juliobs/local_settings.py
 juliobs/arquivos/static
+juliobs/arquivos/media
