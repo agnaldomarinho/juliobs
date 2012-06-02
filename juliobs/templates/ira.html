@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static from staticfiles %}
+{% load i18n %}
 
 {% block title %}IRA{% endblock %}
 
@@ -13,7 +14,7 @@
 {% block header %}
 <header>
     <h1>IRA</h1>
-    <h4>Calcule seu IRA!</h4>
+    <h4>{% trans "Calculate your IRA!" %}</h4>
 </header>
 {% endblock %}
 
@@ -21,8 +22,8 @@
 
 {% ifequal etapa 'login' %}
     {% if errors %}
-    <br />
-    <h5>Corrija os seguintes erros e tente novamente:</h5>
+    <br>
+    <h5>{% trans "Correct the following erros and try again:"</h5>
     <ul>
         {% for error in errors %}
         <li>{{ error }}</li>
@@ -33,31 +34,32 @@
     <br><h4>Login:</h4>
     <form name="dados" method="post" action="">{% csrf_token %}
         RA: <input type="number" name="ra" min="100000" max="999999" autofocus
-        required placeholder="Seu RA"><br>
+        required placeholder="{% trans "Your RA" %}"><br>
         Senha: <input type="password" name="senha" size="20" required
-        placeholder="Senha no ProGrad Web"><br> <input type="submit"
+        placeholder="{% trans "ProGrad Web password" %}"><br> <input type="submit"
         name="login" value="Login">
     </form>
 
     <br>
     <ul>
-        <li>Aplicativo em fase de testes!
-        <li>É necessário fornecer seu RA e sua senha do ProgradWeb para que eu
-        possa analisar seu histórico.
-        <li>Embora eu garanto que não armazenarei sua senha ou qualquer outra
-        informação, este site não possui encriptação por SSL, portanto usá-lo
-        em redes desconhecidas pode ser inseguro.
-        <li>Use por sua conta e risco. Não me responsabilizo por nenhum
-        problema relacionado à sua conta no ProGrad Web nem garanto que o
-        cálculo esteja correto.
-        <li>Calculado (levemente) com base na <a
+        <li>{% trans "Application in development!" %}
+        <li>{% blocktrans %}It's necessary to provide your RA and the password you
+        use on ProgradWeb so I can analyse your academic records.{% endblocktrans %}
+        <li>{% blocktrans %}Even though i garantee that I won't store your password
+        or any other information, this website doesn't utilize SSL encryption,
+        therefore using it in unknown networks might be insecure.{% endblocktrans %}
+        <li>{% blocktrans %}Use at your own risk. I can't be responsible, in any way
+        at all, for any problem related to your ProGrad Web account. I don't
+        even assure that the calculations are correct. Do not rely upon the
+        results.{% endblocktrans %}
+        <li>{% trans "Calculated (a little) based on" %} <a
             href="http://www.ufscar.br/graduacao/regulamento.php">Portaria GR
             Nº 682/99, de 26 de abril de 1999</a>.
     </ul>
 {% endifequal %}
 
 {% ifequal etapa 'selecionar_enfase' %}
-    <h5>Selecione a ênfase:</h5>
+<h5>{% trans "Select the emphasis:" %}</h5>
     <form name="enfase_form" method="post" action="">{% csrf_token %}
         <select name="enfase_opt">
             {% for enfase in enfases %}

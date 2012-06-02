@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0001\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-02 15:57-0300\n"
-"PO-Revision-Date: 2012-06-02 15:53-0300\n"
+"POT-Creation-Date: 2012-06-02 18:09-0300\n"
+"PO-Revision-Date: 2012-06-02 18:09-0300\n"
 "Last-Translator: julio <julio@juliobs.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: \n"
@@ -46,11 +46,12 @@ msgstr "Este erro pode ter acontecido por um dos seguintes motivos:"
 msgid "Julio's fault"
 msgstr "Culpa do Julio"
 
-#: templates/homepage.html:11
+#: templates/base.html:36 templates/homepage.html:11
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: templates/homepage.html:17
+#: templates/homepage.html:17 templates/projetos.html:4
+#: templates/projetos.html.py:8
 msgid "Projects"
 msgstr "Projetos"
 
@@ -67,12 +68,12 @@ msgid "PGP"
 msgstr "PGP"
 
 #: templates/homepage.html:21
-msgid "Horário"
+msgid "Timetable"
 msgstr "Horário"
 
 #: templates/homepage.html:22
 msgid "Music Lib"
-msgstr "Bibl Músicas"
+msgstr "Bibl. de Músicas"
 
 #: templates/homepage.html:23
 msgid "Contact"
@@ -101,6 +102,78 @@ msgstr ""
 #: templates/homepage.html:42
 msgid "For more information, visit:"
 msgstr "Para mais informações, visite:"
+
+#: templates/ira.html:17
+msgid "Calculate your IRA!"
+msgstr "Calcule seu IRA!"
+
+#: templates/ira.html:37
+msgid "Your RA"
+msgstr "Seu RA"
+
+#: templates/ira.html:39
+msgid "ProGrad Web password"
+msgstr "Senha no ProGrad Web"
+
+#: templates/ira.html:45
+msgid "Application in development!"
+msgstr "Aplicativo em fase de testes!"
+
+#: templates/ira.html:46
+msgid ""
+"It's necessary to provide your RA and the password you\n"
+"        use on ProgradWeb so I can analyse your academic records."
+msgstr ""
+"É necessário fornecer seu RA e sua senha do ProgradWeb para que eu possa "
+"analisar seu histórico."
+
+#: templates/ira.html:48
+msgid ""
+"Even though i garantee that I won't store your password\n"
+"        or any other information, this website doesn't utilize SSL "
+"encryption,\n"
+"        therefore using it in unknown networks might be insecure."
+msgstr ""
+"Embora eu garanto que não armazenarei sua senha ou qualquer outra "
+"informação, este website não utiliza encriptação por SSL, portanto usá-lo em "
+"redes desconhecidas pode ser inseguro."
+
+#: templates/ira.html:51
+msgid ""
+"Use at your own risk. I can't be responsible, in any way\n"
+"        at all, for any problem related to your ProGrad Web account. I "
+"don't\n"
+"        even assure that the calculations are correct. Do not rely upon the\n"
+"        results."
+msgstr ""
+"Use por sua conta e risco. Não me responsabilizo, de forma alguma, por "
+"qualquer problema relacionado à sua conta no ProGrad Web. Nem mesmo garanto "
+"que o cálculo esteja correto. Não confie nos resultados."
+
+#: templates/ira.html:55
+msgid "Calculated (a little) based on"
+msgstr "Calculado (levemente) com base na"
+
+#: templates/ira.html:62
+msgid "Select the emphasis:"
+msgstr "Selecione a ênfase:"
+
+#: templates/projetos.html:9
+msgid "FOSS"
+msgstr "FOSS"
+
+#: templates/projetos.html:17
+msgid ""
+"Here you can find some of my simplest codes. For\n"
+"        more projects, take a look at my <a href=\"https://github.com/jbsilva"
+"\">Github</a>."
+msgstr ""
+"Aqui você pode encontrar alguns dos meus códigos mais simples. Para mais "
+"projetos, olhe meu <a href=\"https://github.com/jbsilva\">Github</a>."
+
+#: templates/projetos.html:36
+msgid "Programs"
+msgstr "Programas"
 
 #: templates/qrcode.html:15
 msgid "QR Code for this website"
@@ -260,6 +333,12 @@ msgstr "Salvar"
 #: templates/imagestore/forms/image_form.html:30
 msgid "Upload"
 msgstr "Upload"
+
+#~ msgid "Horário"
+#~ msgstr "Horário"
+
+#~ msgid "Selecione a ênfase:"
+#~ msgstr "Selecione a ênfase"
 
 #~ msgid "i like potatoes"
 #~ msgstr "eu gosto de batata"

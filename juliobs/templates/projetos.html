@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Projetos{% endblock %}
+{% block title %}{% trans "Projects" %}{% endblock %}
 
 {% block header %}
 <header>
-    <h1>Projetos</h1>
-    <h4>Tudo FOSS</h4>
+    <h1>{% trans "Projects" %}</h1>
+    <h4>{% trans "FOSS" %}</h4>
 </header>
 {% endblock %}
 
@@ -13,8 +14,8 @@
 <br>
 <ul>
     <ul>
-        <li><p>Aqui deixo alguns dos meus códigos mais simples. Para outros
-        projetos veja meu <a href="https://github.com/jbsilva">Github</a>.</p>
+        <li><p>{% blocktrans %}Here you can find some of my simplest codes. For
+        more projects, take a look at my <a href="https://github.com/jbsilva">Github</a>.{% endblocktrans %}</p>
     </ul>
 
     <br>
@@ -32,7 +33,7 @@
     </ul>
 
     <br>
-    <li><h3>Programas</h3>
+    <li><h3>{% trans "Programs" %}</h3>
     <ul>
         {% regroup programas|dictsort:"linguagem" by linguagem as linguagens %}
 
