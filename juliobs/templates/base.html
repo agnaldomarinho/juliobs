@@ -47,7 +47,7 @@
 
             {% block i18n %}
             <div id="i18n">
-                <form action="/django/i18n/setlang/" method="post">
+                <form action="/i18n/setlang/" method="post">
                     {% csrf_token %}
                     <input name="next" type="hidden" value="{{ redirect_to }}" />
                     <select name="language">
