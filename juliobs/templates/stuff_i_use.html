@@ -6,18 +6,17 @@
 
 {% block header %}
 <header>
-    <h1>Stuff I Use</h1>
-    <h4>Stuff I Use</h4>
+    <h1>{% trans "Stuff I Use" %}</h1>
+    <h4>{% trans "Stuff I Use" %}</h4>
 </header>
 {% endblock %}
 
 {% block content %}
 <article>
-    Baseado em http://paulstamatiou.com/stuff-i-use e usethis.com
+    <br>
+    <p>{%trans 'This page features a frequently updated list of applications, products and services I personally use on a regular basis' %}</p>
 
-    {%trans 'This page features a frequently updated list of applications, productis and services I personally use on a regular basis' %}
-
-    {%trans 'Last update:' %} {{ last_update }}
+    <br><p>{%trans 'Last update:' %} {{ last_update }}</p>
 
     <br><h3>Services</h3>
     <ul>
@@ -56,5 +55,9 @@
         <li>Sony Cybershot DSC-HX1
         <li>Wacom Bamboo Pen (CTL460)
     </ul>
+
+    <br><br>
+    <p>{% trans "This page was inspired on http://paulstamatiou.com/stuff-i-use and usethis.com" %}</p>
+
 </article>
 {% endblock %}

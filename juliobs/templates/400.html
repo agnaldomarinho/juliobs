@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 
-{% block title %}Invalid Request{% endblock %}
+{% block title %}{% trans "Invalid Request" %}{% endblock %}
 
 {% block header %}
 <header>
-    <h1>Erro 400</h1>
+<h1>{% trans "Error 400" %}</h1>
     <h4>Fuuuuuuu!</h4>
 </header>
 {% endblock %}
 
 {% block content %}
 <article>
-   <h2>Invalid Request</h2>
+<h2>{% trans "Invalid Request" %}</h2>
    <div>
-       <p>Isto pode ter ocorrido por um dos seguintes motivos:</p>
+       <p>{% trans "This error may have happened for one or more of the following reasons:" %}</p>
        <ul>
-           <li>Culpa do Julio?</li>
+           <li>{% trans "Julio's fault" %}</li>
        </ul>
    </div>
 </article>

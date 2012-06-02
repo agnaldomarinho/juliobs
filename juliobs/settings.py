@@ -22,6 +22,10 @@ DATABASES = {
     }
 }
 
+# Caminhos relativos
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+DJANGO_ROOT = os.path.realpath(os.path.dirname(django.__file__))
+
 TIME_ZONE = 'America/Sao_Paulo'
 
 # Language code for this installation. All choices can be found here:
@@ -41,16 +45,16 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+LOCALE_PATHS = (
+        os.path.join(SITE_ROOT, 'locale'),
+)
+
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale.
 USE_L10N = True
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
-
-# Caminhos relativos
-SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-DJANGO_ROOT = os.path.realpath(os.path.dirname(django.__file__))
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -100,13 +104,11 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # Permite usuario escolher linguagem
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-
-    # Permite usuario escolher linguagem
-    'django.middleware.locale.LocaleMiddleware',
-
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )

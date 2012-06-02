@@ -1,0 +1,268 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# julio <julio@juliobs.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0001\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-06-02 15:57-0300\n"
+"PO-Revision-Date: 2012-06-02 15:53-0300\n"
+"Last-Translator: julio <julio@juliobs.com>\n"
+"Language-Team: Portuguese <>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: settings.py:37
+msgid "English"
+msgstr "Inglês"
+
+#: settings.py:38
+msgid "Spanish"
+msgstr "Espanhol"
+
+#: settings.py:39
+msgid "Brazilian Portuguese"
+msgstr "Português Brasileiro"
+
+#: templates/400.html:4 templates/400.html.py:15
+msgid "Invalid Request"
+msgstr "Solicitação Inválida"
+
+#: templates/400.html:8
+msgid "Error 400"
+msgstr "Erro 400"
+
+#: templates/400.html:17
+msgid "This error may have happened for one or more of the following reasons:"
+msgstr "Este erro pode ter acontecido por um dos seguintes motivos:"
+
+#: templates/400.html:19
+msgid "Julio's fault"
+msgstr "Culpa do Julio"
+
+#: templates/homepage.html:11
+msgid "Welcome"
+msgstr "Bem-vindo"
+
+#: templates/homepage.html:17
+msgid "Projects"
+msgstr "Projetos"
+
+#: templates/homepage.html:18
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/homepage.html:19
+msgid "Photos"
+msgstr "Fotos"
+
+#: templates/homepage.html:20
+msgid "PGP"
+msgstr "PGP"
+
+#: templates/homepage.html:21
+msgid "Horário"
+msgstr "Horário"
+
+#: templates/homepage.html:22
+msgid "Music Lib"
+msgstr "Bibl Músicas"
+
+#: templates/homepage.html:23
+msgid "Contact"
+msgstr "Contato"
+
+#: templates/homepage.html:27
+msgid "About me"
+msgstr "Sobre mim"
+
+#: templates/homepage.html:35
+msgid ""
+"Julio Batista Silva, born in São José dos Campos - SP, graduated in\n"
+"        2008 from <a href=\"http://cejw.yolasite.com/\">Embraer Juarez "
+"Wanderley \n"
+"            High School</a> and now studies Computer Engineering at <a\n"
+"            href=\"http://www.ufscar.br/\">Federal University of São Carlos\n"
+"            (UFSCar)</a>."
+msgstr ""
+"Julio Batista Silva, nascido em São José dos Campos - SP, graduou em\n"
+"        2008 pelo <a href=\"http://cejw.yolasite.com/\">Colégio Embraer "
+"Juarez Wanderley.\n"
+"            </a> e atualmente estuda Engenharia de Computação na <a href="
+"\"http://www.ufscar.br/\">\n"
+"            Universidade Federal de São Carlos (UFSCar)</a>."
+
+#: templates/homepage.html:42
+msgid "For more information, visit:"
+msgstr "Para mais informações, visite:"
+
+#: templates/qrcode.html:15
+msgid "QR Code for this website"
+msgstr "QR Code para este website"
+
+#: templates/stuff_i_use.html:9 templates/stuff_i_use.html.py:10
+msgid "Stuff I Use"
+msgstr "Coisas que eu uso"
+
+#: templates/stuff_i_use.html:17
+msgid ""
+"This page features a frequently updated list of applications, products and "
+"services I personally use on a regular basis"
+msgstr ""
+"Esta página contém uma lista atualizada de aplicativos, produtos e serviços "
+"que eu pessoalmente uso regularmente"
+
+#: templates/stuff_i_use.html:19
+msgid "Last update:"
+msgstr "Última atualização:"
+
+#: templates/stuff_i_use.html:60
+msgid ""
+"This page was inspired on http://paulstamatiou.com/stuff-i-use and usethis."
+"com"
+msgstr ""
+"Esta página foi inspirada em http://paulstamatiou.com/stuff-i-use e usethis."
+"com"
+
+#: templates/imagestore/album_delete.html:6
+msgid "Are you sure that you would like to delete this album?"
+msgstr "Tem certeza que deseja deletar este álbum?"
+
+#: templates/imagestore/album_delete.html:10
+#: templates/imagestore/image_confirm_delete.html:10
+#: templates/imagestore/image_delete.html:10
+msgid "No, take me back"
+msgstr "Não, volte atrás"
+
+#: templates/imagestore/album_delete.html:11
+#: templates/imagestore/image_confirm_delete.html:11
+#: templates/imagestore/image_delete.html:11
+msgid "Yes, I am sure"
+msgstr "Sim, tenho certeza"
+
+#: templates/imagestore/album_list.html:7
+#: templates/imagestore/album_list.html:16
+#: templates/imagestore/album_list.html:37
+msgid "Albums for user"
+msgstr "Álbuns do usuário"
+
+#: templates/imagestore/album_list.html:9
+#: templates/imagestore/album_list.html:18
+#: templates/imagestore/album_list.html:39
+msgid "All albums"
+msgstr "Todos os álbums"
+
+#: templates/imagestore/album_list.html:53
+msgid "Empty album"
+msgstr "Álbum vazio"
+
+#: templates/imagestore/album_list.html:60
+msgid "user"
+msgstr "usuário"
+
+#: templates/imagestore/base.html:36
+msgid "Home"
+msgstr "Home"
+
+#: templates/imagestore/base.html:39 templates/imagestore/tag.html:7
+msgid "Gallery"
+msgstr "Galeria"
+
+#: templates/imagestore/base.html:55
+#: templates/imagestore/forms/image_form.html:7
+#: templates/imagestore/forms/image_form.html:22
+#: templates/imagestore/forms/image_form.html:26
+msgid "Upload image"
+msgstr "Fazer upload de imagem"
+
+#: templates/imagestore/base.html:58
+msgid "Create new album"
+msgstr "Criar novo álbum"
+
+#: templates/imagestore/image-scope.html:4 templates/imagestore/image.html:12
+#: templates/imagestore/user_info.html:5
+msgid "User"
+msgstr "Usuário"
+
+#: templates/imagestore/image-scope.html:9 templates/imagestore/image.html:15
+msgid "Album"
+msgstr "Álbum"
+
+#: templates/imagestore/image-scope.html:14 templates/imagestore/image.html:18
+#: templates/imagestore/tag.html:7 templates/imagestore/tag.html.py:11
+#: templates/imagestore/tag.html:15
+msgid "Tag"
+msgstr "Tag"
+
+#: templates/imagestore/image.html:7
+msgid "Image"
+msgstr "Imagem"
+
+#: templates/imagestore/image.html:55
+msgid "previous image"
+msgstr "imagem anterior"
+
+#: templates/imagestore/image.html:58
+msgid "next image"
+msgstr "próxima imagem"
+
+#: templates/imagestore/image.html:68
+msgid "Edit info"
+msgstr "Editar informações"
+
+#: templates/imagestore/image.html:69
+msgid "Delete image"
+msgstr "Deletar imagem"
+
+#: templates/imagestore/image.html:76 templates/imagestore/tag-cloud.html:6
+msgid "Tags"
+msgstr "Tags"
+
+#: templates/imagestore/image.html:84
+msgid "Place"
+msgstr "Lugar"
+
+#: templates/imagestore/image_confirm_delete.html:6
+#: templates/imagestore/image_delete.html:6
+msgid "Are you sure that you would like to delete this image?"
+msgstr "Tem certeza de que deseja deletar esta imagem?"
+
+#: templates/imagestore/image_list.html:33
+#: templates/imagestore/forms/album_form.html:13
+#: templates/imagestore/forms/album_form.html:23
+msgid "Edit album"
+msgstr "Editar álbum"
+
+#: templates/imagestore/pagination.html:8
+msgid "previous page"
+msgstr "página anterior"
+
+#: templates/imagestore/pagination.html:22
+msgid "next page"
+msgstr "próxima página"
+
+#: templates/imagestore/forms/album_form.html:7
+#: templates/imagestore/forms/album_form.html:15
+#: templates/imagestore/forms/album_form.html:25
+msgid "Create album"
+msgstr "Criar álbum"
+
+#: templates/imagestore/forms/album_form.html:31
+msgid "Save"
+msgstr "Salvar"
+
+#: templates/imagestore/forms/image_form.html:30
+msgid "Upload"
+msgstr "Upload"
+
+#~ msgid "i like potatoes"
+#~ msgstr "eu gosto de batata"
+
+#~ msgid "Hello"
+#~ msgstr "Olaaaa"

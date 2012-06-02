@@ -14,7 +14,7 @@
 
 {%block content %}
     <nav>
-    <a href="projetos/">{% trans 'Projects' %}</a>
+        <a href="projetos/">{% trans 'Projects' %}</a>
         <a href="http://blog.juliobs.com/">{% trans 'Blog' %}</a>
         <a href="gallery">{% trans 'Photos' %}</a>
         <a href='pgp/' title='PGP Public Key'>{% trans 'PGP' %}</a>
@@ -32,13 +32,11 @@
             </figure>
         </aside>
 
-        {% blocktrans %}
-        <p>Julio Batista Silva, born in São José dos Campos - SP, graduated in
+        <p>{% blocktrans %}Julio Batista Silva, born in São José dos Campos - SP, graduated in
         2008 from <a href="http://cejw.yolasite.com/">Embraer Juarez Wanderley 
             High School</a> and now studies Computer Engineering at <a
             href="http://www.ufscar.br/">Federal University of São Carlos
-            (UFSCar)</a>.</p>
-        {% endblocktrans %}
+            (UFSCar)</a>.{% endblocktrans %}</p>
 
         <br><br>
         <p>{% trans 'For more information, visit:' %}</p>
