@@ -3,8 +3,8 @@
 Este é o código fonte do meu [site](http://juliobs.com) em Django.
 
 ## Tecnologias
-*   Python
-*   Django
+*   Python (2.7.3)
+*   Django (1.5)
 *   HTML5
 *   CSS3
 *   jQuery
