@@ -56,7 +56,8 @@ def programas(request, arquivo):
                     lexer = TextLexer
 
             # linenos pode ser inline, table, True ou ''
-            codigo = highlight(texto, lexer, HtmlFormatter(linenos='inline'))
+            # replace corrige problema com {% spaceless %}
+            codigo = highlight(texto, lexer, HtmlFormatter(linenos=False)).replace('\n', '<br>\n')
     else:
         erros = True
 
