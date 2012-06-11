@@ -6,6 +6,7 @@
 {% block title %}IRA{% endblock %}
 
 {% block scripts %}
+    {{ block.super }}
     {% ifequal etapa 'mostrar_ira' %}
     <script type="text/javascript" src="{% static "ira/tabela.js" %}"</script>
     {% endifequal %}
@@ -31,31 +32,38 @@
     </ul>
     {% endif %}
 
-    <br><h4>Login:</h4>
-    <form name="dados" method="post" action="">{% csrf_token %}
-        RA: <input type="number" name="ra" min="100000" max="999999" autofocus
-        required placeholder="{% trans "Your RA" %}"><br>
-        Senha: <input type="password" name="senha" size="20" required
-        placeholder="{% trans "ProGrad Web password" %}"><br> <input type="submit"
-        name="login" value="Login">
-    </form>
+    <div class="row-fluid">
+        <h4>Login:</h4>
+        <form class="well span3" name="dados" method="post" action="">{% csrf_token %}
+            <label>RA:</label>
+            <input type="number" name="ra" min="100000" max="999999" autofocus
+            required placeholder="{% trans "Your RA" %}">
 
-    <br>
-    <ul>
-        <li>{% trans "Application in development!" %}
-        <li>{% blocktrans %}It's necessary to provide your RA and the password you
-        use on ProgradWeb so I can analyse your academic records.{% endblocktrans %}
-        <li>{% blocktrans %}Even though i garantee that I won't store your password
-        or any other information, this website doesn't utilize SSL encryption,
-        therefore using it in unknown networks might be insecure.{% endblocktrans %}
-        <li>{% blocktrans %}Use at your own risk. I can't be responsible, in any way
-        at all, for any problem related to your ProGrad Web account. I don't
-        even assure that the calculations are correct. Do not rely upon the
-        results.{% endblocktrans %}
-        <li>{% trans "Calculated (a little) based on" %} <a
-            href="http://www.ufscar.br/graduacao/regulamento.php">Portaria GR
-            Nº 682/99, de 26 de abril de 1999</a>.
-    </ul>
+            <label>Senha:</label>
+            <input type="password" name="senha" size="20" required
+            placeholder="{% trans "ProGrad Web password" %}">
+            <br>
+            <input class="btn btn-primary" type="submit" name="login" value="Login">
+        </form>
+    </div>
+
+    <div class="row-fluid">
+        <ul>
+            <li>{% trans "Application in development!" %}
+            <li>{% blocktrans %}It's necessary to provide your RA and the password you
+            use on ProgradWeb so I can analyse your academic records.{% endblocktrans %}
+            <li>{% blocktrans %}Even though i garantee that I won't store your password
+            or any other information, this website doesn't utilize SSL encryption,
+            therefore using it in unknown networks might be insecure.{% endblocktrans %}
+            <li>{% blocktrans %}Use at your own risk. I can't be responsible, in any way
+            at all, for any problem related to your ProGrad Web account. I don't
+            even assure that the calculations are correct. Do not rely upon the
+            results.{% endblocktrans %}
+            <li>{% trans "Calculated (a little) based on" %} <a
+                href="http://www.ufscar.br/graduacao/regulamento.php">Portaria GR
+                Nº 682/99, de 26 de abril de 1999</a>.
+        </ul>
+    </div>
 {% endifequal %}
 
 {% ifequal etapa 'selecionar_enfase' %}
@@ -68,7 +76,7 @@
         </select>
         <input type="hidden" name="ra" value="{{ ra }}">
         <input type="hidden" name="senha" value="{{ senha }}">
-        <input type="submit" name="login" value="Enviar">
+        <input type="submit" name="login" value="{% trans "Submit" %}">
     </form>
 {% endifequal %}
 
@@ -76,37 +84,42 @@
 {% ifequal etapa 'mostrar_ira' %}
     <h3>Seu ira é: {{ ira }}</h3>
 
-    <input type="button" value="Adicionar disciplina" onclick="addRow('historico')" />
-    <input type="button" value="Deletar disciplina(s)" onclick="deleteRow('historico')" />
+    <input type="button" class="btn" value="Adicionar disciplina" onclick="addRow('historico')">
+    <button class="btn btn-danger" onclick="deleteRow('historico')">
+        <i class="icon-trash icon-white"></i>Deletar disciplina(s)</button>
 
-    <form name="historico" method="post" action="">{% csrf_token %}
-        <input type="submit" name="previsao" value="Prever IRA">
-        <table name="historico" id="historico" width="100%">
-            <tr>
-                <th>Selecionar</th>
-                <th>Disciplina</th>
-                <th>Nota</th>
-                <th>Resultado</th>
-                <th>Créditos</th>
-            </tr>
-            {% for materia in materias %}
-            <tr class="{% cycle 'clara' 'escura' %}">
-                <td width="5%"><input type="checkbox" name="chk"></td>
-                <td><input type="text" name="nome" value="{{ materia.nome }}" style="width:100%"></td>
-                <td><input type="text" name="nota" value="{{ materia.nota }}" size="4"></td>
-                <td>
-                    <select name="resultado">
-                        <option value="{{ materia.resultado }}" selected>{{ materia.resultado }}</option>
-                        <option value="Afastado">Afastado</option>
-                        <option value="Aprovado">Aprovado</option>
-                        <option value="Reprovado nota">Reprovado</option>
-                        <option value="Cancelado">Cancelado</option>
-                        <option value="Desistente">Desistente</option>
-                        <option value="Pendente">Pendente</option>
-                    </select>
-                </td>
-                <td><input type="number" min="0" name="creditos" value="{{ materia.creditos }}"></td>
-            </tr>
+    <form class="well" name="historico" method="post" action="">{% csrf_token %}
+        <input type="submit" class="btn btn-primary" name="previsao" value="Prever IRA">
+        <table class="table" name="historico" id="historico" width="100%">
+            <thead>
+                <tr>
+                    <th>Selecionar</th>
+                    <th>Disciplina</th>
+                    <th>Nota</th>
+                    <th>Resultado</th>
+                    <th>Créditos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for materia in materias %}
+                <tr class="{% cycle 'clara' 'escura' %}">
+                    <td width="5%"><input type="checkbox" name="chk"></td>
+                    <td><input type="text" name="nome" value="{{ materia.nome }}" class="span4"></td>
+                    <td><input type="text" name="nota" value="{{ materia.nota }}" size="4"></td>
+                    <td>
+                        <select name="resultado">
+                            <option value="{{ materia.resultado }}" selected>{{ materia.resultado }}</option>
+                            <option value="Afastado">Afastado</option>
+                            <option value="Aprovado">Aprovado</option>
+                            <option value="Reprovado nota">Reprovado</option>
+                            <option value="Cancelado">Cancelado</option>
+                            <option value="Desistente">Desistente</option>
+                            <option value="Pendente">Pendente</option>
+                        </select>
+                    </td>
+                    <td><input type="number" min="0" name="creditos" value="{{ materia.creditos }}"></td>
+                </tr>
+            </tbody>
             {% endfor %}
         </table>
     </form>

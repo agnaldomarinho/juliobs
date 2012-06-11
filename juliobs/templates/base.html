@@ -1,6 +1,8 @@
 {% spaceless %}
 {% load static from staticfiles %}
 {% load i18n %}
+{% get_language_info_list for LANGUAGES as languages %}
+
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
     {% block head %}
@@ -14,10 +16,22 @@
 
         {% block stylesheets %}
         <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}">
         {% endblock %}
 
-        {% block scripts %}{% endblock %}
+        {% block scripts %}
+        <script type="text/javascript" src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+        <script>
+            function muda_lingua(code)
+            {
+              document.i18n.language.value = code;
+              document.i18n.submit();
+            }
+        </script>
 
+        {% endblock %}
         {# Google Analytics #}
         <script>
             var _gaq=[['_setAccount','UA-26693793-2'],['_trackPageview']];
@@ -29,6 +43,38 @@
     {% endblock %}
 
     <body>
+        <nav class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/">Juliobs.com</a>
+                    <div class="btn-group pull-right">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-flag"></i> {% trans "Language" %}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for language in languages %}
+                            <li><a href="javascript:muda_lingua('{{ language.code }}')">{{ language.name_local }} ({{ language.code }})</a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="/"><i class="icon-home icon-white"></i> Home</a></li>
+                            <li><a href="/projetos">{% trans "Projects" %}</a></li>
+                            <li><a href="http://blog.juliobs.com">Blog</a></li>
+                            <li><a href="/contato">{% trans "Contact" %}</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </nav>
+        
         {% block header %}
         <header id="header">
             <h1>{% block nome %}{% endblock %}</h1>
@@ -37,42 +83,52 @@
         </header>
         {% endblock %}
 
-        {% block content %}
-        {% endblock %}
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
 
         {% block footer %}
-        <footer>
-            <h6>Julio Batista Silva</h6>
-            <h6><a href="/">Home</a> - <a href="/projetos">Projetos</a></h6>
+        <hr>
+        <footer class="row-fluid">
 
-            {% block i18n %}
-            <div id="i18n">
-                <form action="/i18n/setlang/" method="post">
+            <div class="row-fluid" id="i18n">
+                <form name="i18n" class="well form-inline" action="/i18n/setlang/" method="post">
                     {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ redirect_to }}" />
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
                     <select name="language">
-                        {% get_language_info_list for LANGUAGES as languages %}
                         {% for language in languages %}
                         <option value="{{ language.code }}">{{ language.name_local }} ({{ language.code }})</option>
                         {% endfor %}
                     </select>
-                    <input type="submit" value="Go" />
+                    <input type="submit" value="{% trans "Go" %}">
                 </form>
                 {# {% get_current_language as lang %} #}
                 {# <p>Atual: {{ lang|language_name }} ({{ lang|language_name_local }})</p> #}
             </div>
-            {% endblock %}
 
-            <p>
+            <div class="row-fluid" id="logos">
                 <a href="http://www.vim.org">
                     <img src="{% static "images/logos/vim.png" %}"
                     alt="Created with Vim" title="Created with Vim"
                     height="32" />
                 </a>
 
+                <a href="http://juliobs.com/humans.txt">
+                    <img src="{% static "images/logos/humanstxt.gif" %}"
+                    alt="humans.txt" title="humans.txt"
+                    height="32" />
+                </a>
+
                 <a href="http://www.djangoproject.com/">
                     <img src="{% static "images/logos/django_powered.gif" %}"
                     alt="Powered by Django" title="Powered by Django"
+                    height="32" />
+                </a>
+
+                <a href="http://djangopony.com/">
+                    <img src="{% static "images/logos/pony.png" %}"
+                    alt="pony powered" title="Magic! Ponies!  Django! Whee!"
                     height="32" />
                 </a>
 
@@ -105,7 +161,7 @@
                     alt="QR Code" title="QR Code"
                     height="32" />
                 </a>
-            </p>
+            </div>
         </footer>
         {% endblock %}
     </body>

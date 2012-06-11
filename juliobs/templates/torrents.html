@@ -18,27 +18,38 @@
         {% endfor%}
     </ul>
     {% else %}
-    <h5>Velocidade Atual:</h5>
-    <ul>
-        <li>Upload: {{ up }} kB/s
-        <li>Download: {{ down }} kB/s
-    </ul>
-    <br>
-    <h5>Alterar velocidade:</h5>
-    <form name="velocidades" method="post" action="">{% csrf_token %}
-        Upload: <input type="number" name="up" min="0" placeholder="Upload"><br>
-        Download: <input type="number" name="down" min="0" placeholder="Download"><br>
-        Senha: <input type="password" name="senha" size="16"><br>
-        <input type="submit" name="login" value="Limitar">
-    </form>
+    <div class="row-fluid">
+        <div class="span4">
+            <h3>Velocidade Atual:</h3>
+            <ul>
+                <li>Upload: {{ up }} kB/s
+                <li>Download: {{ down }} kB/s
+            </ul>
+        </div>
 
-    <br><br>
-    Observações:
-    <ul>
-        <li>0 kB/s = ilimitado.
-        <li>*DESLIMITEM* quando não precisarem da banda.
-        <li>O upload é setado para 0 algumas em horários razoáveis (02:00,
-        14:00, 19:00, ...).
-    </ul>
+        <div class="span4">
+            <h3>Alterar velocidade:</h3>
+            <form class="well" name="velocidades" method="post" action="">{% csrf_token %}
+                <label>Upload:</label>
+                <input type="number" name="up" min="0" step="5" placeholder="Upload">
+                <label>Download:</label>
+                <input type="number" name="down" min="0" step="10" placeholder="Download">
+                <label>Senha:</label>
+                <input type="password" name="senha" size="16" disabled>
+                <br>
+                <input class="btn btn-primary" type="submit" name="login" value="Limitar">
+            </form>
+        </div>
+
+        <div class="span4">
+            <h3>Observações:</h3>
+            <ul>
+                <li>0 kB/s = ilimitado.
+                <li>*DESLIMITEM* quando não precisarem da banda.
+                <li>O upload é setado para 0 algumas em horários (02:00, 14:00,
+                19:00, ...).
+            </ul>
+        </div>
+    </div>
     {% endif %}
 {% endblock %}

@@ -13,17 +13,21 @@
 {% endblock %}
 
 {%block content %}
-    <nav>
-        <a href="projetos/">{% trans 'Projects' %}</a>
-        <a href="http://blog.juliobs.com/">{% trans 'Blog' %}</a>
-        <a href="gallery">{% trans 'Photos' %}</a>
-        <a href='pgp/' title='PGP Public Key'>{% trans 'PGP' %}</a>
-        <a href='horario/' title='Horario'>{% trans 'Timetable' %}</a>
-        <a href='music_library/' title='Biblioteca de Músicas'>{% trans 'Music Lib' %}</a>
-        <a href='contato/' title='Contato'>{% trans 'Contact' %}</a>
+<div class="row-fluid">
+    <nav class="well sidebar-nav span2">
+        <ul class="nav nav-list">
+            <li class="nav-header">Menu
+            <li><a href="projetos/">{% trans 'Projects' %}</a>
+            <li><a href="http://blog.juliobs.com/">{% trans 'Blog' %}</a>
+            <li><a href="gallery">{% trans 'Photos' %}</a>
+            <li><a href='pgp/' title='PGP Public Key'>{% trans 'PGP' %}</a>
+            <li><a href='horario/' title='Horario'>{% trans 'Timetable' %}</a>
+            <li><a href='music_library/' title='Biblioteca de Músicas'>{% trans 'Music Lib' %}</a>
+            <li><a href='contato/' title='Contato'>{% trans 'Contact' %}</a>
+        </ul>
     </nav>
 
-    <article id="pessoal">
+    <article class="span8" id="pessoal">
         <h2>{% trans 'About me' %}</h2>
         <aside id="foto">
             <figure id="minhafoto">
@@ -50,6 +54,6 @@
             <li><a href="http://twitter.com/9jb">Twitter</a>
             <li><a href="http://www.youtube.com/user/Julioforus">Youtube</a>
         </ul>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </article>
+</div>
 {% endblock %}
