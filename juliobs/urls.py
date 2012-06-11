@@ -9,6 +9,7 @@ from views import *
 from torrents.views import torrents
 from projetos.views import projetos, programas
 from ira.views import ira
+from contato.views import contact
 
 
 class PlainTextView(TemplateView):
@@ -38,6 +39,8 @@ urlpatterns = patterns('',
     (r'^projetos/$', projetos),
     (r'^projetos/(.*)$', programas),
     (r'^ira/$', ira),
+    (r'^contato/$', contact),
+    (r'^contato/ok/$', TemplateView.as_view(template_name='contato_ok.html')),
     (r'^gallery/', include('imagestore.urls', namespace='imagestore')),
 )
 

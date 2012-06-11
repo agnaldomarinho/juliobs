@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'torrents',
     'projetos',
     'ira',
+    'contato',
     # 3rd party Apps
     'imagestore',
     'sorl.thumbnail',

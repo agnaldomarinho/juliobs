@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Thanks!" %}{% endblock %}
+
+{% block header %}
+<header>
+    <h1>{% trans "Thanks!" %}</h1>
+    <h4>{% trans "Success!" %}</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <p>{% trans "Thank you for contacting me, your message has been submitted." %}</p>
+</div>
+{% endblock %}
