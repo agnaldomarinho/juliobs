@@ -1,7 +1,16 @@
 {% spaceless %}
 {% load static from staticfiles %}
 {% load i18n %}
+{% load tags %}
 {% get_language_info_list for LANGUAGES as languages %}
+
+{% url "jbs-home" as home %}
+{% url "jbs-music_lib" as music_lib %}
+{% url "jbs-horario" as horario %}
+{% url "jbs-pgp" as pgp %}
+{% url "jbs-qrcode" as qrcode %}
+{% url "jbs-projetos" as projetos %}
+{% url "jbs-contato" as contato %}
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
@@ -21,28 +30,30 @@
         {% endblock %}
 
         {% block scripts %}
-        <script type="text/javascript" src="{% static "js/jquery-1.7.2.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-        <script>
-            function muda_lingua(code)
-            {
-              document.i18n.language.value = code;
-              document.i18n.submit();
-            }
-        </script>
+            <script type="text/javascript" src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+            <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
+            <script>
+                function muda_lingua(code)
+                {
+                  document.i18n.language.value = code;
+                  document.i18n.submit();
+                }
+            </script>
+
+            {# Google Analytics #}
+            <script>
+                var _gaq=[['_setAccount','UA-26693793-2'],['_trackPageview']];
+                (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g,s)}(document,'script'));
+            </script>
         {% endblock %}
-        {# Google Analytics #}
-        <script>
-            var _gaq=[['_setAccount','UA-26693793-2'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
     </head>
     {% endblock %}
 
     <body>
+        {% block navbar %}
         <nav class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -65,15 +76,42 @@
                     </div>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="/"><i class="icon-home icon-white"></i> Home</a></li>
-                            <li><a href="/projetos">{% trans "Projects" %}</a></li>
-                            <li><a href="http://blog.juliobs.com">Blog</a></li>
-                            <li><a href="/contato">{% trans "Contact" %}</a></li>
+                            <li class="{% active request "^/$" %}">
+                            <a href="{{ home }}"><i class="icon-home icon-white"></i> Home</a>
+
+                            <li class="{% active request projetos %}">
+                            <a href="{{ projetos }}" title="{% trans 'Projects' %}">
+                                <i class="icon-arrow-right icon-white"></i> {% trans 'Projects' %}</a>
+
+                            <li>
+                            <a href="http://blog.juliobs.com/" title="{% trans 'Blog' %}">
+                                <i class="icon-pencil icon-white"></i> {% trans 'Blog' %}</a>
+
+                            <li class="{% active request "^/gallery/" %}">
+                            <a href="/gallery/" title="{% trans 'Photos' %}">
+                                <i class="icon-camera icon-white"></i> {% trans 'Photos' %}</a>
+
+                            <li class="{% active request pgp %}">
+                            <a href="{{ pgp }}" title="{% trans 'Public Key' %}">
+                                <i class="icon-lock icon-white"></i> {% trans 'Public Key' %}</a>
+
+                            <li class="{% active request qrcode %}">
+                            <a href="{{ qrcode }}" title='QR Code'>
+                                <i class="icon-qrcode icon-white"></i> {% trans 'QR Code' %}</a>
+
+                            <li class="{% active request contato %}">
+                            <a href="{{ contato }}" title="{% trans 'Contact' %}">
+                                <i class="icon-envelope icon-white"></i> {% trans 'Contact' %}</a>
+
+                            <li class="{% active request music_lib %}">
+                            <a href="{{ music_lib }}" title="{% trans 'Music Lib' %}">
+                                <i class="icon-music icon-white"></i> {% trans 'Music Lib' %}</a>
                         </ul>
-                    </div><!--/.nav-collapse -->
+                    </div>
                 </div>
             </div>
         </nav>
+        {% endblock %}
         
         {% block header %}
         <header id="header">

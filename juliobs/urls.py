@@ -24,22 +24,33 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^i18n/', include('django.conf.urls.i18n')),
+
     (r'^blog/(?P<post>.*)$',
         RedirectView.as_view(url='http://blog.juliobs.com/%(post)s',
             permanent=True)),
 
-    (r'^$', homepage),
-    (r'^music_library/$', music_library),
-    (r'^horario/$', TemplateView.as_view(template_name='horario.html')),
-    (r'^pgp/$', TemplateView.as_view(template_name='public_key.html')),
+    url(r'^$', homepage, name="jbs-home"),
+
+    url(r'^music_library/$', music_library, name="jbs-music_lib"),
+
+    url(r'^horario/$', TemplateView.as_view(template_name='horario.html'),
+        name="jbs-horario"),
+
+    url(r'^pgp/$', TemplateView.as_view(template_name='public_key.html'),
+        name="jbs-pgp"),
+
+    url(r'^qrcode/$', TemplateView.as_view(template_name='qrcode.html'),
+        name="jbs-qrcode"),
+
+    url(r'^projetos/$', projetos, name="jbs-projetos"),
+    (r'^projetos/(.*)$', programas),
+
     (r'^stuff-i-use/$',
         TemplateView.as_view(template_name='stuff_i_use.html')),
-    (r'^qrcode/$', TemplateView.as_view(template_name='qrcode.html')),
+
     (r'^torrents/$', torrents),
-    (r'^projetos/$', projetos),
-    (r'^projetos/(.*)$', programas),
     (r'^ira/$', ira),
-    (r'^contato/$', contact),
+    url(r'^contato/$', contact, name="jbs-contato"),
     (r'^contato/ok/$', TemplateView.as_view(template_name='contato_ok.html')),
     (r'^gallery/', include('imagestore.urls', namespace='imagestore')),
 )
