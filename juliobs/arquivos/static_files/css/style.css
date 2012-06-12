@@ -23,18 +23,40 @@ header h1
 	border-bottom: 1px solid #dfa229;
 }
 
+/* ribbon em baixo
 header h4
 {
 	color: #F47D31;
-    -webkit-box-shadow: 2px 2px 20px #888;
-    -webkit-transform: rotate(-45deg);
-    -moz-box-shadow: 2px 2px 20px #888;
-    -moz-transform: rotate(-45deg);
-    position: absolute;
-    padding: 0px 140px;
-    top: 80px;
-    left: -120px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 3em;
+    left: -4em;
     text-align: center;
+    padding: 0.4em 6em;
+
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+
+    -webkit-box-shadow: 0 0 2em #888;
+    -moz-box-shadow: 0 0 2em #888;
+}
+*/
+
+header h4
+{
+	color: #F47D31;
+    overflow: hidden;
+    position: absolute;
+    top: 5.5em;
+    left: -5em;
+    text-align: center;
+    padding: 0.4em 7em 0.4em 6em;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+
+    -webkit-box-shadow: 0 0 2em #888;
+    -moz-box-shadow: 0 0 2em #888;
 }
 
 #pessoal aside

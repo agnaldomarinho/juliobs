@@ -41,11 +41,8 @@ def ira(request):
 
                 br.addheaders = [('User-agent',
                     'Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0')]
-                #Existe algum problema na minha versão do SSL
-                if socket.gethostname() == 'julio-acer':
-                    link = 'http://progradweb.ufscar.br:8080/progradweb/servlet/Superior'
-                else:
-                    link = 'https://progradweb.ufscar.br/progradweb/servlet/Superior'
+
+                link = 'https://progradweb.ufscar.br/progradweb/servlet/Superior'
 
                 try:
                     br.open(link)

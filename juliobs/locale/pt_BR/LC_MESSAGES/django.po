@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0001\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-11 01:10-0300\n"
-"PO-Revision-Date: 2012-06-10 23:04-0300\n"
+"POT-Creation-Date: 2012-06-11 21:20-0300\n"
+"PO-Revision-Date: 2012-06-11 18:36-0300\n"
 "Last-Translator: julio <julio@juliobs.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: \n"
@@ -46,25 +46,57 @@ msgstr "Este erro pode ter acontecido por um dos seguintes motivos:"
 msgid "Julio's fault"
 msgstr "Culpa do Julio"
 
-#: templates/base.html:57
+#: templates/base.html:68 templates/base2.html:60
 msgid "Language"
 msgstr "Linguagem"
 
-#: templates/base.html:69 templates/homepage.html:20 templates/projetos.html:4
+#: templates/base.html:83 templates/base.html.py:84 templates/base2.html:75
+#: templates/base2.html.py:76 templates/homepage.html:20
+#: templates/homepage.html.py:21 templates/projetos.html:4
 #: templates/projetos.html.py:8
 msgid "Projects"
 msgstr "Projetos"
 
-#: templates/base.html:71 templates/contato.html:4 templates/contato.html.py:8
-#: templates/homepage.html:26
+#: templates/base.html:87 templates/base.html.py:88 templates/base2.html:79
+#: templates/base2.html.py:80 templates/homepage.html:22
+#: templates/homepage.html.py:23
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/base.html:91 templates/base.html.py:92 templates/base2.html:83
+#: templates/base2.html.py:84 templates/homepage.html:24
+#: templates/homepage.html.py:25
+msgid "Photos"
+msgstr "Fotos"
+
+#: templates/base.html:95 templates/base.html.py:96 templates/base2.html:87
+#: templates/base2.html.py:88 templates/homepage.html:26
+#: templates/homepage.html.py:27
+msgid "Public Key"
+msgstr "Chave Pública"
+
+#: templates/base.html:100 templates/base2.html:92 templates/homepage.html:29
+msgid "QR Code"
+msgstr "QR Code"
+
+#: templates/base.html:103 templates/base.html.py:104 templates/base2.html:95
+#: templates/base2.html.py:96 templates/contato.html:4
+#: templates/contato.html.py:8 templates/homepage.html:34
+#: templates/homepage.html.py:35
 msgid "Contact"
 msgstr "Contato"
 
-#: templates/base.html:82 templates/homepage.html:11
+#: templates/base.html:107 templates/base.html.py:108 templates/base2.html:99
+#: templates/base2.html.py:100 templates/homepage.html:32
+#: templates/homepage.html.py:33
+msgid "Music Lib"
+msgstr "Bibl. de Músicas"
+
+#: templates/base.html:120 templates/base2.html:112 templates/homepage.html:11
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: templates/base.html:104
+#: templates/base.html:142 templates/base2.html:134
 msgid "Go"
 msgstr "Enviar"
 
@@ -88,31 +120,15 @@ msgstr "Sucesso!"
 msgid "Thank you for contacting me, your message has been submitted."
 msgstr "Obrigado por entrar em contato, sua mensagem foi enviada."
 
-#: templates/homepage.html:21
-msgid "Blog"
-msgstr "Blog"
-
-#: templates/homepage.html:22
-msgid "Photos"
-msgstr "Fotos"
-
-#: templates/homepage.html:23
-msgid "PGP"
-msgstr "PGP"
-
-#: templates/homepage.html:24
+#: templates/homepage.html:30 templates/homepage.html.py:31
 msgid "Timetable"
 msgstr "Horário"
 
-#: templates/homepage.html:25
-msgid "Music Lib"
-msgstr "Bibl. de Músicas"
-
-#: templates/homepage.html:31
+#: templates/homepage.html:40
 msgid "About me"
 msgstr "Sobre mim"
 
-#: templates/homepage.html:39
+#: templates/homepage.html:48
 msgid ""
 "Julio Batista Silva, born in São José dos Campos - SP, graduated in\n"
 "        2008 from <a href=\"http://cejw.yolasite.com/\">Embraer Juarez "
@@ -128,7 +144,7 @@ msgstr ""
 "\"http://www.ufscar.br/\">\n"
 "            Universidade Federal de São Carlos (UFSCar)</a>."
 
-#: templates/homepage.html:46
+#: templates/homepage.html:55
 msgid "For more information, visit:"
 msgstr "Para mais informações, visite:"
 
@@ -145,8 +161,8 @@ msgid "ProGrad Web password"
 msgstr "Senha no ProGrad Web"
 
 #: templates/ira.html:52
-msgid "Application in development!"
-msgstr "Aplicativo em fase de testes!"
+msgid "Application under development!"
+msgstr "Aplicativo em desenvolvimento!"
 
 #: templates/ira.html:53
 msgid ""
@@ -188,6 +204,66 @@ msgstr "Calculado (levemente) com base na"
 msgid "Select the emphasis:"
 msgstr "Selecione a ênfase:"
 
+#: templates/ira.html:85
+msgid "Your IRA is:"
+msgstr "Seu IRA é:"
+
+#: templates/ira.html:87
+msgid "Add discipline"
+msgstr "Adicionar disciplina"
+
+#: templates/ira.html:89
+msgid "Delete discipline(s)"
+msgstr "Deletar disciplina(s)"
+
+#: templates/ira.html:92
+msgid "Estimate IRA"
+msgstr "Estimar IRA"
+
+#: templates/ira.html:96
+msgid "Select"
+msgstr "Selecionar"
+
+#: templates/ira.html:97
+msgid "Discipline"
+msgstr "Disciplina"
+
+#: templates/ira.html:98
+msgid "Grade"
+msgstr "Nota"
+
+#: templates/ira.html:99
+msgid "Result"
+msgstr "Resultado"
+
+#: templates/ira.html:100
+msgid "Credits"
+msgstr "Créditos"
+
+#: templates/ira.html:112
+msgid "Afastado"
+msgstr "Afastado"
+
+#: templates/ira.html:113
+msgid "Aprovado"
+msgstr "Aprovado"
+
+#: templates/ira.html:114
+msgid "Reprovado"
+msgstr "Reprovado"
+
+#: templates/ira.html:115
+msgid "Cancelado"
+msgstr "Cancelado"
+
+#: templates/ira.html:116
+msgid "Desistente"
+msgstr "Desistente"
+
+#: templates/ira.html:117
+msgid "Pendente"
+msgstr "Pendente"
+
 #: templates/projetos.html:9
 msgid "FOSS"
 msgstr "FOSS"
@@ -209,7 +285,7 @@ msgstr "Programas"
 msgid "My PGP Public Key"
 msgstr "Minha chave pública PGP"
 
-#: templates/public_key.html:17
+#: templates/public_key.html:16
 msgid "Use the following public key to send me private emails or files:"
 msgstr ""
 "Use a seguinte chave pública para me enviar emails e arquivos privados:"
@@ -278,22 +354,22 @@ msgstr "Álbum vazio"
 msgid "user"
 msgstr "usuário"
 
-#: templates/imagestore/base.html:36
+#: templates/imagestore/base.html:37
 msgid "Home"
 msgstr "Home"
 
-#: templates/imagestore/base.html:39 templates/imagestore/tag.html:7
+#: templates/imagestore/base.html:40 templates/imagestore/tag.html:7
 msgid "Gallery"
 msgstr "Galeria"
 
-#: templates/imagestore/base.html:55
+#: templates/imagestore/base.html:56
 #: templates/imagestore/forms/image_form.html:7
 #: templates/imagestore/forms/image_form.html:22
 #: templates/imagestore/forms/image_form.html:26
 msgid "Upload image"
 msgstr "Fazer upload de imagem"
 
-#: templates/imagestore/base.html:58
+#: templates/imagestore/base.html:59
 msgid "Create new album"
 msgstr "Criar novo álbum"
 
@@ -372,18 +448,3 @@ msgstr "Salvar"
 #: templates/imagestore/forms/image_form.html:30
 msgid "Upload"
 msgstr "Upload"
-
-#~ msgid "Enviar"
-#~ msgstr "Enviar"
-
-#~ msgid "Horário"
-#~ msgstr "Horário"
-
-#~ msgid "Selecione a ênfase:"
-#~ msgstr "Selecione a ênfase"
-
-#~ msgid "i like potatoes"
-#~ msgstr "eu gosto de batata"
-
-#~ msgid "Hello"
-#~ msgstr "Olaaaa"

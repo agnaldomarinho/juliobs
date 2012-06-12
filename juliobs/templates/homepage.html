@@ -14,20 +14,29 @@
 
 {%block content %}
 <div class="row-fluid">
-    <nav class="well sidebar-nav span2">
+    <nav class="well sidebar-nav span3">
         <ul class="nav nav-list">
             <li class="nav-header">Menu
-            <li><a href="projetos/">{% trans 'Projects' %}</a>
-            <li><a href="http://blog.juliobs.com/">{% trans 'Blog' %}</a>
-            <li><a href="gallery">{% trans 'Photos' %}</a>
-            <li><a href='pgp/' title='PGP Public Key'>{% trans 'PGP' %}</a>
-            <li><a href='horario/' title='Horario'>{% trans 'Timetable' %}</a>
-            <li><a href='music_library/' title='Biblioteca de Músicas'>{% trans 'Music Lib' %}</a>
-            <li><a href='contato/' title='Contato'>{% trans 'Contact' %}</a>
+            <li><a href="/projetos/" title="{% trans 'Projects' %}">
+                <i class="icon-arrow-right"></i> {% trans 'Projects' %}</a>
+            <li><a href="http://blog.juliobs.com/" title="{% trans 'Blog' %}">
+                <i class="icon-pencil"></i> {% trans 'Blog' %}</a>
+            <li><a href="/gallery/" title="{% trans 'Photos' %}">
+                <i class="icon-camera"></i> {% trans 'Photos' %}</a>
+            <li><a href='/pgp/' title="{% trans 'Public Key' %}">
+                <i class="icon-lock"></i> {% trans 'Public Key' %}</a>
+            <li><a href='/qrcode/' title='QR Code'>
+                <i class="icon-qrcode"></i> {% trans 'QR Code' %}</a>
+            <li><a href='horario/' title="{% trans 'Timetable' %}">
+                <i class="icon-calendar"></i> {% trans 'Timetable' %}</a>
+            <li><a href='music_library/' title="{% trans 'Music Lib' %}">
+                <i class="icon-music"></i> {% trans 'Music Lib' %}</a>
+            <li><a href='contato/' title="{% trans 'Contact' %}">
+                <i class="icon-envelope"></i> {% trans 'Contact' %}</a>
         </ul>
     </nav>
 
-    <article class="span8" id="pessoal">
+    <article class="span9" id="pessoal">
         <h2>{% trans 'About me' %}</h2>
         <aside id="foto">
             <figure id="minhafoto">

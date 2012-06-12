@@ -20,7 +20,7 @@
     </ul>
     {% endif %}
 
-    <form class="well span3" action="/contato/" method="post">{% csrf_token %}
+    <form class="well" action="/contato/" method="post">{% csrf_token %}
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="{% trans "Submit" %}">
     </form>
