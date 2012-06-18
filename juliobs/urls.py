@@ -57,7 +57,9 @@ urlpatterns = patterns('',
 
     url(r'^agenda/', include('agenda.urls')),
     url(r'^accounts/login/$',  login),
-    url(r'^accounts/logout/$', logout)
+    url(r'^accounts/logout/$', logout),
+
+    (r'^seminario/$', seminario_django),
 )
 
 urlpatterns += patterns('',

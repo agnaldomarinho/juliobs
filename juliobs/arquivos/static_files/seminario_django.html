@@ -1,0 +1,2805 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>None</title>
+    <!-- Styles -->
+    
+    <style type="text/css" media="print">
+      * {
+    margin: 0;
+    padding: 0;
+}
+
+@page {
+    size: landscape;
+}
+
+body {
+    font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+div.slide {
+    min-width: 800px;
+    min-height: 600px;
+    padding: 1em;
+    overflow: hidden;
+    page-break-after: always;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+div.slide div.inner {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    display: table-cell;
+}
+
+h1 {
+    font-size: 2.4em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    margin: 1em 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+p, li, pre {
+    margin: 1em 0;
+}
+
+li {
+    margin-left: 2em;
+}
+
+a {
+    color: #000000;
+}
+
+pre, code {
+    max-width: 800px;
+    background: #eee;
+    font-family: Monaco, monospace;
+    font-size: 90%;
+}
+
+pre {
+    padding: .2em .5em;
+    overflow: hidden;
+    border-radius: .8em;
+}
+
+code {
+    padding: 0 .2em;
+}
+
+.slide header:only-child h1 {
+  line-height: 180%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  height: 600px;
+  width: 800px;
+  font-size: 48px;
+  margin-top:100px;
+  margin-bottom:100px;
+}
+
+#toc, #help, .slide aside, .slide footer, .slide .notes,
+.presenter_notes, #current_presenter_notes, #presenter_note {
+  display: none;
+}
+
+    </style>
+    <style type="text/css" media="screen, projection">
+      body {
+  font: 14px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  background: #778;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+div.presentation {
+  position: absolute;
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  background: inherit;
+}
+
+div.presentation > h1 {
+  display: none;
+}
+
+div.slides, body.expose div.slides.nocontext {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  display: block;
+}
+
+div.slides.nocontext {
+  width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  left: auto;
+  top: auto;
+}
+
+div.slide {
+  display: inline;
+  position: absolute;
+  overflow: hidden;
+  width: 900px;
+  height: 700px;
+  margin-top: -350px;
+  margin-left: -400px;
+  left: 50%;
+  top: 50%;
+  background: -webkit-gradient(linear, left bottom, left top, from(#bbd), to(#fff));
+  background-color: #eee;
+  background: -moz-linear-gradient(bottom, #bbd, #fff);
+  -webkit-transition: margin 0.25s ease-in-out;
+  -moz-transition: margin 0.25s ease-in-out;
+  -o-transition: margin 0.25s ease-in-out;
+  border-top-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -webkit-border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  -moz-border-radius-topright: 20px;
+  -webkit-border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  -moz-border-radius-bottomright: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+}
+
+/* Expose */
+
+body.expose div.slides {
+  float: left;
+  position: relative;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+body.expose div.slide {
+  display: block;
+  float: left;
+  position: relative;
+  left: auto !important;
+  top: auto !important;
+  margin: 10px !important;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -moz-transform: scale(.33, .33);
+  -moz-transform-origin: 0 0;
+  -webkit-transform: scale(.33, .33);
+  -webkit-transform-origin: 0 0;
+  -o-transform: scale(.33, .33);
+  -o-transform-origin: 0 0;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  cursor: pointer;
+}
+
+body.expose div.slide:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#bdd), to(#fff));
+  background-color: #eee;
+  background: -moz-linear-gradient(bottom, #bdd, #fff);
+}
+
+body.expose .slide-wrapper {
+  float: left;
+  position: relative;
+  margin: .5%;
+  width: 300px;
+  height: 233px;
+}
+
+body.expose .slide footer {
+}
+
+body.expose .slide .inner {
+}
+
+body.expose .slide.far-past,
+body.expose .slide.past,
+body.expose .slide.future,
+body.expose .slide.far-future {
+  margin-left: 0;
+}
+
+body.expose .slide.current {
+  background: -webkit-gradient(linear, left bottom, left top, from(#ddb), to(#fff));
+  background-color: #eee;
+  background: -moz-linear-gradient(bottom, #ddb, #fff);
+  border: 16px solid #fff;
+  -moz-transform: scale(.315, .315);
+  -moz-transform-origin: 0 0;
+  -webkit-transform: scale(.315, .315);
+  -webkit-transform-origin: 0 0;
+  -o-transform: scale(.315, .315);
+  -o-transform-origin: 0 0;
+}
+
+/* Presenter Mode */
+
+body.presenter_view div.slide {
+  display: inline;
+  position: absolute;
+  overflow: hidden;
+  -moz-transform: scale(.5, .5);
+  -moz-transform-origin: 0 0;
+  -webkit-transform: scale(.5, .5);
+  -webkit-transform-origin: 0 0;
+  -o-transform: scale(.5, .5);
+  -o-transform-origin: 0 0;
+    margin-top: -300px;
+}
+
+body.presenter_view .slide.far-past {
+  display: block;
+  margin-left: -1500px;
+}
+
+body.presenter_view .slide.past {
+  display: block;
+  margin-left: -975px;
+}
+
+body.presenter_view .slide.current {
+  display: block;
+  margin-left: -475px;
+  border: 8px solid maroon;
+  z-index: 2;
+}
+
+body.presenter_view .slide.future {
+  display: block;
+  margin-left: 25px;
+  z-index: 1;
+}
+
+body.presenter_view .slide.far-future {
+  display: block;
+  margin-left: 525px;
+}
+
+body.presenter_view div#current_presenter_notes {
+    visibility: visible;
+    display: block;
+    position: absolute;
+    overflow: auto;
+    vertical-align: middle;
+    left: 50%;
+    top: 50%;
+    margin-left: -475px;
+    margin-top: 100px;
+    z-index: 2;
+    width: 950px;
+    border-style: solid;
+    height: 30%;
+    background-color: silver;
+}
+
+body.presenter_view div#current_presenter_notes section {
+  font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  color: black;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
+  display: block;
+  overflow: visible;
+    position: relative;
+    background-color: #fffeff;
+    height: 120px;
+    margin-right: 30px;
+    margin-top: 60px;
+    margin-left: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+body.presenter_view div#current_presenter_notes section p {
+    margin: 0;
+}
+
+body.presenter_view div#current_presenter_notes h1 {
+    font-size: 50%;
+    display: block;
+}
+
+div#current_presenter_notes {
+  display: none;
+}
+
+div.slide div.presenter_notes, div.slides div.presenter_notes {
+  display: none;
+}
+
+/* Slide styles */
+
+div.slide p {
+  font-size: 20px;
+}
+
+.slide.far-past {
+  display: block;
+  margin-left: -2400px;
+}
+
+.slide.past {
+  display: block;
+  margin-left: -1400px;
+}
+
+.slide.current {
+  display: block;
+  margin-left: -450px;
+}
+
+.slide.future {
+  display: block;
+  margin-left: 500px;
+}
+
+.slide.far-future {
+  display: block;
+  margin-left: 1500px;
+}
+
+body.three-d div.slides {
+  -webkit-transform: translateX(50px) scale(0.8) rotateY(10deg);
+  -moz-transform: translateX(50px) scale(0.8) rotateY(10deg);
+  -o-transform: translateX(50px) scale(0.8) rotateY(10deg);
+}
+
+
+/* Content */
+
+header:not(:only-child) {
+  font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  font-weight: normal;
+  font-size: 50px;
+  letter-spacing: -.05em;
+  color: black;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
+  position: absolute;
+  left: 30px;
+  top: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+header h1, header h2, header h3, header h4, header h5, header h6 {
+  display: inline;
+  font-size: 100%;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+header h2:first-child {
+  margin-top: 0;
+}
+
+section, .slide header:only-child h1 {
+  font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  color: #3f3f3f;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 100px;
+  display: block;
+  overflow: hidden;
+}
+
+img { display: block; margin: auto; }
+
+section img.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section img.align-right {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+section img.align-left {
+  display: block;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 110%;
+  border-bottom: 2px solid #3f3f3f;
+}
+
+pre {
+  font-size: 16px;
+  font-family: Monaco, Courier, monospace;
+}
+
+li {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.slide header:only-child h1 {
+  line-height: 180%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  height: 700px;
+  width: 900px;
+  font-size: 50px;
+  margin-top:100px;
+  margin-bottom:100px;
+}
+
+.sidebar {
+  clear: both;
+  background: -webkit-gradient(linear, top right, bottom right, from(#dde), to(#fff));
+  -webkit-transition: margin 0.25s ease-in-out;
+  background-color: #eee;
+  background: -moz-linear-gradient(right, #dde, #fff);
+  border-right: 5px solid #ccd;
+  z-index: 9999999;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  position: absolute;
+  display: block;
+  margin: 0;
+  margin-left: -400px;
+  padding: 10px 16px;
+  overflow: auto;
+  -webkit-transition: margin 0.2s ease-in-out;
+  -moz-transition: margin 0.2s ease-in-out;
+  -o-transition: margin 0.2s ease-in-out;
+}
+
+.sidebar h2 {
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.sidebar table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+.sidebar table caption {
+  display: none;
+}
+
+.sidebar tr {
+  margin: 2px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.sidebar th {
+  text-align: left;
+  font-weight: normal;
+  max-width: 300px;
+  overflow: hidden;
+}
+
+.sidebar tr.sub th {
+  text-indent: 20px;
+}
+
+.sidebar td {
+  text-align: right;
+  min-width: 20px;
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  border-bottom: none;
+  padding: 4px 0;
+}
+
+.sidebar tr.active {
+  background: #ff0;
+}
+
+aside {
+  display: none;
+}
+  aside.source {
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+    text-indent: 10px;
+  }
+  aside.page_number {
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    text-indent: 10px;
+  }
+
+.notes {
+  display: none;
+  padding: 10px;
+  background: #ccc;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+  div.slide p.notes {
+    font-size: 90%;
+}
+
+/* Pygments default theme */
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #808080 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0040D0 } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+#blank {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  z-index: 64;
+  display: none;
+}
+
+    </style>
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script>
+      function main() {
+    // Since we don't have the fallback of attachEvent and
+    // other IE only stuff we won't try to run JS for IE.
+    // It will run though when using Google Chrome Frame
+    if (document.all) { return; }
+
+    var currentSlideNo;
+    var notesOn = false;
+    var expanded = false;
+    var hiddenContext = false;
+    var blanked = false;
+    var slides = document.getElementsByClassName('slide');
+    var touchStartX = 0;
+    var spaces = /\s+/, a1 = [''];
+    var tocOpened = false;
+    var helpOpened = false;
+    var overviewActive = false;
+    var modifierKeyDown = false;
+    var scale = 1;
+    var showingPresenterView = false;
+    var presenterViewWin = null;
+    var isPresenterView = false;
+
+    var str2array = function(s) {
+        if (typeof s == 'string' || s instanceof String) {
+            if (s.indexOf(' ') < 0) {
+                a1[0] = s;
+                return a1;
+            } else {
+                return s.split(spaces);
+            }
+        }
+        return s;
+    };
+
+    var trim = function(str) {
+        return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    };
+
+    var addClass = function(node, classStr) {
+        classStr = str2array(classStr);
+        var cls = ' ' + node.className + ' ';
+        for (var i = 0, len = classStr.length, c; i < len; ++i) {
+            c = classStr[i];
+            if (c && cls.indexOf(' ' + c + ' ') < 0) {
+                cls += c + ' ';
+            }
+        }
+        node.className = trim(cls);
+    };
+
+    var removeClass = function(node, classStr) {
+        var cls;
+        if (!node) {
+            throw 'no node provided';
+        }
+        if (classStr !== undefined) {
+            classStr = str2array(classStr);
+            cls = ' ' + node.className + ' ';
+            for (var i = 0, len = classStr.length; i < len; ++i) {
+                cls = cls.replace(' ' + classStr[i] + ' ', ' ');
+            }
+            cls = trim(cls);
+        } else {
+            cls = '';
+        }
+        if (node.className != cls) {
+            node.className = cls;
+        }
+    };
+
+    var getSlideEl = function(slideNo) {
+        if (slideNo > 0) {
+            return slides[slideNo - 1];
+        } else {
+            return null;
+        }
+    };
+
+    var getSlideTitle = function(slideNo) {
+        var el = getSlideEl(slideNo);
+        if (el) {
+            var headers = el.getElementsByTagName('header');
+            if (headers.length > 0) {
+                return el.getElementsByTagName('header')[0].innerText;
+            }
+        }
+        return null;
+    };
+
+    var getSlidePresenterNote = function(slideNo) {
+        var el = getSlideEl(slideNo);
+        if (el) {
+            var n = el.getElementsByClassName('presenter_notes');
+            if (n.length > 0) {
+                return n[0];
+            }
+        }
+        return null;
+    };
+
+    var changeSlideElClass = function(slideNo, className) {
+        var el = getSlideEl(slideNo);
+        if (el) {
+            removeClass(el, 'far-past past current future far-future');
+            addClass(el, className);
+        }
+    };
+
+    var updateSlideClasses = function(updateOther) {
+        window.location.hash = (isPresenterView ? "presenter" : "slide") + currentSlideNo;
+
+        for (var i=1; i<currentSlideNo-1; i++) {
+            changeSlideElClass(i, 'far-past');
+        }
+
+        changeSlideElClass(currentSlideNo - 1, 'past');
+        changeSlideElClass(currentSlideNo, 'current');
+        changeSlideElClass(currentSlideNo + 1, 'future');
+
+        for (i=currentSlideNo+2; i<slides.length+1; i++) {
+            changeSlideElClass(i, 'far-future');
+        }
+
+        highlightCurrentTocLink();
+
+        processContext();
+
+        document.getElementsByTagName('title')[0].innerText = getSlideTitle(currentSlideNo);
+
+        updatePresenterNotes();
+
+        if (updateOther) { updateOtherPage(); }
+    };
+
+    var updatePresenterNotes = function() {
+        if (!isPresenterView) { return; }
+
+        var existingNote = document.getElementById('current_presenter_notes');
+        var currentNote = getSlidePresenterNote(currentSlideNo).cloneNode(true);
+        currentNote.setAttribute('id', 'presenter_note');
+
+        existingNote.replaceChild(currentNote, document.getElementById('presenter_note'));
+    };
+
+    var highlightCurrentTocLink = function() {
+        var toc = document.getElementById('toc');
+
+        if (toc) {
+            var tocRows = toc.getElementsByTagName('tr');
+            for (var i=0; i<tocRows.length; i++) {
+                removeClass(tocRows.item(i), 'active');
+            }
+
+            var currentTocRow = document.getElementById('toc-row-' + currentSlideNo);
+            if (currentTocRow) {
+                addClass(currentTocRow, 'active');
+            }
+        }
+    };
+
+    var updateOtherPage = function() {
+        if (!showingPresenterView) { return; }
+
+        var w = isPresenterView ? window.opener : presenterViewWin;
+        w.postMessage('slide#' + currentSlideNo, '*');
+    };
+
+    var nextSlide = function() {
+        if (currentSlideNo < slides.length) {
+            currentSlideNo++;
+        }
+        updateSlideClasses(true);
+    };
+
+    var prevSlide = function() {
+        if (currentSlideNo > 1) {
+            currentSlideNo--;
+        }
+        updateSlideClasses(true);
+    };
+
+    var showNotes = function() {
+        var notes = getSlideEl(currentSlideNo).getElementsByClassName('notes');
+        for (var i = 0, len = notes.length; i < len; i++) {
+            notes.item(i).style.display = (notesOn) ? 'none':'block';
+        }
+        notesOn = !notesOn;
+    };
+
+    var showSlideNumbers = function() {
+        var asides = document.getElementsByClassName('page_number');
+        var hidden = asides[0].style.display != 'block';
+        for (var i = 0; i < asides.length; i++) {
+            asides.item(i).style.display = hidden ? 'block' : 'none';
+        }
+    };
+
+    var showSlideSources = function() {
+        var asides = document.getElementsByClassName('source');
+        var hidden = asides[0].style.display != 'block';
+        for (var i = 0; i < asides.length; i++) {
+            asides.item(i).style.display = hidden ? 'block' : 'none';
+        }
+    };
+
+    var showToc = function() {
+        if (helpOpened) {
+                showHelp();
+        }
+        var toc = document.getElementById('toc');
+        if (toc) {
+            toc.style.marginLeft = tocOpened ? '-' + (toc.clientWidth + 20) + 'px' : '0px';
+            tocOpened = !tocOpened;
+        }
+        updateOverview();
+    };
+
+    var showHelp = function() {
+        if (tocOpened) {
+                showToc();
+        }
+
+        var help = document.getElementById('help');
+
+        if (help) {
+            help.style.marginLeft = helpOpened ? '-' + (help.clientWidth + 20) + 'px' : '0px';
+            helpOpened = !helpOpened;
+        }
+    };
+
+    var showPresenterView = function() {
+        if (isPresenterView) { return; }
+
+        if (showingPresenterView) {
+            presenterViewWin.close();
+            presenterViewWin = null;
+            showingPresenterView = false;
+        } else {
+            presenterViewWin = open(window.location.pathname + "#presenter" + currentSlideNo, 'presenter_notes',
+                                                                    'directories=no,location=no,toolbar=no,menubar=no,copyhistory=no');
+            showingPresenterView = true;
+        }
+    };
+
+    var switch3D = function() {
+        if (document.body.className.indexOf('three-d') == -1) {
+            document.getElementsByClassName('presentation')[0].style.webkitPerspective = '1000px';
+            document.body.className += ' three-d';
+        } else {
+            window.setTimeout('document.getElementsByClassName(\'presentation\')[0].style.webkitPerspective = \'0\';', 2000);
+            document.body.className = document.body.className.replace(/three-d/, '');
+        }
+    };
+
+    var toggleOverview = function() {
+        if (!overviewActive) {
+            addClass(document.body, 'expose');
+            overviewActive = true;
+            setScale(1);
+        } else {
+            removeClass(document.body, 'expose');
+            overviewActive = false;
+            if (expanded) {
+                setScale(scale);    // restore scale
+            }
+        }
+        processContext();
+        updateOverview();
+    };
+
+    var updateOverview = function() {
+        try {
+            var presentation = document.getElementsByClassName('presentation')[0];
+        } catch (e) {
+            return;
+        }
+
+        if (isPresenterView) {
+            var action = overviewActive ? removeClass : addClass;
+            action(document.body, 'presenter_view');
+        }
+
+        var toc = document.getElementById('toc');
+
+        if (!toc) {
+            return;
+        }
+
+        if (!tocOpened || !overviewActive) {
+            presentation.style.marginLeft = '0px';
+            presentation.style.width = '100%';
+        } else {
+            presentation.style.marginLeft = toc.clientWidth + 'px';
+            presentation.style.width = (presentation.clientWidth - toc.clientWidth) + 'px';
+        }
+    };
+
+    var computeScale = function() {
+        var cSlide = document.getElementsByClassName('current')[0];
+        var sx = cSlide.clientWidth / window.innerWidth;
+        var sy = cSlide.clientHeight / window.innerHeight;
+        return 1 / Math.max(sx, sy);
+    };
+
+    var setScale = function(scale) {
+        var presentation = document.getElementsByClassName('slides')[0];
+        var transform = 'scale(' + scale + ')';
+        presentation.style.MozTransform = transform;
+        presentation.style.WebkitTransform = transform;
+        presentation.style.OTransform = transform;
+        presentation.style.msTransform = transform;
+        presentation.style.transform = transform;
+    };
+
+    var expandSlides = function() {
+        if (overviewActive) {
+            return;
+        }
+        if (expanded) {
+            setScale(1);
+            expanded = false;
+        } else {
+            scale = computeScale();
+            setScale(scale);
+            expanded = true;
+        }
+    };
+
+    var showContext = function() {
+        try {
+            var presentation = document.getElementsByClassName('slides')[0];
+            removeClass(presentation, 'nocontext');
+        } catch (e) {}
+    };
+
+    var hideContext = function() {
+        try {
+            var presentation = document.getElementsByClassName('slides')[0];
+            addClass(presentation, 'nocontext');
+        } catch (e) {}
+    };
+
+    var processContext = function() {
+        if (hiddenContext) {
+            hideContext();
+        } else {
+            showContext();
+        }
+    };
+
+    var toggleContext = function() {
+        hiddenContext = !hiddenContext;
+        processContext();
+    };
+
+    var toggleBlank = function() {
+        blank_elem = document.getElementById('blank');
+
+        blank_elem.style.display = blanked ? 'none' : 'block';
+
+        blanked = !blanked;
+    };
+
+    var isModifierKey = function(keyCode) {
+        switch (keyCode) {
+            case 16: // shift
+            case 17: // ctrl
+            case 18: // alt
+            case 91: // command
+                return true;
+                break;
+            default:
+                return false;
+                break;
+        }
+    };
+
+    var checkModifierKeyUp = function(event) {
+        if (isModifierKey(event.keyCode)) {
+            modifierKeyDown = false;
+        }
+    };
+
+    var checkModifierKeyDown = function(event) {
+        if (isModifierKey(event.keyCode)) {
+            modifierKeyDown = true;
+        }
+    };
+
+    var handleBodyKeyDown = function(event) {
+        switch (event.keyCode) {
+            case 13: // Enter
+                if (overviewActive) {
+                    toggleOverview();
+                }
+                break;
+            case 27: // ESC
+                toggleOverview();
+                break;
+            case 37: // left arrow
+            case 33: // page up
+                event.preventDefault();
+                prevSlide();
+                break;
+            case 39: // right arrow
+            case 32: // space
+            case 34: // page down
+                event.preventDefault();
+                nextSlide();
+                break;
+            case 50: // 2
+                if (!modifierKeyDown) {
+                        showNotes();
+                }
+                break;
+            case 51: // 3
+                if (!modifierKeyDown && !overviewActive) {
+                    switch3D();
+                }
+                break;
+            case 190: // .
+            case 48: // 0
+            case 66: // b
+                if (!modifierKeyDown && !overviewActive) {
+                    toggleBlank();
+                }
+                break;
+            case 67: // c
+                if (!modifierKeyDown && !overviewActive) {
+                    toggleContext();
+                }
+                break;
+            case 69: // e
+                if (!modifierKeyDown && !overviewActive) {
+                    expandSlides();
+                }
+                break;
+            case 72: // h
+                showHelp();
+                break;
+            case 78: // n
+                if (!modifierKeyDown && !overviewActive) {
+                    showSlideNumbers();
+                }
+                break;
+            case 80: // p
+                if (!modifierKeyDown && !overviewActive) {
+                    showPresenterView();
+                }
+                break;
+            case 83: // s
+                if (!modifierKeyDown && !overviewActive) {
+                    showSlideSources();
+                }
+                break;
+            case 84: // t
+                showToc();
+                break;
+        }
+    };
+
+    var handleWheel = function(event) {
+        if (tocOpened || helpOpened || overviewActive) {
+            return;
+        }
+
+        var delta = 0;
+
+        if (!event) {
+            event = window.event;
+        }
+
+        if (event.wheelDelta) {
+            delta = event.wheelDelta/120;
+            if (window.opera) delta = -delta;
+        } else if (event.detail) {
+            delta = -event.detail/3;
+        }
+
+        if (delta && delta <0) {
+            nextSlide();
+        } else if (delta) {
+            prevSlide();
+        }
+    };
+
+    var addSlideClickListeners = function() {
+        for (var i=0; i < slides.length; i++) {
+            var slide = slides.item(i);
+            slide.num = i + 1;
+            slide.addEventListener('click', function(e) {
+                if (overviewActive) {
+                    currentSlideNo = this.num;
+                    toggleOverview();
+                    updateSlideClasses(true);
+                    e.preventDefault();
+                }
+                return false;
+            }, true);
+        }
+    };
+
+    var addRemoteWindowControls = function() {
+        window.addEventListener("message", function(e) {
+            if (e.data.indexOf("slide#") != -1) {
+                    currentSlideNo = Number(e.data.replace('slide#', ''));
+                    updateSlideClasses(false);
+            }
+        }, false);
+    };
+
+    var addTouchListeners = function() {
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].pageX;
+        }, false);
+        document.addEventListener('touchend', function(e) {
+            var pixelsMoved = touchStartX - e.changedTouches[0].pageX;
+            var SWIPE_SIZE = 150;
+            if (pixelsMoved > SWIPE_SIZE) {
+                nextSlide();
+            }
+            else if (pixelsMoved < -SWIPE_SIZE) {
+             prevSlide();
+            }
+        }, false);
+    };
+
+    var addTocLinksListeners = function() {
+        var toc = document.getElementById('toc');
+        if (toc) {
+            var tocLinks = toc.getElementsByTagName('a');
+            for (var i=0; i < tocLinks.length; i++) {
+                tocLinks.item(i).addEventListener('click', function(e) {
+                    currentSlideNo = Number(this.attributes['href'].value.replace('#slide', ''));
+                    updateSlideClasses(true);
+                    e.preventDefault();
+                }, true);
+            }
+        }
+    };
+
+    // initialize
+
+    (function() {
+        if (window.location.hash == "") {
+            currentSlideNo = 1;
+        } else if (window.location.hash.indexOf("#presenter") != -1) {
+            currentSlideNo = Number(window.location.hash.replace('#presenter', ''));
+            isPresenterView = true;
+            showingPresenterView = true;
+            presenterViewWin = window;
+            addClass(document.body, 'presenter_view');
+        } else {
+            currentSlideNo = Number(window.location.hash.replace('#slide', ''));
+        }
+
+        document.addEventListener('keyup', checkModifierKeyUp, false);
+        document.addEventListener('keydown', handleBodyKeyDown, false);
+        document.addEventListener('keydown', checkModifierKeyDown, false);
+        document.addEventListener('DOMMouseScroll', handleWheel, false);
+
+        window.onmousewheel = document.onmousewheel = handleWheel;
+        window.onresize = expandSlides;
+
+        for (var i = 0, el; el = slides[i]; i++) {
+            addClass(el, 'slide far-future');
+        }
+        updateSlideClasses(false);
+
+        // add support for finger events (filter it by property detection?)
+        addTouchListeners();
+
+        addTocLinksListeners();
+
+        addSlideClickListeners();
+
+        addRemoteWindowControls();
+    })();
+}
+
+    </script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            
+            <section><img alt="../imagens/django-logo-negative.jpg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCAERAlgDAREAAhEBAxEB/8QAHAABAAICAwEAAAAAAAAAAAAAAAYHBQgBAwQC/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAEEAwL/2gAMAwEAAhADEAAAAazmEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfRnHoDxJjk9C5BQMcnQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9a7TXaBWU402zzp1ve6QKCmWFuYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9a7TXaBWU402zzp1ve6QKCmWFuYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9a7TXaBWU402zzp1ve6QKCmWFuYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9a7TXaBWU402zyF7sV1ArdxwLyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPWu012gVlONNs4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmTpPXXP313r40lD2BWU402zyJ7sd1ArVywDwJG9zd0kl95RftfA8xCeKxcfMgzb1KXuQveavrIr3L1Jhp5hLnX7l8gAHuWbukpdMvb7F5PKY+ecM8w54iLmJu6T91kF99x4kis8Vq44R5AAAAAHqW9rpmLoAAAKynGm2edOt73SBQUywtztR3t29wAAIu8a7TJwbY3dyAAACIOdATL8A7Vtx3su9e1QAABR0zQVzva6Zq6AADrSlpnrtyAAAAA2BuqYOgAAAFZTjTbPOnW97pAoKZYW52672pe4HlT0L9AGtMx4N52xu7kAAAAo+Zq+cuw2BuqWOgAAAGJedZ5juppsS9QAABwa7zJF3gAAACaul+XUBiXmmZnjLxlHrY66wKynGm2edOt73SBQUywtztV3yKwRyjTz0pmnrZe7ANepliTntjd3IIg50rM/mSwXW4boArecaWZ7Xd7avcCMvFUThHnm+rpkj2Iu8UjM3BstdnIMM80TM2GebMdrcvcCGudATKAAABeLTYF6ga5TJG3getdprtArKcabZ5063vdIFBTLC3MAelc+9Zt6u66QNfJliDntjd3IK+nKj2Ycm113fQIC5UbM20N2+9RhnnW2ZOlBsK1yy+xEHPX2ZbQdrhugChZlhDmBsddcjex1pqtMXWAAADY665G9jHJq/MQHrXaa7QKynGm2edOt73SBQUywtzE+dbLvaTvfIABr5MsQc9sbu5BX05UezDg2tu3tUQJyqWcNl7sAqycKhcANg2qXXoInOevTLdbRY17AauzF4EAuZosu9gNZZjxDyAAANlLrzr2MS86yTGB612mu0CspxptnnTre90gUFMsLc7iaLPvYAAAa+TLEHPbG7uQV9OVHsw4Nrbt7VECcqznHYm6wKjnCqnADYG6pg6CKuevEy3g02DeoGrMxeRALjaLOvYDWaY8O8gAADYO6pc6D5NYJix6D1rtNdoFZTjTbPOnW97pAoKZY+87OXZyCvJyrhxwLzspdeUehr5MsQc9sbu5BX05UezDg2tu3tUQJyqmcNk7sAgc5UUzAX9dUzdBGXjXSZLhaLQvYDXOZI08AX7dU0dBwaqzF0oAAALYd7ZvcCHOdHzNj09a7TXaBWU402zzp1ve6QKCmXqNgrqHyaozDwDZ27Mo9DXyZYg57Y3dyCvpyo9mHBtbdvaogTlR0zbS3b6VHyUdM0CchsFdUudBH3jW6ZJw6XzdQEHcqImb5JI97FXV9qIu8a7TIAAABkF2Xuz1KBwYx57l9ygVlONNs8/dbyukCgpl8CbGXWBAZyjrx7Fsy9vQo18mWIOe2N3cgr6cqPZhwbW3b2qIE5UXM1yNFm3sAOhOTuUDAPGtsydhstdmXegMO84p5lD32qBQ8zQZyAAAAEtdL5un1qAAAKynGm2eyXa6LoA18mWJueyt2Zp6AAAGvkyxBz2xu7kFfTlR7MODa27e1RAnKi5m9C7CXVJXsAAAR141wmQSd72Cur0KAABWk40yzgAAAADILZbtNL0zr12qPgxrzhnmuJygblcLRaF7Aa4TJHXjKvVxXvM3TvUD5PA84xKTmeOvG0F2cggs50yzjg2duzsBB3Ol5nHctnu0+vTNvQwDz7Vyr0Is8a7zIBm3q3miaX32KBgnmrJwr5yAAAAAAAA7lHQnIANk7rzz2ODViYvMgA9q/Z0HmQAAAAAAAAADgHJsXdcmexB5yoZmAA7lzL12GMecegAAAAAAAAAAAFhut3XSBGHjXWZAAAAAAAAAAAAPs+AADMPWy12fYKonCpXAAAAAAAAAAAAAAAAfRZrtb97/agULMsIcwAAAAAAAAAABwbM3ZCZzibnjE+iQvdq3tlnoDXCZI68AAAAAAAAAAAAAAACfuty3R7VArGcacZwAAAAAAAAAAAODaq7fQoAAAr2cqQZgAAAAAAAAAAAAAAAB6Fsd1n961hOMAcgAAAAAAAAAAABwbVXb6FAAAgM5Uiz9SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT51mjpn769q8GPSNzxX7lFngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/xAA0EAAABQMBBQYGAgIDAAAAAAACAwQFBgABEDUHERQwNBMVIDEyNhIWITNAYCRQIoAjJSb/2gAIAQEAAQUC/wBgg2uIXczpXczpXczpStCrSBogk5QPutyrutyrutyo8k0gz9AR9ZnaB0dQfXMzTXv0BH1mdoHR1B9czNNe/QEfWZ2gdHUH1zM0179AR9ZnaB0dR9eBtcPnBJXzgkr5wSU/LgOLj+gI+sztA6P9CbY24q7JYmgLsWxNJdd0NdDYGq487QOjqPIC3Jw+UENfKCGvlBDT+hLbnLCBkcltJIfaiYy0F0Flag13Q10dHWgynCI7rKSDkx2ErS5KaTRJeOiIeltRcZaA0FkaQ13Q10Nkah0oizUZZxiqwiwwiALwo0apWNJElplERJAGi44zgqzK1Wq7K1UOPM4qNirUOj4cVenhgUtpGGyMr1dksWbCrFtDWCu7W6jmNpNpbEUwrObUtbhcxInOVKGJgTNweRtA6OoPrmZpr1QJOQZyJG1gckNX8g+nkSJlKciRhEAeCixmmM0VLBYossoHImy/iHAgow86PsBDeHxGAAYCTx/g7cuLtNm5HydoHR1B9czNNerZ79rF/pV1Ce1BFYVsvxXYPN/IPp5M5SWIc6LAMwyOsxTYRyXhYFA3DEIY4Y1WTpeQK1hBkrb3a4cmHIuLdsujgnbkzjJXFSIS1aK7c6OJarO0Do6g+uZmmvVBjyUyVwlqculchdVFGmmnXplWHInDMvtukV/IPpxLFqhA2HOjidcK1aG8akKi6vM/Bvbagrda/genpI2BWyZzUXE4LxXjBgjWLEoUnpGde6r1xLGj450t9LYeHEltRuD04rRlqDyxRyRm3OzMEfFM3JgpHZtOZGvE4OmEfWZ2gdHUH1zM017wEJ1Ci5MfdzaTRVy7XMw9w38g+nE80bFr3DcN94cTvRbWve7cmCkQ4eltm9uPNMPOxEPrHcTG3/nq2fkb1OZoruoeMxtXdaz4MAEws0FyzORGQfAw4czLktuUfWZ2gdHUH1zM017DTGFaqyJga0tWta1vDMPcN/IPpxPNGyV9rE60ViL7V5ztBNvYnMO9u4l/t2oCH/q8uI+0cM7Px/wMvQfheORH772TD1a4mfKPrM7QOjqD65maa9UQZQgK5Ew9w38g+nE80bJX2sTrRYp7hztCt/yZhvt7Et9vVAtHyst8KzOz+38TL3f4nnkRA3tGDArWEFxSjRLsI+sztA6OoPrmZprzSm4tyt9LYfZMWjOUv7sfRqhQdTRpOJh7hv5B9OJ5o2SvtYnWix4zs3zM3S3PacwvQMSm29grZ8bvTZk6e6Z8zDE9yGPAr2DY8ztj+RAFVvBJGQLmBaiVIh0j6zO0Do6g+uZmmvQ62+QYFv8Ahvv34aNJxMPcN/IPpxPNGyV9rE60UsYizEpwVCbAghGF9jihKZf6XDa4rxAowlkxI7b2OoUq7B5zLGi7gnFa4RUwtRzmqLAEsvEpVcKycluVDRLUigpUmyK1hWE2twrlI0hV87QOjqB23vWZpr0XNsS/ZdowmWH/ACcdvKhxdqTFWIT4mHuG/kH04nmjZK+1idaLUGcLGJ/AYSSbRZRZfgkWh0WMRZjQuA4IMrmtAuuXG2cAiiyyi8zFystX8qOvJjWakUkKyORtA6OoADe4ZmF98hCK4RMq8txQciYe4b+QfTieaNkr7WJ1otJjzUyhidyHQjkSXQsR52G1qkx5Skjxyp+sQHmIVqpEagl4dyZ7aj6LMLMtgQghsa5N5VHSRoLqUPSd0KrZ+TuTZko+0fqa3BS3KG6Tt6ixJxJwcivYNjFyEujX1oLqRKiVjxfysuQ7uPQ1x6GpupTHNOSlyLs+PQ1x6GpqpTHNGCTTCTWuWitZK8tiiwRBHYYwAsre2tNZqWgcEeJYL4Y/lqdFbaa2yZvU2LGAwOV7u3orPMnUKrfg2NNtVzTL+JgR8C04v9LKze3VZ8rhVqw1xq29CUHiq/1/IixVyWDE3M+Bi8JJppIi3l1Ba747Xo9ctPt+TD2gSlRmUK+EZfyTADLF4WdAY4rgBCAGNoB/+P8AQBCIYmOLmGXAEIAZmDlZa4fkmIUi1GtiBIqPi7sXV2N2tcDC7iuiiSwy7Y3pW4jMjW8e7f0EaeUSCkapMrKzKn8JQPyk3T8iYu1kqb+iTnnJzWyWmgq741cK9yVQst+Wm6fxv8iJR2NMGaZ+gt8pXJwppY3GUU9tRlWcEF6E4t4aOfWkqlcuRgpzfnFdb/df/8QAJxEAAQMEAgICAwEBAQAAAAAAAQACAxARIDESMhMwIUFAUWBQgCL/2gAIAQMBAT8B/wCg+DlwcuDkQRS11xK4lcT/AAQ3hNqkXbCXt/AjeE2qRdsJe38CN4TapF2wl7fwI3hNqjHcSvMF5gvME83N/wCBG8JtfwYjJQiC4NXBq8bcJtUY3kV4QvCF4QnixtUMJQh/a8bVwauDV42oxfpEWqGEoRFeELxtXBq4NXBqMTUYiNZgEoRFeILxtXBq4NXjavE1eFOjLatjJQiC4BcQuDUYh9JzS32gXTYw30zapF2wl7UiHoe3kPY9nLFsX79Urrm1GR29D47fI9jG8R6ptUi7YS9qQ4Xxfv2Sj5qxnH1ONhSNtvn1PbxPqjFzg53FGQlXKDjhNqkXbCXtSI2Rl/SMjjVpscJO2MhIHwuRVymSHRwm1SJv3g54ajISuRTOtXmwRcTtNFzg53EIvJV0yT6OEguPVEPjB7rmo3hNqkXbCXtja68bkIjhJ2xl1nLqgFhVxsFusfWsnWkIwlNzgw3HtZ1qdYDeE2qRdsJe1WxE7QjaM5O2Mus5dJu8JsI+tZOtItYHeEOsHb9LOtXawG8JtUi7YS9qRs+z6ZO2Mus5dKPthNhH1rJ1pFrA7whwdv0x9cCLG1RvCbVIu2EvZNFzg6S2kZHFXTdVk7Yy6zl0mdsJR8YRdaydaQ4PFnYRD/z7YT9YPZyRBG6DeE2qRdsJeyj7Zt1WTtjLrOXVAb4OjI1WPrV/WkRscJGXqxvLCQ2b6gbG6BvjxCsMJtUi3hL2TO2DogV4V4UPisnbGXWcuqRO+sbYv61abjAtBXjbjI659bH8UDf0zapDvCTtRruQ9MnbGXWcuqA2TH8vS/rVjuKBv6JH/Q9oJGkJv2g9uPILyNT3h1IcH9qNcWoSgq+NwubU83NOQXILkFKRbDkFyC5BSkWwbL+0Hg1L2hNNxesnXBri1CQHEvATpSdfksFhgcblXKv+TH1rL1z5uXNy5E/lRsv84PNh/gNbyOEx+v8ACbF+8ZHXP5VgR8ow/peJy4OXByER+01obg83P+Cx4CBBwkk+h+WPTI+3x/h3smy/tc2p0l9fmD0Pktr+DEpCEoXNq5BcgubUZQnPJ/7Y/8QAFBEBAAAAAAAAAAAAAAAAAAAAsP/aAAgBAgEBPwEkH//EAEgQAAECAwIHCwgJAwQDAAAAAAECAwAEERAgEiEiMVFzsRMjMDRBUmFxcpHBQoGCg5OhstEFFCQyQGBikuE1U2NQgPDxM0Oi/9oACAEBAAY/Av8AcEEgVJzRxB/9scQf/bHEH/2wFTMu40DmwhZubDS3VZ6JFTH9PmvZGP6fNeyMf0+a9kY3N5tba+aoUP5BZ1g23JbWHZZ6pVxzsp2fkFnWDbcltYdlnqlXHOynZ+QWdYNtyW1h2WeqVcc7Kdn5BZ1g23JbWHZZ9ZcQpYwCmiY4o/7o4o/7o4o/7oVNNoUhJAFD+QWdYNtyW1h2fkMLWkS7elzP3Rv7jr568ERikWz2srbH9Pl/2CAsSoQoGoKVEXJbWHZZ9WdWtCcAqqmOMzPu+UcZmfd8o4zM+75QqWaUpSQAaqtBblylB8tzJEVm5w9lpPiflGUyt3pU4fCMUgx501jiEv8AsjiuAdKVEQVSMxX9DvzhTL7am3E5wbd5k3SNJGCPfFXnmWh+4xv028vsgJ+cY2Fr7Th8IxSLXnxx/T5b2YjHIs+YUje0us9lddsFcqtMynRmVBStJSoZwb2BLMLdPQM0VmHmmBoGUY3159w9YAjiletavnHEWe6OIM90Y5IeZah4xkh5vsr+cbxOrT20Vj6w48ypuuCKE1tC3aSzZ54yu6N93R8/qVQe6MUhLedsGOISvsUxlSLQ7GTsgmUmFtK0LyhH2lrI5FpxpPCpYYQVuKzCA45R6Z55zJ6uBltYdlnqlXHOynZZMuuNIWtBTgkjNn4A0T9oQKtq8LRwJcbARNJGSrndBgoWClSTQg8lqW2kFa1YgBywHfpI4av7STiHXAbaQlCBmSkUHAiVQd7l8/ahLTSCtajQAQHngHZrTyI6vnfKHEhaTnBGIwZuTBMv5aOZ/HCYbiftLoyzzf08FLaw7LPVKuOdlOyyc60+NzG+1+4RVJBHRcm2xm3Qnvx2DgkTCRQPpx9of8FiW20lS1GgA5YwlgLmVDLXo6BwTsyc6RkjSeSCtZqpRqTpgTzyd+eGR+lP88CUqAIOcGClA3hzKb+XBBxYq3L5Z6+T/nRc3eYV2UjOowdyX9Wb5qM/fFVTkwT0uGGgmdfoVgUUqo99yW1h2WeqVcc7Kdlk66+6ltAKcaj1wUyTKnjz1ZIg/adyToaGD/MVdcW4dKlVsacaWQCsBY5FC5Nej8IsFqXZVeAsuBNaV5DFXJ6Y8yyBFUzkwD0OGESk8vdEOHBSs5wbjDnKl6neD8rFfSTozZLXifDvuYK98eOZtPjoje3Ey6NCB4xVU9Mn1piWWtalqINSo1Oc2rfll4DgUnHTphLU0/uiUmoyQIYlz90mq+oZ4oLS+7jOZCecYJcmFIRzEGgjCbfcQrSlREJlPpBWEFYkO6D03FrAy2N8HVy+7glP0xvOHuGL53HF4W9IOA31Ws6wbbktrDss9Uq452U7LtGGHXewkmMUmpI/UoCELUuXSAa/fPyuTHo/CLBa3rxsNuEk0IxiAdNqdcNhigxmGZZP/rQB57XZnOoYkDSYU86orWs1JNsr6XxG2Y6Cj4hZMzB8lIQPP/1cLIOQwMEdfL/zouMurNXAMBfWLVNqxpUKGFNqzpNDwMoP0V78dsy8nOhpSh3XGdYNtyW1h2WeqVcc7KdlodmT9WaPIRlHzckYpYOq5zuV/EUAoL0x6PwiwWt68bDcR1Wp1w2GJRH+UHux3JRjkUpSj5v+7kt6fxm2a9D4xY8vlL9PcLky5znVH33JhvQ7XvH8XJwf517eBk9ULZwDPuC9lxnWDbcltYdlnqlXHOynZYj6Rmk1cVjaSfJGngZj0fhFgtb142G4jqtTrhsMSnWr4Tckj0L8Lkv1r+I2zXo/ELHNedibjyTyOEe+5NK5MMbLk4f869vAsaUYST32lJFQYdlV50Kp1jktZ1g23JbWHZZ6pVxzsp2RLyxzLWK9XLFBaqWlGw86nEpR+6k+MY5tSBobyY3191ztLJiT1CNlsx6PwiwWt68bDcR1Wp1w2GJNX+QJ78VwPJFSwrCPVy3Gu0rbbN9kbbJpnmrCu8fxcmRTEtW6Dz3EKIoXlFzw8LSTiAhx051qKuBmJIn/ACJ2HwuBxshEygUBOZQ0GMCaYW2ekYj57GdYNtyW1h2WeqV4XHOynZDHQFfCbTTPGVWvLW2T1CNlsx6PwiwWt68bDcR1Wp1w2GErT95JqIbfR91xIULSlQBScRBhTsmhT0ueQY1IihzxgpFTohtDra21YSsShQ57ZvV2BtRyX04Hnzi4HmB9oazDnDRBSoEEZwbAkAhhJ3xfh1wlCBgpSKAaLXzXKcG5p8/8V4JqabzoObSNEImGVYSFiouUIqIqqQlSelpMValWEdlsC5Law7LF9DCtouOdlOyJRRzFWD3ilxT7Lpl3FY1ZNUmOPI9nG+z6ldlunjDbCSSltISK9Fsx6PwiwWt68bDcR1Wp1w2GxX0e4ctvKb6U3d8aQvtJrG9toR2RS5Oao2JcQcFSTUHQYbmUZziWOarlFyszLIWrnZj3iML6rhdazAbaQlCBmSkUAubg0qrLGLrVy8HgKquWWcpOjpEB6XcS4g8o4GW1h2WTDmhqnef4uTHRg/CICkmhBqDCJhNMLM4nmq4GY9H4RYLW9eNhuI6rU64bDYh9lWC4g1BjFRD6fvt+PVwM32LamqmF/wDkT4iEvMLC21ZiOAXIya6vHE4seR0dfC7pKvKbPLoMBM9LEHntfKMidaT0LydsVbWlY6DW2qlAdcb5PS6ejdBHGSs6EoMNNsNupwFVqulk0/zlhHd/3cm1frp3YrN2llU5yTmVAEwTLOfqxp74wmXW3BpSqtypIEb5OS6OtwRlTzZ7NVbIemJdWE2qlDSnILB9sl/aCOOS/tBHHJf2ghCWphpxW7DElYPIbiftkvm/uCOOS/tBHHJf2ggJamGnFbqMSVg6bUutLUhacxBgI+kGsL/I38o3udaroUcE++KpUFdRiq1BPWYy5ttR5rZwj7oE02hSEKJACs9s0ehI/wDoXMKXXkn7yFfdMBL5+quaF/d74w21pWk8oNbh3aZRhcxONUFqTBl2j5Xln5fgsTix54xuLPnvMMKGXTCX1m2ph5/+4sq7zcrGTNPjqcMccmPamMp9w9aj+JlUnlThd5raU89xKfHwvYTLq2zpSqkYp97zmscec90Uem33BoU4afikzz6d4bORXy1XHlVy3BuafP8AxX8VgOJUlWgil5EuitM61c1MBCRRKRQC2Vlh0rOweP8AoISlJUo5gIS/9JZCORrlPXogIQkJSkUAHJc3FpVWWMQ6Vcp/FNJmmEOZAz5x54JlJlTf6ViojIQ092F/OkY5Fz3RikV+cgQDNOtsp0DKVG5SyKV+8o51ddx15Jq2MhvqH+g4D8klKv76MavP/EbpLPIdT0HNcXIyS6uHE44PJ6B0/i2+yOBMkwrf3RlU8hP+hh1h1TaxypNICPpBrdB/cRiPdH1j64jB0eV3Z4LMoDLsnl8tXy/GN9kcApiUKXpjT5KIU44orWo1JPL+Qgh9DcwgeiY35LzJ6U1HujJnmR2jg7YxT0sfWiMqelR60RlTzZ7GVsiksw68dKskQUKc3Jo+Q3i/3sf/xAAsEAEAAQEFCAICAwEBAAAAAAABEQAhMUFRoRAgYXGBkbHwMMHR8UBg4VCA/9oACAEBAAE/If8A0EoJUAxdxCEJJOFBLssyLa8HIr3P6r3P6r3P6pINEq+w/wBB9rk3qPY5f0Xz2uTeo9jl/RfPa5N6j2OX9F89rk3qMPPgm2M+VftPyr9p+VftPyqysDGbCMP6D7XJ/R6GQrhLlf7xRxx6WnoW60VHWnkdmw/nQIThMb1GHQAzJGfOv3VX7qr91UA3dBNpOG0b8vgW2vQahCGcCgYSh6kCioR6L6XI09FtngO6TFOrs63I/jrV22B+ycdsarLpx1gVCq2AodLtaDJnhmtD7dz+yKv18j5bIAoF7bqdSPG+2j4m2zp3PfpSFBgEI5JvZicuuZuOtHCxwPtBrUe4mPop1rMvN1DoG5ypP0xq4z6FlPNW+DXYGDxSk8PYA14J97C1goo8WkXL84o8nH6IQ+6Bh0Ys92lCH3OFExyE/VWGmnacE1qLLJjVDDkw/Ki8YDzwKIe+oWmRw538rvjo9jlveM2qd7PBl8BiQrFLn4Nc6vK0Hw5dmn6scKdSAS1F5tfpEPKqxhid5C/pZzq7Y6AdD4bbcIhi7+1h3rEHGZaZ1CZk8D26b4vbieDiUl9yvHjM/D4wVgJaDGiOIMB98eR8lHsct7z0eW0gSoHGlIE5NQdqxUm4IiAQyLDzV5Wg+K3jN2Do6thoFX8m4oj7LCu89o+GFdgti2DvpNKJYVem9oElol6ze5Rx+EYDQCRKnUtVyMenwnxHAo4Dh97dw3Rl0EKHiwvKvzyiuKBl/dM0MmxLlI3qPY5b3ktLuIXWedLfpUpe6U+JNwjr+Vcc8Ja7DMcFtLaJucwTrvK0G04kuzAUxswpohN52QWVxQMP7qKbA1vuFxG7ruDB+BV9NjkzJn3EkSil1vNYKamALf3W9oqWC4/nqa8CiWV7tbSUCGBhjXHfPCItgOPeoNLry8I60AAALANsi80FtyeHOmYS5xnS/rNBCS5J3KM2+bY4BnOPfhtKTLZ4P9nofEb1qB6DXcGGShmyGPW/tlt9rk3qPY5fD5OE+rFDCgx0tZo4LaFGx4bjT1rytBvRz8hyZNYWwHcCAhUYAxqB6EUxxPVl2r0AycWw/PIrEFkZdqkcu3mbMbIi1vXqXw77kugxYStXg3FvdIxbCXmQ9dpGyZZjZV55+cMfCBZfrn7bX0jn4NNz2uTeo9jlv+X3uEgvS/tRIleM7NjoUSMFwF29p615Wg3o7c1pPjcyC3aTjMX4bhkbAuIA89xdF2krBsJka1dB+d3GcZ197iOCLtDcZFyHf8JLMvsbRGlRd+57XJvUexy3vDw2TrMDncMvHwaeteVoN6O3NaT43MhGTchsiluUPC2lptjQ8Pc577NdFuPmB9v9bnLI7M+EizKcFDjRNoggQmZRCMoL1HUh2+1yb1Hsct3wDEna+gaAAAFgGG1FFyPKWWrO6nWR4BDqW61jmey17nLt09a8rQb0dua0nxuZCZx9hz3Luspns+j03FJZHr2wDiadgYvoZuXCic5lt1k6bjhoUcrmgeu1S4ErkUwKFnVn4TWMsHnuP074YHGrShQPYLj02e1yfHRDwluJNpyCs502288SdvsMu3T1rytBvR25rSfG5kQOANkl1aX9STtI+qBIjhT90kPkEvTj3oKAgsRwoChbgStSWgT4GxY7YnxvbYESJ4P0E67hf03U+bE650+NoBCOTsu2OOwMnFQRRDXAuNpkw67v+Tp8VvzPegeomrZ8x9PEu3FpkvEka4yWV9UMSlz4A3qJBmN38QuE9bDVNxs+wEpnFkPWuA85fmlLCyHzVL6CryCLdunrXlaDejtzWk+N3JflSTEbTo+eG7pnHlRcGcHw3GE2wbWObAZGougYOB6co3OFOE6Y0BkRcPO00ClYA5ANwjbCUuxn10c/jWjKDvXk81dDz8Dk8Pjo9k4O4jOU633TfjgYJToiMDqHLE4fDp615Wg3o7c1pPjdyMHilUxYF9acGfwkE/uTbF6HBv8AyGuoE3Z+DRUhN3MR6jnd8nAULULmmcxAHqu70OSmbPwriqw9qPLzUVJSRim7TU2AWK6xGtDPGYCbIwXYzpYV0rueEWmPpstGTZaCySsdoi0ch9xXDzaOm5DGZrFaa3+60UPgNMsteUoJseVXlcNfvbXp/wB16f8AdCejqiL+za3NDNNj2+den/den/dSnpyiIybWxtMclInwxA9bnbtQZKv89Co47OSoAbOCnaL+hZOtRqAksDEsbeM3cBuMrZ4ro58SlQremi73ihNwCMeu5YRuJpF3WrD7zKx5nh3/AIOM40LAnB1rcOsZx3L7qaBPOSdLum1CIAWq1+zHH73BQDCXNCxykfdJIVOP5a1M1VpLa5v8WDIqDI2AJa3Sw0TbbHvQcWDp6VCm+++hoejD6pEo4x2TH8qJrPGA+jz13CKh1Hf7SdP5SEKvnDpvAeGwuo+40aogGAbSkrVPl+z/AIJiwwCVeBREN+L32Dhfyo93BoBkbl4g2Gz2Dpx/kt1EFSBGBgLTpSXrykhNaZsTglUe6GXhqDe0r2sam1/w1qzWWrQ2a9NwJbMmt1Zev/BHGCxDsG2PRWasW24EvHnuEDlO2HFPLDnd/Jbq9dl8NzFjxH2+Lcv+HcAMmK5QmnVuPSKFauTjyqsZFMrDimg7/wAtur12XwXdMot5mbw75VN3k0q/oQzVgm55lmlRRip/JNKLn1Ngo+eVP91qyH90PqbwNEuDMH3ulChsjYk4t744f+2P/9oADAMBAAIAAwAAABAkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkttkJIEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkuSIqSckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklyRFSTkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkuSIqSckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklyRHf8A5JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJLkiJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJyMkkR3/RK8sOBLeBB7pJJ/VJjeN/lO5JJJJJMEkkkiKknKkkkgpEkkkhJIVkkkkcEkkl5JJJJNskkkkRUk58gkkjIkkkkjJMkkkkJ0kkkg5JJJJ8kr6kiKknKXh8kRElf8k5UknQkjckiSkkJJJJOkmJckRUk5JM/kiIkxNkkIkgJ0hPknJNktJJJJskJLkiKknJUEkkREmJtkDknJPkZ8k5J8kRJJJNkJJckRUk50kkkiIkxNsg8kRJshKkiJKkjJJJJskZLkiKknUkXhkREmJtkHkjJIkh0k5JEghJJJKkgZckR0k+klJMiIkxNsgtkGNMlPklJRkBJJJJ4kgMkiLkjck/9kREmJtkB0khskpMkgNkmJJJJJ0kkkkR0k1EkkkiIkxNsgMkkkklJZkkkmJJJJJJftklOOkmOJkkoRNqJptpIRpJkBJesknJJJJJJJJOVJNskhJveJJJJJJJJJJJJkjJJMS5JJJJJJJJJJJJ8kBJJJJJJJJJJJJpJJUk5JJJJJJJJJJJJJJJNdknJJJJJJJJJJJJsXS1kiJJJJJJJJJJJJJJJJ0kmJJJJJJJJJJJJNskkkiJJJJJJJJJJJJJJJJJHCJJJJJJJJJJJJJtkkkiBJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJSJs/JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJP//EACQRAAEEAgICAwEBAQAAAAAAAAEAESAxECFBYTBRQGBxUICB/9oACAEDAQE/EP8AQfQuhdCtBgETBdZXWV1lEEFj9BqhRIs+g1QokWfQaoUSLPoNUKMAcK6F0LoQWn0GqFH0PrkHe0BcLoXI0KMAYK7F2LsQWma8L2EBcLoXQiThe8iExzRBF2UOQoC4QFwuhE3CIrS3GyIaWkARVlkB2UAcLqXQuhEiIcFCHJztjpA3tAPC6QibhHWVp5SEwW4N+GiRZgRcnwD7PIAHFohtZAJLBCG1AA0PDoHCAJLBA3NzIB0V1Tybw34qJFmKGDPauAMY8jbveACSwQA78TsUS+02dZ8VZXi3vqAAcqu0u5DkbhRIswICShijrkESTeDiIhdF1IT2V3J5ADQ45sLi1TaRLyjJAnJnQh7Em8QA4VdlAhRR3g7314mn+4bvNUKJFkQVAgThOXMLo1/uaQjtAy/FEknOaM3Y2Ew0vqDeckOGRDFvCLBk2IwqhRIszsNFxE7o1/sBUMXEQLQEKs2YHcwNyMC2EL/3w0Zv/IVQokWYbHhro1/sBUOiAbEKs3Yv/YWQoYX/AL4TcIGMWaoUSLEwCAzay5BEjZVP5m6Nf7AVDJgg6/1CjNmC0RB4gx+oEuX8NsF4WirBiiFEixVTp/M3Rr/YCoYLF0AARkh0cfYZEgHzdjQ+4MXFo6wUukAwYZdPEcQIAOI9KAqEKMDDYjYIEXBZO9oByUDAM3Rr/YCo7wfEgbQAFQswCxcIL0L8IC4QAGhDVCh4yF0gA48NGA2MLkCyE54bo1/sBUchOEAO/DdkpdIAOPAz7PKdcl6iK5QINZJZENlEXKEADAaJgblgg4V1pADRiRWURcoByMdq7V2ojUwDNrtXaitTkEguFwrRFAuiQFaFBaZsgU0r7SBBqF2VqNPhOU5kziBOSY9y7k48/JBgyTSAkUgDldyNg/KeOqD78ogi5EYCAbWaP4IB0Y7UBtCGqFD5RFMQOSIF1IG4R3ogDCD+f4NyP+oI4MGPllB4WjL/AIYInCKNJqd0fTQfMoPAHSyJJLn6FqjtF3pA3K7Qu0Ii5QVD/bL/AP/EAB0RAAICAwEBAQAAAAAAAAAAAAEgEBEAMEBgUID/2gAIAQIBAT8Q/QdZWV4wwEPhTAQ+FMBD4UzeXl+GPg6ynM1lZS1lJS1lZSVlaKyspKykrKSugwEMDprUdVcxgIYHKd45AtsYCGBl5fGYC3utDqGswELVlIVLnSJMBD2GAhmtBUuVKCTA0DoMBDA0lS5wIUCjQOgwEK3lqVLlSgUaBtGswEODUVLlq0D4BgIVrKykKlzA5zymAh1lS5+Nb3Ie9pcpe22vwB+GPkH4VKeusqKyvHn4lxfp7y1v9s//xAAsEAEAAQIEBgICAgMBAQAAAAABEQAhMUFRYRAgcYGRoTDwscFAYFDR8YBw/9oACAEBAAE/EP8A0EWoZUqMAd6/7mv+5r/uaWQt+SJQ7cL9Z2dIlgWCS+/IqVKgTiAISRQG/wDR4hWH9r8n7PR/R4hWH9r8n7PR/R4hWH9r8n7PR/R4hR29KhNwbgjkDhw4SOZ0U03J/wDB4hQKgXWoEDoKPUP0UwaGbTCdJZ+dFxhrbzQWExdC/VFtG3IEtluZnMUDuwi6wLEjo5KVKk13o5U1MA9cFAlsVeD0JKOAwO9QK0cIh0mnwoayKVeom8VEg9b5lShGOhvkKlRgst7HsGhJVIIO0IDkD1jGkhpEImiOCZBRxF4hjvMGtR07NQFpfqKAeFYA7jNuwXui4SyJ8A9UdH0Jva+ofqmg9115ZWkF0ydzB2E7UM5VGMbNYTQLlkpRmX51lFxNHmga6DdZwn8qKJ8koO0ReF0OO8BnsIUgEBxMt7MPVQ40Rf8AzWhQQj6ooH7UZFApK4NtVkmFwl+0xesNMy98joCLgLZWHgEAVWAM2gdJI4GoonftmrYPqabqUbLQHkx4AVpQgNkblX55zQPOl5MEYmgTul6ajISHnZBG5hgLEx8v5YSXS2AurYKgmolOqWTCd18DD4isP7X5P2ejgMak6KSzxMFy/wABarMAAlTZjZhyhRFAiWRISvQa9B+PhmbiCwhbVHAV1GUjBdKokiGSIicS6fS6YBRHnhiZsXzwsixuWgtpBY6AAfDecCdYo9cOi76GN4+VZbaq2AVgKAdxTE4g5mCruUFHmaPcsxiJZNmpA8kLOcRv1b5pLnxAEIwASrS2KGJTCjILMMcyQfGVh/a/J+z0cr1aZEqoClpFiEnusKHxU7nIU4HiBEBsBK9Br0P4+ICa5hZhXaU7ss+BPQklKANVShWGtSFh2Tm4oltD4l2+xfnAkLGAWVM84uUlTdVabqihu1xOwnYtIfgZCMgkQiNkTKnMoLS3sZxWhmyVlfij2KSTJhux8XIagLb3RK+VsGNJtMkRjlIS3Q7UtYMWj3aNPMygiWizpzFYf2vyfs9HAB2Y81gTiosF3KiBGQV2WCLZKpjIsHRfTen83W6paLUnvFoAMKbLCjDCXOSQWhl9tZr0GvQ/jiv3YjUoCyk4jWbRyrvnpQkgwaHcpGvAoshWMiTKIZjDjesAWMEHvgAhQIYMQXmD/pyGIKfW5YBNWVyGGEsKQK3KZZb9in25hjpkoIBSAl4iuEduKz9iYCsUZmMKRYkUlmDCKCCdWtXJyxNiSkwkgdRQ4XAIAMAOJdKss4kDksrkBssCw3HbnIp62vxWFyhT0QaNeEEWtCslgxjmFeQFtMQvBAnSUGb8UZKwG7bOx8+RhBhyLwndjLGEZPhiFYf2vyfs9HKgCWEdOsWKzg4cOofSoN0biDAITbXlK+g16H8c1txgAcQZHzUdmBdJJ4gXQUc2pI6Ia6cAokYgkEU9de5xEvnAXwucSyi8lLJq9KsXbQCwQFjjbCIztC/XEmj/AEj++Fyaw5zR7nJnGjk3EddKvRxbkNKqYSyjcagu/EaNC8ko8LXtKGC9nwxojzVPfEphEn/cAoIIMPhiFYf2vyfs9HAuwU6KB0WyiDe9+4qL0kwumDBJuFDwmBgGgHOV9Br0P45rfrV93o5JpoyqsAUdERyYkzpmv45EEtE+T98TbFK7CPC05ItUj3yE5RITqP3yK/BvVT8eQgCARoKnp+HCYH3zAfZxVMFBm2z4ohWH9r8n7PRwG+JIkXUccbQhxfiFfQa9D+Oa361fd6OSaVMCTGLjnuOQcW0+ov8AZyAA3E9Zf2ctQjGUDszfvklAvIZgfxyFUWa7ov4cghRBY/Qt8PeZQkjjW9HfghCPas91ZsTuvc+GIVh/a/J+z0UyABjDBs71DwuAQAwA4pGYqAYxQBsBA2lRArfLHekPdUwreJYfJq0Tksr6DXofxzW/Wr7vRyTWQg9p5NkY4CWO0bKzkLkeC9xc/fG4kRhNF/XCQuDetyTVAuwvY2H1lyMiBBcUdlI4gqqOwAlaegBnJdfn4VCl9GH4LOunJF+YzcLMCkKoBiWzNmOdw1tT3T8EQorYLDO1+R9noobpeqIPwvHD4z34WW90iqaVKWaZznn3lfQa9D+Oa361fd6OSbvD7JCvIUu8yy3BAdyYdziRdZg6FDZEYSmhcZCXWCyEsGCJX/qjQoyTKlsbDSNALtY9M0IKgGEua8Sei12ah/XDGyZMAwjvY78kPSVkXvLocS1xqFu/bjMINxHJ4AIc2A4VcELBeJltiAeZ4CADQAOJYIimFBIOoA+JbwBjAxK2QTlM5UeoXPmSGSCjJE5AF/AwNEcaQtTK0e7VMlSlD1DmK+jKP75EJiKG7W1PQM3DuRLYmcZZTNI3YhN4mZLRHSl8f70Rc5qPP4NNcn8SJYATBeA5CvoNeh/HNb9avu9HLNjlrLZgeq69DFlysCmWGC8GlzFiCPgciAoEe6QcMUubwQNxBpvZiUwDcibk4pZ8lq/gzEMBRQyFiiw4nufsvRmow2FhoADtyBanzlaR6hAeoMfGnJUYwxftYElgAWQTFys8HMG4SSgTM+MpoKxJ5GYW06Y2UhGSJuINQuyYuAWtWJmjOT4ivoNeh/HNb9avu9HLNJTnLkyTMRRGyKNmjJDz7G7dHPKYcp+B0UEzugcVrcXYDCa15s2EjFqJ86bkTMcxGyMIiIJ8B10rBwkme4p8smd8AYiZPI3cRibRRBBZU3C49Q+lKyHMzaWyek1arExjyLx20Wx5ahAVL4GJPit9Jm9EKryPdzsB7DwvDEXdY8fG3IYDPA5GFCFobN0TnCIksJLSrPBLRsoDc91Cmu/txJyLBPEQ8tKIwWR33SdsFJCyQUzBoEusSvQaMSCDxcTx4CpCjAMEsSl9zj61BwAo2mHE8eDdiSsTsJYuX34yNh2fsm0iZijUL3CSO7otVRtSxpUlLoTntNHFXAQe5SoPJRE7tTY0iQOokLqKVvCEi4iQVGwvV4/TA788hw0CZ3rK1hcG0TElWvISSdkgbnvoPBSULYWeQMvUxdozvVA3qeMCj6gdktsin8EAALMHMrbjgj80HAsRDrd2kFIFYubyAoAq2AJWoOFBzGma3E9BxGCyhABitOoIviQnIJgV0DCdGiAEwPxdNuNIKHJN4/tGrm/43H+Kvi3ag8A6HBxxe+adxQJQjjWFj+fbmVsMTbXC6GhhoImd5m05i3QnklWOFnyN/BRYg/kuGgosqyGbkrggLwDiOmKZhSRDr/KBC5ealEkoEtzF1MBYEn3iwZoKwD4GGgDYA4mGslbwBO/p/wACQqL97AC6uhQgZEXzrT2DiusubkAZpABYAyOQUZ09KbTmEBxxIx/JYnSgzdx5Jm074pW+yh5tCIdR0sMlNuoeNprHyhUKl23yZUxTj1qIIPWUaNIUsEw4tAJxYABLAS8kdDiMjOAdEP8AwO5rVzDqUZmQaVFWouSJJ4SA8gBnkDBCYvBGsP5TidK+/wBPwiMZKXFeXI7BiJsuf8FaRUvDmKYjmNnOouSsiO9vrKJk1o9ozLobupGcxehHUx+ysA5ouMoY/l4nSvv9PwL3Mvj81Fj04IyIkp8k+TFX+hD4CxjBAR2Bq3ei4bkQbspXjQcO4TPwYVHn6/iqaAs/7qrRgMhPUEycQjcbvRHWjPghOlTs5iLL/wBsP//Z" />
+<!--  -->
+<blockquote>
+<strong>&quot;The web framework for perfectionist with deadlines.&quot;</strong></blockquote>
+<pre class="literal-block">
+Julio Batista Silva - 351202
+Luis Gustavo Izzo Octaviano - 350931
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Visão geral</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Framework escrito em Python que encoraja desenvolvimento rápido</li>
+<li>Segue o princípio DRY (Don't Repeat Yourself)</li>
+<li>Segue o MVC de forma livre (MTV)</li>
+<li>Sistema de autenticação de administradores automático</li>
+<li>URLs sem limitações do framework</li>
+<li>Apps e projeto desacoplados:<ul>
+<li>App: aplicação web que faz algo</li>
+<li>Projeto: conjunto de apps e configurações</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>História</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>2003: Criado para o <a class="reference external" href="http://ljworld.com">Lawrence Journal-World</a></li>
+<li>21 Jul 2005: Open Source (BSD)</li>
+<li>03 Set 2008: Versão 1.0</li>
+<li>29 Jul 2009: Versão 1.1</li>
+<li>17 Mai 2010: Versão 1.2</li>
+<li>23 Mar 2011: Versão 1.3</li>
+<li>23 Mar 2012: Versão 1.4</li>
+<li>Hoje: Versão 1.5.0 alpha</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Quem usa?</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Pinterest</li>
+<li>Instagram</li>
+<li>PBS (TV)</li>
+<li>Washington Post</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Padrão MTV</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Model-template-view nasce de uma diferente interpretação do MVC<ul>
+<li>Views definem quais dados se vê</li>
+<li>Templates definem como estes dados são vistos</li>
+</ul>
+</li>
+</ul>
+<img alt="../imagens/mtv.jpg" src="data:image/jpeg;base64,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" /></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Download e instalação</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Pelo seu gerenciador de pacotes (apt-get, pacman, etc)</li>
+<li><cite>sudo pip2 install git+https://github.com/django/django.git</cite></li>
+<li>Configure o wsgi.py:</li>
+</ul>
+<pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">&quot;../../&quot;</span><span class="p">)))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">&quot;../&quot;</span><span class="p">)))</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s">&quot;juliobs.settings&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">django.core.wsgi</span> <span class="kn">import</span> <span class="n">get_wsgi_application</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">get_wsgi_application</span><span class="p">()</span>
+</pre>
+<ul class="simple">
+<li>Configure seu web server (Apache, nginx, lighttpd, etc)</li>
+</ul>
+<pre><span class="nb">LoadModule</span> wsgi_module modules/mod_wsgi.so
+<span class="nb">WSGIScriptAlias</span> / <span class="sx">/projetos/juliobs/juliobs/wsgi.py</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Criando um projeto</h1></header>
+            
+            
+            <section><ul class="simple">
+<li><strong>manage.py</strong> e <strong>django-admin</strong>: Permitem interagir com o projeto via linha de comando.</li>
+<li><strong>__init__.py</strong>: Diz ao Python que o diretório deve ser considerado um módulo</li>
+<li><strong>settings.py</strong>: configurações gerais</li>
+<li><strong>urls.py</strong>: definição das urls do projeto</li>
+<li><strong>wsgi.py</strong>: para o deployment do projeto. É o padrão para frameworks Python</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Settings.py</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Conexão com banco de dados:<ul>
+<li>Sqlite3 é um sistema de gerenciamento de banco de dados incluído no Python</li>
+</ul>
+</li>
+<li>Configurar Timezone</li>
+<li>Configurar Location</li>
+<li>Determinar aplicativos instalados no projeto</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Criando classes de modelo</h1></header>
+            
+            
+            <section><ul class="simple">
+<li><tt class="docutils literal">python manage.py sql agenda</tt> permite ver as tabelas que serão criadas para o modelo</li>
+<li><tt class="docutils literal">python manage.py syncdb</tt> para efetivamente criar as tabelas</li>
+<li>A função <tt class="docutils literal">__unicode__(self)</tt> é equivalente às funções <tt class="docutils literal">toString()</tt> do Grails.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Adicionando URLs do admin</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>A configuração das URLs é feita em urls.py</li>
+<li>Descomentando a parte relativa ao admin, obtemos uma página criada automaticamente para CRUDs de usuários e de objetos do modelo.</li>
+<li>Para isso, é necessário importar a classe admin ao arquivo de urls.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Adicionando contato à pagina Admin</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>A pagina de admin não contém as classes de modelo.</li>
+<li>Estas devem ser adicionadas, com a criação de um arquivo admin.py no diretório da aplicação</li>
+<li>Às vezes é necessário resetar servidor quando se adiciona um novo arquivo ao projeto</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Customizando os formulários de admin</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>É possível alterar a ordem em que os parâmetros aparecem ou criar sublistas de parâmetros.</li>
+<li>Essa alteração se realiza no arquivo admin.py recém-criado.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>A página de listagem do admin</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>É possível customizar a página de listagem do admin adicionando atributos específicos à classe ContatoAdmin:</li>
+<li>Mostrar mais parâmetros na listagem (list_display)</li>
+<li>Adicionar filtros para a listagem (list_filter)</li>
+<li>Adicionar um campo de busca (search_field)</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Mudando templates</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Se não houver templates nos diretórios especificados, são usados os templates da pasta do Django.</li>
+<li>Para alterar os templates que são gerados automaticamente, deve-se criar uma pasta de template e copiar os templates padrão da pasta do Django</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Views</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Na pasta de cada app, existe um arquivo views.py.</li>
+<li>Nele, devemos definir as views que estão relacionados pelas URLs.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Desacoplando URLs</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Uma prática recomendada é relacionar as URLs  com o app, e não com o projeto.</li>
+<li>Dessa forma, no diretório do app estarão definidos as URLs relativas, e não absolutas.</li>
+<li>Assim, diferentes projetos podem usar um mesmo app com o mesmo padrão de urls.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Sistema de Autenticação</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Django já nos traz muitas funções para autenticação prontas, como os controladores para login e para logout.</li>
+<li>O template para login não é fornecido.</li>
+<li>Deve ser criado na pasta registration, no diretório de templates.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>URLs e Controladores para Autenticação</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>'/accounts/login' é a pagina inicial por convenção</li>
+<li>Para garantir que usuário esteja logado:<ul>
+<li>decorator <cite>&#64;login_required</cite></li>
+</ul>
+</li>
+<li>Para garantir que usuário tenha permissão:<ul>
+<li>Decorator <cite>permission_required(app_name.perm_name)</cite></li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Mais detalhes</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Templates</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Template é um arquivo que contém parâmetros de substituição</li>
+<li>Valores são atribuidos a esses parâmetros em views.py</li>
+<li>Templates permitem a separação entre a lógica e exibição.
+Designers criam as páginas e programadores as preenchem com conteúdo dinâmico.</li>
+<li>Templates possuem <em>tags</em> e <em>filters</em>, mas não é lugar de se programar</li>
+<li>Templates devem ficar em um diretório listado na variável <tt class="docutils literal">TEMPLATE_DIRS</tt></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Template Filters</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Alteram o valor de variáveis antes de serem exibidas</li>
+<li>Úteis para manipularmos o mesmo conjunto de dados de formas diferentes no mesmo template</li>
+<li>Syntaxe: variável | filtro1 | filtro2:argumentos</li>
+<li>Exemplos:<ul>
+<li><tt class="docutils literal">Aluno: {{ aluno.nome|lower|capfirst }}</tt></li>
+<li><tt class="docutils literal">{{ <span class="pre">linguagem.list|dictsort:&quot;nome&quot;</span> }}</tt></li>
+<li><tt class="docutils literal">{{ <span class="pre">bio|truncatewords:&quot;30&quot;</span> }}</tt></li>
+<li><tt class="docutils literal">{{ <span class="pre">pub_date|date:&quot;F</span> j, Y&quot; }}</tt></li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Template Tags</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Loops, decisões, etc</li>
+</ul>
+<pre>{% ifequal etapa &#39;selecionar_enfase&#39; %}
+<span class="nt">&lt;h5&gt;</span>{% trans &quot;Select the emphasis:&quot; %}<span class="nt">&lt;/h5&gt;</span>
+    <span class="nt">&lt;form&gt;</span>{% csrf_token %}
+        <span class="nt">&lt;select&gt;</span>
+            {% for enfase in enfases %}
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&#39;{{ enfase.url }}&#39;</span><span class="nt">&gt;</span>{{ enfase.nome }}<span class="nt">&lt;/option&gt;</span>
+            {% endfor%}
+        <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+{% endifequal %}
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>views.py</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>É um arquivo normal em python, que contém a parte lógica (funções) das páginas</li>
+<li>Essas funções recebem alguns argumentos:<ul>
+<li>HttpRequests</li>
+<li>Parâmetros das URLs</li>
+</ul>
+</li>
+<li>E retornam objetos HttpResponse ou alguma subclasse do HttpResponse:<ul>
+<li>HttpResponse: resposta normal. O argumento é o conteúdo a ser mostrado para o usuário</li>
+<li>HttpResponseRedirect: Um redirect (302). O argumento é a URL para onde será redirecionado</li>
+<li>HttpResponseForbidden:  Retorna a página erro 403</li>
+<li>HttpResponseServerError: Retorna a página erro 500</li>
+<li>HttpResponseNotFound: Retorna a página erro 404</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>urls.py</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Especifica qual view deve ser chamada de acordo com a url</li>
+</ul>
+<pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+
+    <span class="p">(</span><span class="s">r&#39;^i18n/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;django.conf.urls.i18n&#39;</span><span class="p">)),</span>
+
+    <span class="p">(</span><span class="s">r&#39;^blog/(?P&lt;post&gt;.*)$&#39;</span><span class="p">,</span>
+        <span class="n">RedirectView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s">&#39;http://blog.juliobs.com/</span><span class="si">%(post)s</span><span class="s">&#39;</span><span class="p">,</span>
+            <span class="n">permanent</span><span class="o">=</span><span class="bp">True</span><span class="p">)),</span>
+
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">homepage</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;jbs-home&quot;</span><span class="p">),</span>
+
+    <span class="p">(</span><span class="s">r&#39;^ira/$&#39;</span><span class="p">,</span> <span class="n">ira</span><span class="p">),</span>
+
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^projetos/$&#39;</span><span class="p">,</span> <span class="n">projetos</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;jbs-projetos&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^projetos/(.*)$&#39;</span><span class="p">,</span> <span class="n">programas</span><span class="p">),</span>
+
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^contato/$&#39;</span><span class="p">,</span> <span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;jbs-contato&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^contato/ok/$&#39;</span><span class="p">,</span> <span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">&#39;contato_ok.html&#39;</span><span class="p">)),</span>
+
+    <span class="p">(</span><span class="s">r&#39;^gallery/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;imagestore.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">&#39;imagestore&#39;</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>models.py</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Object-Relational-Mapper (ORM)</li>
+<li>Contém classes em python que descrevem as tabelas do banco de dados.</li>
+<li>Usará o banco de dados <tt class="docutils literal">DATABASE_ENGINE</tt> especificado em <tt class="docutils literal">settings.py</tt></li>
+<li>Pode ser validado usando <tt class="docutils literal">python manage.py validate</tt></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Media e Static</h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Media: Arquivos dos usuários</li>
+<li>Static: Arquivos estáticos (css, javascript, imagens)</li>
+<li>Referenciados nos templates como {{ MEDIA_URL }} ou {% static &quot;css/style.css&quot; %}</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/forms/">Forms</a></h1></header>
+            
+            
+            <section><ul class="simple">
+<li>O Django possui uma API para facilitar a criação e manejo de formulários</li>
+<li>Tem sintaxe semelhante à do models.py</li>
+<li>Validação automática</li>
+<li>Exemplo, formulário de contato (forms.py):</li>
+</ul>
+<pre><span class="c"># -*-*- encoding: utf-8 -*-*-</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+
+<span class="k">class</span> <span class="nc">ContactForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">Textarea</span><span class="p">)</span>
+    <span class="n">sender</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Your e-mail address&#39;</span><span class="p">)</span>
+    <span class="n">cc_myself</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clean_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;message&#39;</span><span class="p">]</span>
+        <span class="n">num_words</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">num_words</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&quot;Not enough words!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">message</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/forms/">Forms</a></h1></header>
+            
+            
+            <section><ul class="simple">
+<li>views.py:</li>
+</ul>
+<pre><span class="kn">from</span> <span class="nn">django.core.mail</span> <span class="kn">import</span> <span class="n">send_mail</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">contato.forms</span> <span class="kn">import</span> <span class="n">ContactForm</span>
+
+
+<span class="k">def</span> <span class="nf">contact</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ContactForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">subject</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;subject&#39;</span><span class="p">]</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;message&#39;</span><span class="p">]</span>
+            <span class="n">sender</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;sender&#39;</span><span class="p">]</span>
+            <span class="n">cc_myself</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;cc_myself&#39;</span><span class="p">]</span>
+
+            <span class="n">recipients</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;julio@juliobs.com&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">cc_myself</span><span class="p">:</span>
+                <span class="n">recipients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+
+            <span class="n">send_mail</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">recipients</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/contato/ok/&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">ContactForm</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;contato.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1><a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/i18n/">i18n e L10n</a></h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Django tem suporte a i18n e L10n</li>
+<li>Desenvolvedores e autores de templates especificam quais strings devem ser traduzidas</li>
+<li>Tradutores adicionam as traduções ao arquivo <tt class="docutils literal">.po</tt> gerado por <tt class="docutils literal"><span class="pre">django-admin</span> makemessages <span class="pre">--all</span></tt></li>
+<li>URL patterns também podem ser traduzidas</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1><a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/i18n/">i18n e L10n</a></h1></header>
+            
+            
+            <section><ul class="simple">
+<li>Nos views:</li>
+</ul>
+<pre><span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext</span> <span class="k">as</span> <span class="n">_</span>
+
+<span class="k">def</span> <span class="nf">minha_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s">&quot;Welcome!&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre>
+<ul class="simple">
+<li>Em templates:</li>
+</ul>
+<pre>{% load i18n %}
+
+<span class="nt">&lt;article</span> <span class="na">id=</span><span class="s">&quot;pessoal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>{% trans &#39;About me&#39; %}<span class="nt">&lt;/h2&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>{% blocktrans %}I&#39;m a computer engineering undergrad at
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ uni.link }}&quot;</span><span class="nt">&gt;</span>{{ uni.name }} ({{ uni.sigla }})<span class="nt">&lt;/a&gt;</span>.
+    {% endblocktrans %}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/article&gt;</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              30/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>IDEs</h1></header>
+            
+            
+            <section><ul class="simple">
+<li><a class="reference external" href="http://www.activestate.com/komodo-edit">Komodo Edit</a></li>
+<li>Eclipse com <a class="reference external" href="http://pydev.org/">PyDev</a></li>
+<li><a class="reference external" href="http://www.jetbrains.com/pycharm/">PyCharm</a></li>
+<li><a class="reference external" href="http://eric-ide.python-projects.org/">Eric Python IDE</a></li>
+<li><a class="reference external" href="http://pytools.codeplex.com/">Visual Studio com Python Tools</a></li>
+<li>Vim</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              31/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Links úteis</h1></header>
+            
+            
+            <section><ul class="simple">
+<li><a class="reference external" href="http://djangoproject.com">http://djangoproject.com</a> - Site oficial com documentação</li>
+<li><a class="reference external" href="http://djangofriendly.com">http://djangofriendly.com</a> - Hosts</li>
+<li><a class="reference external" href="http://www.djangosites.org/">http://www.djangosites.org/</a> - Sites que usam Django</li>
+<li><a class="reference external" href="https://people.djangoproject.com/">https://people.djangoproject.com/</a> - Pessoas que usam Django</li>
+<li><a class="reference external" href="http://djangosnippets.org">http://djangosnippets.org</a> - Snippets de código</li>
+<li><a class="reference external" href="http://www.djangopackages.com/">http://www.djangopackages.com/</a> - Apps</li>
+<li><a class="reference external" href="https://github.com/jbsilva/juliobs">https://github.com/jbsilva/juliobs</a> - Source do meu site</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              32/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides/slides.rst -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>O que mais o Django tem?</h1></header>
+            
+            
+            <section><ul class="simple">
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/class-based-views/">Generic Views</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/unit-tests/">Testes unitários</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/forms/">Forms</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/howto/custom-template-tags/">Filters e template tags personalizados</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/syndication/">RSS</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/">Sitemaps</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/">Proteção CSRF</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/clickjacking/">Proteção contra clickjacking</a></li>
+<li><a class="reference external" href="http://djangopony.com/">Poneis!</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides/slides.rst">slides/slides.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">-</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">Visão geral</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">História</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Quem usa?</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Padrão MTV</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Download e instalação</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Criando um projeto</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Settings.py</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Criando classes de modelo</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Adicionando URLs do admin</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Adicionando contato à pagina Admin</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Customizando os formulários de admin</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">A página de listagem do admin</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Mudando templates</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Views</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Desacoplando URLs</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Sistema de Autenticação</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">URLs e Controladores para Autenticação</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Mais detalhes</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Templates</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Template Filters</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Template Tags</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">views.py</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">urls.py</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">models.py</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Media e Static</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27"><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/forms/">Forms</a></a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-28">
+        <th><a href="#slide28"><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/forms/">Forms</a></a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29"><a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/i18n/">i18n e L10n</a></a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-30">
+        <th><a href="#slide30"><a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/i18n/">i18n e L10n</a></a></th>
+        <td><a href="#slide30">30</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-31">
+        <th><a href="#slide31">IDEs</a></th>
+        <td><a href="#slide31">31</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-32">
+        <th><a href="#slide32">Links úteis</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-33">
+        <th><a href="#slide33">O que mais o Django tem?</a></th>
+        <td><a href="#slide33">33</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
