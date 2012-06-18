@@ -121,7 +121,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'juliobs.urls'
@@ -150,6 +150,7 @@ INSTALLED_APPS = (
     'ira',
     'contato',
     'templatelib',
+    'agenda',
     # 3rd party Apps
     'imagestore',
     'sorl.thumbnail',

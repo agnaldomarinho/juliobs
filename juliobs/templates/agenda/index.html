@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}Agenda{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Agenda</h1>
+    <h4>{% trans "Welcome" %}</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+    {% if contato_list %}
+        <ul>
+        {% for contato in contato_list %}
+            <li><a href="/agenda/{{ contato.id }}/">{{ contato.nome }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum contato disponível.</p>
+    {% endif %}
+{% endblock %}

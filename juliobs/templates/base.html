@@ -4,13 +4,13 @@
 {% load tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
-{% url "jbs-home" as home %}
-{% url "jbs-music_lib" as music_lib %}
-{% url "jbs-horario" as horario %}
-{% url "jbs-pgp" as pgp %}
-{% url "jbs-qrcode" as qrcode %}
-{% url "jbs-projetos" as projetos %}
-{% url "jbs-contato" as contato %}
+{% url "jbs-home" as jbs_home %}
+{% url "jbs-music_lib" as jbs_music_lib %}
+{% url "jbs-horario" as jbs_horario %}
+{% url "jbs-pgp" as jbs_pgp %}
+{% url "jbs-qrcode" as jbs_qrcode %}
+{% url "jbs-projetos" as jbs_projetos %}
+{% url "jbs-contato" as jbs_contato %}
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
@@ -18,7 +18,7 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %}</title>
-        <link rel="author" href="humans.txt" charset="utf-8">
+        <link rel="author" href="humans.txt">
         {% block favicon %}
         <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
         {% endblock %}
@@ -77,10 +77,10 @@
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li class="{% active request "^/$" %}">
-                            <a href="{{ home }}"><i class="icon-home icon-white"></i> Home</a>
+                            <a href="{{ jbs_home }}"><i class="icon-home icon-white"></i> Home</a>
 
-                            <li class="{% active request projetos %}">
-                            <a href="{{ projetos }}" title="{% trans 'Projects' %}">
+                            <li class="{% active request jbs_projetos %}">
+                            <a href="{{ jbs_projetos }}" title="{% trans 'Projects' %}">
                                 <i class="icon-arrow-right icon-white"></i> {% trans 'Projects' %}</a>
 
                             <li>
@@ -91,20 +91,20 @@
                             <a href="/gallery/" title="{% trans 'Photos' %}">
                                 <i class="icon-camera icon-white"></i> {% trans 'Photos' %}</a>
 
-                            <li class="{% active request pgp %}">
-                            <a href="{{ pgp }}" title="{% trans 'Public Key' %}">
+                            <li class="{% active request jbs_pgp %}">
+                            <a href="{{ jbs_pgp }}" title="{% trans 'Public Key' %}">
                                 <i class="icon-lock icon-white"></i> {% trans 'Public Key' %}</a>
 
-                            <li class="{% active request qrcode %}">
-                            <a href="{{ qrcode }}" title='QR Code'>
+                            <li class="{% active request jbs_qrcode %}">
+                            <a href="{{ jbs_qrcode }}" title='QR Code'>
                                 <i class="icon-qrcode icon-white"></i> {% trans 'QR Code' %}</a>
 
-                            <li class="{% active request contato %}">
-                            <a href="{{ contato }}" title="{% trans 'Contact' %}">
+                            <li class="{% active request jbs_contato %}">
+                            <a href="{{ jbs_contato }}" title="{% trans 'Contact' %}">
                                 <i class="icon-envelope icon-white"></i> {% trans 'Contact' %}</a>
 
-                            <li class="{% active request music_lib %}">
-                            <a href="{{ music_lib }}" title="{% trans 'Music Lib' %}">
+                            <li class="{% active request jbs_music_lib %}">
+                            <a href="{{ jbs_music_lib }}" title="{% trans 'Music Lib' %}">
                                 <i class="icon-music icon-white"></i> {% trans 'Music Lib' %}</a>
                         </ul>
                     </div>
@@ -145,6 +145,7 @@
                 {# <p>Atual: {{ lang|language_name }} ({{ lang|language_name_local }})</p> #}
             </div>
 
+            {# TODO: Usar CSS sprites #}
             <div class="row-fluid" id="logos">
                 <a href="http://www.vim.org">
                     <img src="{% static "images/logos/vim.png" %}"

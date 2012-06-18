@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ contato.nome }}{% endblock %}
+
+{% block header %}
+<header>
+    <h1>{{ contato.nome }}</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<h1>Dados do Contato {{ contato.nome }}</h1>
+<ul>
+   <li>Email: {{contato.email}}
+   <li>Sexo: {{contato.sexo}}
+   <li>Website: {{contato.url}}
+   <li>Endereço: {{contato.endereco}}
+   <li>Telefone: {{contato.tel}}
+   <li>Usuário: {{contato.user}}
+</ul>
+<p><a href="/agenda/">Voltar à lista de contatos</a></p>
+{% endblock %}
