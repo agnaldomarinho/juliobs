@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0001\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-19 02:45-0300\n"
-"PO-Revision-Date: 2012-06-12 02:21-0300\n"
+"POT-Creation-Date: 2012-07-01 04:51-0300\n"
+"PO-Revision-Date: 2012-07-01 04:51-0300\n"
 "Last-Translator: julio <julio@juliobs.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: \n"
@@ -29,6 +29,22 @@ msgstr "Espanhol"
 #: settings.py:39
 msgid "Brazilian Portuguese"
 msgstr "Português Brasileiro"
+
+#: arquivos/static/seminario_django.html:2407
+#: arquivos/static_files/seminario_django.html:2407
+#, python-format
+msgid ""
+"I&#39;m a computer engineering undergrad at\n"
+"    <span class=\"nt\">&lt;a</span> <span class=\"na\">href=</span><span "
+"class=\"s\">&quot;%(uni.link)s&quot;</span><span class=\"nt\">&gt;</span>"
+"%(uni.name)s (%(uni.sigla)s)<span class=\"nt\">&lt;/a&gt;</span>.\n"
+"    "
+msgstr ""
+"I&#39;m a computer engineering undergrad at\n"
+"    <span class=\"nt\">&lt;a</span> <span class=\"na\">href=</span><span "
+"class=\"s\">&quot;%(uni.link)s&quot;</span><span class=\"nt\">&gt;</span>"
+"%(uni.name)s (%(uni.sigla)s)<span class=\"nt\">&lt;/a&gt;</span>.\n"
+"    "
 
 #: templates/400.html:4 templates/400.html.py:15
 msgid "Invalid Request"
@@ -131,14 +147,14 @@ msgstr "Sobre mim"
 #: templates/homepage.html:50
 msgid ""
 "Julio Batista Silva, born in São José dos Campos - SP, graduated in\n"
-"        2008 from <a href=\"http://cejw.yolasite.com/\">Embraer Juarez "
+"        2008 from <a href=\"http://colegioembraer.com.br/\">Embraer Juarez "
 "Wanderley \n"
 "            High School</a> and now studies Computer Engineering at <a\n"
 "            href=\"http://www.ufscar.br/\">Federal University of São Carlos\n"
 "            (UFSCar)</a>."
 msgstr ""
 "Julio Batista Silva, nascido em São José dos Campos - SP, graduou em\n"
-"        2008 pelo <a href=\"http://cejw.yolasite.com/\">Colégio Embraer "
+"        2008 pelo <a href=\"http://colegioembraer.com.br/\">Colégio Embraer "
 "Juarez Wanderley.\n"
 "            </a> e atualmente estuda Engenharia de Computação na <a href="
 "\"http://www.ufscar.br/\">\n"
@@ -268,7 +284,7 @@ msgstr "Pendente"
 msgid "FOSS"
 msgstr "FOSS"
 
-#: templates/projetos.html:17
+#: templates/projetos.html:24
 msgid ""
 "Here you can find some of my simplest codes. For\n"
 "        more projects, take a look at my <a href=\"https://github.com/jbsilva"
@@ -277,7 +293,7 @@ msgstr ""
 "Aqui você pode encontrar alguns dos meus códigos mais simples. Para mais "
 "projetos, olhe meu <a href=\"https://github.com/jbsilva\">Github</a>."
 
-#: templates/projetos.html:36
+#: templates/projetos.html:43
 msgid "Programs"
 msgstr "Programas"
 
