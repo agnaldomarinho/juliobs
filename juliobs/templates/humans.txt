@@ -32,4 +32,4 @@
  _/ |\__,_|_|_|\___/|_.__/|___(_)___\___/|_| |_| |_|
 |__/                                                
 
-Read this file using UTF-8 encoding
+⠠⠵ Read this file using UTF-8 encoding ⠠⠵
