@@ -59,5 +59,11 @@ compatíveis com a AGPLv3 e avaliar se uma licença mais permissiva não seria
 mais apropriada.
 
 ## TODO
+*   Decidir licença
 *   Terminar internacionalização
+*   Internacionalizar para espanhol
 *   Traduzir este README para inglês
+*   Melhorar app de IRA
+*   Arrumar syntax highlighting nos projetos
+*   Criar novo texto para o About Me
+*   Novos apps!
