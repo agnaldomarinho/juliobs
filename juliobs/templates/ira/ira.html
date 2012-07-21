@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}IRA{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    {% ifequal etapa 'mostrar_ira' %}
+    <script type="text/javascript" src="{% static "ira/tabela.js" %}"></script>
+    {% endifequal %}
+{% endblock %}
+
+{% block header %}
+<header>
+    <h1>IRA</h1>
+    <h4>{% trans "Calculate your IRA!" %}</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+
+{% ifequal etapa 'login' %}
+{% include "ira/login.html" %}
+{% endifequal %}
+
+{% ifequal etapa 'selecionar_enfase' %}
+{% include "ira/selecionar_enfase.html" %}
+{% endifequal %}
+
+
+{% ifequal etapa 'mostrar_ira' %}
+{% include "ira/mostrar_ira.html" %}
+{% endifequal %}
+
+{% endblock %}

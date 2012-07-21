@@ -1,19 +1,28 @@
 # -*-*- encoding: utf-8 -*-*-
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
+from BeautifulSoup import BeautifulSoup
+import sys
 import re
 import mechanize
-from BeautifulSoup import BeautifulSoup
-import socket
-import sys
 
+
+def calcula_ira(nota_ponderada, inscritos, cancelados, desistentes):
+    if inscritos <= 0:
+        return 0
+
+    try:
+        ira = 1000 * (nota_ponderada / inscritos) * (2 -
+                (cancelados + 2 * desistentes) / inscritos)
+        ira = int(round(ira))
+    except:
+        ira = 0
+
+    return ira
 
 def ira(request):
     #Se acabou de entrar no site
     if request.method == 'GET':
-        return render_to_response('ira.html',
-                {'etapa': 'login'},
-                context_instance=RequestContext(request))
+        return render(request, 'ira/ira.html', {'etapa': 'login'})
     #Se já digitou RA e Senha
     elif request.method == 'POST':
         if 'login' in request.POST:
@@ -25,10 +34,8 @@ def ira(request):
 
             #RA ou senha em branco
             if errors:
-                return render_to_response('ira.html',
-                        {'etapa': 'login',
-                            'errors': errors},
-                        context_instance=RequestContext(request))
+                return render(request, 'ira/ira.html',
+                        {'etapa': 'login', 'errors': errors})
             else:
                 ra = request.POST['ra']
                 senha = request.POST['senha']
@@ -76,19 +83,15 @@ def ira(request):
                     data = pagina.get_data()
                 except mechanize._mechanize.FormNotFoundError:
                     errors.append('Verifique sua senha.')
-                    return render_to_response('ira.html',
-                            {'etapa': 'login',
-                                'errors': errors},
-                            context_instance=RequestContext(request))
+                    return render(request, 'ira/ira.html',
+                            {'etapa': 'login', 'errors': errors})
                 except:
                     errors.append(sys.exc_info())
-                    return render_to_response('ira.html',
-                            {'etapa': 'login',
-                                'errors': errors},
-                            context_instance=RequestContext(request))
+                    return render(request, 'ira/ira.html',
+                            {'etapa': 'login', 'errors': errors})
                 else:
                     #Possui mais de 1 enfase?
-                    if data.find("Clique em uma das &ecirc;nfases abaixo para ver o") != -1:
+                    if data.find("Clique em uma das &ecirc;nfases abaixo para ver") != -1:
                         #Se não escolheu a enfase na etapa anterior
                         if not request.POST.get('enfase_opt', ''):
                             links = list(br.links(
@@ -101,12 +104,11 @@ def ira(request):
                                         'url': link.url}
                                 enfases.append(enfase)
 
-                            return render_to_response('ira.html',
+                            return render(request, 'ira/ira.html',
                                     {'enfases': enfases,
                                         'ra': ra,
                                         'senha': senha,
-                                        'etapa': 'selecionar_enfase'},
-                                    context_instance=RequestContext(request))
+                                        'etapa': 'selecionar_enfase'})
                         #Já escolheu uma ênfase
                         else:
                             enfases_link = request.POST['enfase_opt']
@@ -166,7 +168,10 @@ def ira(request):
                                     nota_ponderada += creditos * nota
                                 elif (resultado == 'Reprovado nota' or
                                         resultado == 'Reprovado nota/freq.' or
-                                        resultado == 'Pendente'):
+                                        resultado == 'Reprovado'):
+                                    resultado = 'Reprovado'
+                                    nota_ponderada += creditos * nota
+                                elif resultado == 'Pendente':
                                     nota_ponderada += creditos * nota
                                 elif resultado == 'Cancelado':
                                     creditos_cancelados += creditos
@@ -196,21 +201,21 @@ def ira(request):
                         materias.append(materia)
                     else:
                         try:
-                            ira = 1000 * (nota_ponderada / creditos_inscritos) * (2 -
-                                    (creditos_cancelados + 2 * creditos_desistentes) / creditos_inscritos)
-                            ira = int(round(ira))
+                            ira = calcula_ira(nota_ponderada,
+                                    creditos_inscritos, creditos_cancelados,
+                                    creditos_desistentes)
                         except:
                             errors.append(sys.exc_info())
-                            return render_to_response('ira.html',
-                                    {'etapa': 'login',
-                                        'errors': errors},
-                                    context_instance=RequestContext(request))
+                            return render(request, 'ira/ira.html',
+                                    {'etapa': 'login', 'errors': errors})
 
-                    return render_to_response('ira.html',
-                            {'etapa': 'mostrar_ira',
-                                'ira': ira,
-                                'materias': materias},
-                            context_instance=RequestContext(request))
+                    resultados_possiveis = ["Afastado", "Aprovado",
+                            "Reprovado", "Cancelado", "Desistente", "Pendente"]
+
+                    return render(request, 'ira/ira.html',
+                            {'etapa': 'mostrar_ira', 'ira': ira,
+                                'materias': materias,
+                                'resultados_possiveis': resultados_possiveis})
 
         elif 'previsao' in request.POST:
             from itertools import izip
@@ -246,14 +251,16 @@ def ira(request):
                         nota_ponderada += creditos * nota
                     elif (resultado == 'Reprovado nota' or
                             resultado == 'Reprovado nota/freq.' or
-                            resultado == 'Pendente'):
+                            resultado == 'Reprovado'):
+                        resultado = 'Reprovado'
+                        nota_ponderada += creditos * nota
+                    elif resultado == 'Pendente':
                         nota_ponderada += creditos * nota
                     elif resultado == 'Cancelado':
                         creditos_cancelados += creditos
                         creditos_inscritos -= creditos / 2  # chutometro
                     elif resultado == 'Desistente':
                         creditos_desistentes += creditos
-                        creditos_inscritos += creditos  # chutometro
                     elif resultado == 'Reconhecido':
                         nota = 6.0
                         nota_ponderada += creditos * nota
@@ -277,18 +284,17 @@ def ira(request):
                 materias.append(materia)
             else:
                 try:
-                    ira = 1000 * (nota_ponderada / creditos_inscritos) * (2 -
-                            (creditos_cancelados + 2 * creditos_desistentes) / creditos_inscritos)
-                    ira = int(round(ira))
+                    ira = calcula_ira(nota_ponderada, creditos_inscritos,
+                            creditos_cancelados, creditos_desistentes)
                 except:
                     errors.append(sys.exc_info())
-                    return render_to_response('ira.html',
-                            {'etapa': 'login',
-                                'errors': errors},
-                            context_instance=RequestContext(request))
+                    return render(request, 'ira/ira.html',
+                            {'etapa': 'login', 'errors': errors})
 
-            return render_to_response('ira.html',
-                    {'etapa': 'mostrar_ira',
-                        'ira': ira,
-                        'materias': materias},
-                    context_instance=RequestContext(request))
+            resultados_possiveis = ["Afastado", "Aprovado",
+                    "Reprovado", "Cancelado", "Desistente", "Pendente"]
+
+            return render(request, 'ira/ira.html',
+                    {'etapa': 'mostrar_ira', 'ira': ira,
+                        'materias': materias,
+                        'resultados_possiveis': resultados_possiveis})

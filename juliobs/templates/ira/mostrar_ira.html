@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<h3>{% trans "Your IRA is:" %} {{ ira }}</h3>
+
+<input type="button" class="btn" value="{% trans "Add discipline" %}" onclick="addRow('historico')">
+
+<button class="btn btn-danger" onclick="deleteRow('historico')">
+    <i class="icon-trash icon-white"></i> {% trans "Delete discipline(s)" %}
+</button>
+
+<form class="well" name="historico" method="post" action="">{% csrf_token %}
+    <input type="submit" class="btn btn-primary btn-large" name="previsao" value="{% trans "Estimate IRA" %}">
+    <table class="table table-striped table-condensed" name="historico" id="historico">
+        <thead>
+            <tr>
+                <th>{% trans "Select" %}</th>
+                <th>{% trans "Discipline" %}</th>
+                <th>{% trans "Grade" %}</th>
+                <th>{% trans "Result" %}</th>
+                <th>{% trans "Credits" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for materia in materias %}
+            <tr class="{% cycle 'clara' 'escura' %}">
+                <td><input type="checkbox" name="chk"></td>
+                <td><input type="text" name="nome" value="{{ materia.nome }}" class="span6"></td>
+                <td><input type="text" name="nota" value="{{ materia.nota }}" size="4" class="span1"></td>
+                <td>
+                    <select name="resultado" class="span2">
+                        {% for resultado in resultados_possiveis %}
+                        <option value="{{ resultado }}"{% ifequal resultado materia.resultado %} selected{% endifequal %}>{{ resultado }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td><input type="number" min="0" name="creditos" value="{{ materia.creditos }}" class="span1"></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</form>
