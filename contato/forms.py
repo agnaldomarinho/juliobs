@@ -11,7 +11,7 @@ class ContactForm(forms.Form):
     sender = forms.EmailField(required=False,
             label=_('Your e-mail address'))
     cc_myself = forms.BooleanField(required=False,
-            label=_('Send copy to me'))
+            label=_('Send me a copy'))
 
     def clean_message(self):
         message = self.cleaned_data['message']

@@ -50,7 +50,7 @@ urlpatterns = patterns('',
         TemplateView.as_view(template_name='stuff_i_use.html')),
 
     (r'^torrents/$', torrents),
-    (r'^ira/$', ira),
+    (r'^ira/$', include('ira.urls', namespace='ira')),
     url(r'^contato/$', contact, name="jbs-contato"),
     (r'^contato/ok/$', TemplateView.as_view(template_name='contato_ok.html')),
     (r'^gallery/', include('imagestore.urls', namespace='imagestore')),

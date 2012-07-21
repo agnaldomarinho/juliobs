@@ -12,6 +12,9 @@
   Components:   jQuery, Twitter Bootstrap, HTML5 Boilerplate
   Source:       https://github.com/jbsilva/juliobs
 
+/* THANKS */
+  Icons: Debbie Campbell (position-relative.com) and Michael Flarup
+
                            █▀▀▀▀▀█  ▀▀█▄ █ ▄ █▀▀▀▀▀█
                            █ ███ █ ▄▀██  █▄█ █ ███ █
                            █ ▀▀▀ █ ▀▄█ ▀█▄ █ █ ▀▀▀ █ 

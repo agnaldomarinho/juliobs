@@ -1,0 +1,42 @@
+.icones-sprite, .icones-camera, .icones-facebook, .icones-github,
+.icones-gplus, .icones-lastfm, .icones-linkedin, .icones-rss, .icones-twitter,
+.icones-youtube
+{
+  background: url('/images/icones.png') no-repeat;
+}
+
+.icones-camera {
+  background-position: 0 0;
+}
+
+.icones-facebook {
+  background-position: 0 -1024px;
+}
+
+.icones-github {
+  background-position: 0 -896px;
+}
+
+.icones-gplus {
+  background-position: 0 -512px;
+}
+
+.icones-lastfm {
+  background-position: 0 -384px;
+}
+
+.icones-linkedin {
+  background-position: 0 -768px;
+}
+
+.icones-rss {
+  background-position: 0 -128px;
+}
+
+.icones-twitter {
+  background-position: 0 -640px;
+}
+
+.icones-youtube {
+  background-position: 0 -256px;
+}

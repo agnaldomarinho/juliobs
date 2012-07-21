@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0001\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 04:51-0300\n"
-"PO-Revision-Date: 2012-07-01 04:51-0300\n"
+"POT-Creation-Date: 2012-07-21 15:34-0300\n"
+"PO-Revision-Date: 2012-07-21 15:36-0300\n"
 "Last-Translator: julio <julio@juliobs.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: \n"
@@ -115,7 +115,7 @@ msgstr "Enviar"
 msgid "Contact me"
 msgstr "Entre em contato"
 
-#: templates/contato.html:25 templates/ira.html:79
+#: templates/contato.html:25 templates/ira/selecionar_enfase.html:12
 msgid "Submit"
 msgstr "Enviar"
 
@@ -163,122 +163,6 @@ msgstr ""
 #: templates/homepage.html:57
 msgid "For more information, visit:"
 msgstr "Para mais informações, visite:"
-
-#: templates/ira.html:18
-msgid "Calculate your IRA!"
-msgstr "Calcule seu IRA!"
-
-#: templates/ira.html:40
-msgid "Your RA"
-msgstr "Seu RA"
-
-#: templates/ira.html:44
-msgid "ProGrad Web password"
-msgstr "Senha no ProGrad Web"
-
-#: templates/ira.html:52
-msgid "Application under development!"
-msgstr "Aplicativo em desenvolvimento!"
-
-#: templates/ira.html:53
-msgid ""
-"It's necessary to provide your RA and the password you\n"
-"            use on ProgradWeb so I can analyse your academic records."
-msgstr ""
-"É necessário fornecer seu RA e sua senha do ProgradWeb para que eu possa "
-"analisar seu histórico."
-
-#: templates/ira.html:55
-msgid ""
-"Even though i garantee that I won't store your password\n"
-"            or any other information, this website doesn't utilize SSL "
-"encryption,\n"
-"            therefore using it in unknown networks might be insecure."
-msgstr ""
-"Embora eu garanto que não armazenarei sua senha ou qualquer outra "
-"informação, este website não utiliza encriptação por SSL, portanto usá-lo em "
-"redes desconhecidas pode ser inseguro."
-
-#: templates/ira.html:58
-msgid ""
-"Use at your own risk. I can't be responsible, in any way\n"
-"            at all, for any problem related to your ProGrad Web account. I "
-"don't\n"
-"            even assure that the calculations are correct. Do not rely upon "
-"the\n"
-"            results."
-msgstr ""
-"Use por sua conta e risco. Não me responsabilizo, de forma alguma, por "
-"qualquer problema relacionado à sua conta no ProGrad Web. Nem mesmo garanto "
-"que o cálculo esteja correto. Não confie nos resultados."
-
-#: templates/ira.html:62
-msgid "Calculated (a little) based on"
-msgstr "Calculado (levemente) com base na"
-
-#: templates/ira.html:70
-msgid "Select the emphasis:"
-msgstr "Selecione a ênfase:"
-
-#: templates/ira.html:85
-msgid "Your IRA is:"
-msgstr "Seu IRA é:"
-
-#: templates/ira.html:87
-msgid "Add discipline"
-msgstr "Adicionar disciplina"
-
-#: templates/ira.html:89
-msgid "Delete discipline(s)"
-msgstr "Deletar disciplina(s)"
-
-#: templates/ira.html:92
-msgid "Estimate IRA"
-msgstr "Estimar IRA"
-
-#: templates/ira.html:96
-msgid "Select"
-msgstr "Selecionar"
-
-#: templates/ira.html:97
-msgid "Discipline"
-msgstr "Disciplina"
-
-#: templates/ira.html:98
-msgid "Grade"
-msgstr "Nota"
-
-#: templates/ira.html:99
-msgid "Result"
-msgstr "Resultado"
-
-#: templates/ira.html:100
-msgid "Credits"
-msgstr "Créditos"
-
-#: templates/ira.html:112
-msgid "Afastado"
-msgstr "Afastado"
-
-#: templates/ira.html:113
-msgid "Aprovado"
-msgstr "Aprovado"
-
-#: templates/ira.html:114
-msgid "Reprovado"
-msgstr "Reprovado"
-
-#: templates/ira.html:115
-msgid "Cancelado"
-msgstr "Cancelado"
-
-#: templates/ira.html:116
-msgid "Desistente"
-msgstr "Desistente"
-
-#: templates/ira.html:117
-msgid "Pendente"
-msgstr "Pendente"
 
 #: templates/projetos.html:9
 msgid "FOSS"
@@ -460,3 +344,127 @@ msgstr "Salvar"
 #: templates/imagestore/forms/image_form.html:30
 msgid "Upload"
 msgstr "Upload"
+
+#: templates/ira/ira.html:18
+msgid "Calculate your IRA!"
+msgstr "Calcule seu IRA!"
+
+#: templates/ira/login.html:18
+msgid "Your RA"
+msgstr "Seu RA"
+
+#: templates/ira/login.html:22
+msgid "ProGrad Web password"
+msgstr "Senha no ProGrad Web"
+
+#: templates/ira/login.html:30
+msgid "Application under development!"
+msgstr "Aplicativo em desenvolvimento!"
+
+#: templates/ira/login.html:31
+msgid ""
+"It's necessary to provide your RA and the password\n"
+"        you use on ProgradWeb so I can analyse your academic records."
+msgstr ""
+"É necessário fornecer seu RA e sua senha do ProgradWeb para que eu possa "
+"analisar seu histórico."
+
+#: templates/ira/login.html:33
+msgid ""
+"Even though I garantee that I won't store your\n"
+"        password or any other information, this website doesn't utilize SSL\n"
+"        encryption, therefore using it in unknown networks might be "
+"insecure.\n"
+"        "
+msgstr ""
+"Embora eu garanto que não armazenarei sua senha ou qualquer outra "
+"informação, este website não utiliza encriptação por SSL, portanto usá-lo em "
+"redes desconhecidas pode ser inseguro."
+
+#: templates/ira/login.html:37
+msgid ""
+"Use at your own risk. I can't be responsible, in\n"
+"        any way at all, for any problem related to your ProGrad Web account. "
+"I\n"
+"        don't even assure that the calculations are correct. Do not rely "
+"upon\n"
+"        the results."
+msgstr ""
+"Use por sua conta e risco. Não me responsabilizo, de forma alguma, por "
+"qualquer problema relacionado à sua conta no ProGrad Web. Nem mesmo garanto "
+"que o cálculo esteja correto. Não confie nos resultados."
+
+#: templates/ira/login.html:41
+msgid "Calculated (a little) based on"
+msgstr "Calculado (levemente) com base na"
+
+#: templates/ira/mostrar_ira.html:3
+msgid "Your IRA is:"
+msgstr "Seu IRA é:"
+
+#: templates/ira/mostrar_ira.html:5
+msgid "Add discipline"
+msgstr "Adicionar disciplina"
+
+#: templates/ira/mostrar_ira.html:8
+msgid "Delete discipline(s)"
+msgstr "Deletar disciplina(s)"
+
+#: templates/ira/mostrar_ira.html:12
+msgid "Estimate IRA"
+msgstr "Estimar IRA"
+
+#: templates/ira/mostrar_ira.html:16
+msgid "Select"
+msgstr "Selecionar"
+
+#: templates/ira/mostrar_ira.html:17
+msgid "Discipline"
+msgstr "Disciplina"
+
+#: templates/ira/mostrar_ira.html:18
+msgid "Grade"
+msgstr "Nota"
+
+#: templates/ira/mostrar_ira.html:19
+msgid "Result"
+msgstr "Resultado"
+
+#: templates/ira/mostrar_ira.html:20
+msgid "Credits"
+msgstr "Créditos"
+
+#: templates/ira/selecionar_enfase.html:3
+msgid "Select the emphasis:"
+msgstr "Selecione a ênfase:"
+
+#: templates/registration/login.html:4 templates/registration/login.html:8
+#: templates/registration/login.html:9
+msgid "Login"
+msgstr "Login"
+
+#: templates/registration/login.html:17
+msgid "Error!"
+msgstr "Erro!"
+
+#: templates/registration/login.html:18
+msgid "That's not a valid username or password."
+msgstr "Usuário ou senha inválidos."
+
+#~ msgid "Afastado"
+#~ msgstr "Afastado"
+
+#~ msgid "Aprovado"
+#~ msgstr "Aprovado"
+
+#~ msgid "Reprovado"
+#~ msgstr "Reprovado"
+
+#~ msgid "Cancelado"
+#~ msgstr "Cancelado"
+
+#~ msgid "Desistente"
+#~ msgstr "Desistente"
+
+#~ msgid "Pendente"
+#~ msgstr "Pendente"

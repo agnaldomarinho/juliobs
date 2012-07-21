@@ -3,11 +3,6 @@
     z-index: 0;
 }
 
-html, button, input, select, textarea
-{
-    font-family: sans-serif; color: #222;
-}
-
 /* Selecao em laranja */
 ::-moz-selection { background: #f16529; color: #fff; text-shadow: none; }
 ::selection { background: #f16529; color: #fff; text-shadow: none; }
@@ -116,4 +111,50 @@ ul.errorlist
     font-size: 10px;
     margin: 0 0 3px;
     padding: 4px 5px;
+}
+
+.icone-sprite, .icone-camera, .icone-facebook, .icone-github,
+.icone-gplus, .icone-lastfm, .icone-linkedin, .icone-rss, .icone-twitter,
+.icone-youtube
+{
+  background: url('/static/images/icones.png') no-repeat;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+
+.icone-camera {
+  background-position: 0 0;
+}
+
+.icone-facebook {
+  background-position: 0 -448px;
+}
+
+.icone-github {
+  background-position: 0 -512px;
+}
+
+.icone-gplus {
+  background-position: 0 -320px;
+}
+
+.icone-lastfm {
+  background-position: 0 -192px;
+}
+
+.icone-linkedin {
+  background-position: 0 -256px;
+}
+
+.icone-rss {
+  background-position: 0 -64px;
+}
+
+.icone-twitter {
+  background-position: 0 -384px;
+}
+
+.icone-youtube {
+  background-position: 0 -128px;
 }
