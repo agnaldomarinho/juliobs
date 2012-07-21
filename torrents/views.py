@@ -1,6 +1,6 @@
 # -*-*- encoding: utf-8 -*-*-
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 import xmlrpclib
 import xmlrpc2scgi as xmlrpc
 import sys
@@ -26,7 +26,8 @@ class Rtorrent:
     def set_down_rate(self, rate):
         return self.s.set_download_rate(rate)
 
-
+ 
+@login_required
 def torrents(request):
     errors = []
     try:
@@ -45,14 +46,7 @@ def torrents(request):
 
         up = int(r.get_up_rate()) / 1024
         down = int(r.get_down_rate()) / 1024
-
-        return render_to_response('torrents.html',
-                {'up': up,
-                    'down': down},
-                context_instance=RequestContext(request))
+        return render(request, 'torrents.html', {'up': up, 'down': down})
     except:
         errors.append(sys.exc_info())
-
-        return render_to_response('torrents.html',
-                {'errors': errors},
-                context_instance=RequestContext(request))
+        return render(request, 'torrents.html', {'errors': errors})
