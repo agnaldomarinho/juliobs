@@ -1,0 +1,29 @@
+#cv a
+{
+    color: #000;
+}
+
+#events article, #education article {
+	margin:15px 0 37px 95px;
+	padding-left:5px;
+	position:relative;
+	border:1px solid #FCFCFC
+}
+
+.start, .end
+{
+	left:-80px;
+	padding:4px 0;
+	position:absolute;
+	text-align:center;
+	border-top:1px dashed #ddd;
+	font-size:0.75em;
+	top:19px;
+	width:70px;
+}
+
+.end
+{
+	top:0;
+	border:none
+}

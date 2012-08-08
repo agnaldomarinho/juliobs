@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block title %}{% trans "My Curriculum Vitæ" %}{% endblock %}
+
+{% block stylesheets %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/curriculum.css" %}">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<section class="row-fluid" id="cv">
+    <header class="vcard">
+        <h4>{% trans "My CV" %}</h4>
+        <h1>Julio Batista Silva</h1>
+        <ul class="contact unstyled">
+            <li class="email">julio+juliobs.com
+            <li class="tel">+55(12)91004164
+            <li class="url"><a href="http://juliobs.com" title="Julio Website">http://juliobs.com</a>
+            <li class="location">{% trans "São Carlos, SP - Brazil" %}
+        </ul>
+    </header>
+
+    <section id="summary">
+    <h2>{% trans "Summary" %}</h2>
+        <p>{% trans "I am a 21 years old Computer Engineering student at UFSCar, Brazil." %}</p>
+        <p>{% trans "I'm a free software enthusiast with strong team working skills and that mantains interest in new technologies" %}</p>
+    </section>
+
+    <section id="education">
+        <h2>{% trans "Education and Qualifications" %}</h2>
+
+        <article>
+            <time datetime="2006-02-01" class="start">2006</time>
+            <time datetime="2008-12-31" class="end">2008</time>
+            <p><a href="http://www.institutoembraer.com.br/Colegio.aspx">{% trans "Embraer Juarez Wanderley High School" %}</a></p>
+            <p>{% trans "High school student" %}</p>
+        </article>
+
+        <article>
+            <time datetime="2006-08-01" class="start">2006</time>
+            <time datetime="2007-12-31" class="end">2007</time>
+            <div class="duration">800h</div>
+            <p>{% trans "Embraer Juarez Wanderley High School" %}</p>
+            <p>{% trans "Pre-engineering program" %}</p>
+            <p>{% trans "Basic knowledge about the hidraulic, eletric mechanic and termic systems" %}</p>
+        </article>
+
+        <article>
+            <time datetime="2009-03-01" class="start">2009</time>
+            <time datetime="2013-12-31" class="end">2013</time>
+            <p>{% trans "Federal University of São Carlos (UFSCar)" %}</p>
+            <p>{% trans "Computer engineering student" %}</p>
+        </article>
+    </section>
+
+    <section id="skills">
+        <h2>{% trans "Technical Skills" %}</h2>
+        <dl>
+            <dt>{% trans "Operating Systems" %}</dt>
+            <dd>{% trans "Very experienced with GNU/Linux" %}
+            <dd>{% trans "Also a little skilled with Microsoft Windows, OpenBSD and Mac OS" %}
+
+            <dt>{% trans "Programming Languages" %}</dt>
+            <dd>{% trans "Intermediate level: C++, C, Python and Java" %}
+            <dd>{% trans "Already coded in" %}: Lisp, Prolog, Assembly x86, Assembly MIPS, PHP, Javascript, Lua
+
+            <dt>{% trans "Frameworks/Tools/other skills" %}</dt>
+            <dd>HTML5
+            <dd>CSS3
+            <dd>jQuery
+
+            <dd>Django
+            <dd>Grails
+            <dd>Joomla
+
+            <dd>SQL
+            <dd>MySQL
+            <dd>PostgreSQL
+
+            <dd>Git
+            <dd>SVN
+
+            <dd>Netbeans
+            <dd>Eclipse
+            <dd>Vim
+
+            <dd>Apache
+            <dd>Shell Script
+            <dd>Microsoft Office
+            <dd>UML
+            <dd>{% trans "Agile development (Scrum)" %}
+        </dl>
+    </section>
+
+    <section id="languages">
+        <h2>{% trans "Languages" %}</h2>
+        <ul>
+            <li>{% trans "Portuguese: Fluent, native" %}
+            <li>{% trans "English: Advanced level" %}
+        </ul>
+    </section>
+
+    <section id="achievements">
+        <h2>{% trans "Academic achievements:" %}</h2>
+        <ul>
+            <li>{% trans "Honorable mention in the 1st edition of the Brazilian Mathematical Olympiad for State Schools" %} (<a href="http://www.obmep.org.br/">OBMEP</a> 2005)
+            <li>{% trans "Bronze medal in the 8th Brazilian Olympiad on Astronomy and Astronautics" %} (<a href="http://oba.org.br">OBA</a> 2005)
+            <li>{% trans "Bronze medal in the 10th Brazilian Olympiad on Astronomy and Astronautics" %} (<a href="http://oba.org.br">OBA</a> 2007)
+        </ul>
+    </section>
+
+    <section id="events">
+    <h2>{% trans "Participation in events" %}</h2>
+
+        <article>
+            <time datetime="2009-06-08" class="start">08-Jun-2009</time>
+            <time datetime="2009-06-10" class="end">10-Jun-2009</time>
+            <div class="duration">40h</div>
+            <h3><a href="http://www.secomp.ufscar.br/">II Semana da Computação UFSCar (SeComp 2009)</a></h3>
+            <p>{% trans "Talks about new technologies and the IT labour market" %}</p>
+        </article>
+
+        <article>
+            <time datetime="2010-05-31" class="start">31-Mai-2010</time>
+            <time datetime="2010-06-02" class="end">02-Jun-2010</time>
+            <div class="duration">40h</div>
+            <h3><a href="http://www.secomp.ufscar.br/">III Semana da Computação UFSCar (SeComp 2010)</a></h3>
+            <p>{% trans "Talks about new technologies and the IT labour market" %}</p>
+        </article>
+         
+        <article>
+            <time datetime="2011-10-14" class="start">14-Oct-2011</time>
+            <time datetime="2011-10-16" class="end">16-Oct-2011</time>
+            <div class="duration">72h</div>
+            <h3><a href="http://codefest.org.br/">Codefest Unicamp</a></h3>
+            <p>{% trans "In this hackathon my team, composed of 4 members, developed a python software for pattern recognition in images for the " %}
+            <a href="http://www.buscapecompany.com/en/index.htm">BuscaPé company</a>.</p>
+        </article>
+
+        <article>
+            <time datetime="2011-01-17" class="start">17-Jan-2011</time>
+            <time datetime="2011-01-23" class="end">23-Jan-2011</time>
+            <div class="duration">168h</div>
+            <h3><a href="http://www.campus-party.com.br/2011/index.html">Campus Party Brazil 4 (CPBR4)</a></h3>
+            <p>{% trans "Talks related to technology" %}</p>
+        </article>
+
+        <article>
+            <time datetime="2011-09-17" class="start">17-Set-2011</time>
+            <time datetime="2011-09-17" class="end">17-Set-2011</time>
+            <div class="duration">8h</div>
+            <h3>{% trans "International Collegiate Programming Contest" %}</h3>
+            <p>{% trans "Participated in ACM-ICPC as contestant" %}</p>
+        </article>
+
+        <article>
+            <time datetime="2011-11-07" class="start">07-Nov-2011</time>
+            <time datetime="2011-11-10" class="end">10-Nov-2011</time>
+            <div class="duration">6h</div>
+            <h3>Semana de Palestras da Computação 2011 - DC-UFSCar</h3>
+            <p>{% trans "Talks about Motorola, SOA, supercomputers and weather forecasting." %}</p>
+        </article>
+
+        <article>
+            <time datetime="2012-05-30" class="start">30-Mai-2012</time>
+            <time datetime="2012-06-01" class="end">01-Jun-2012</time>
+            <div class="duration">18h</div>
+            <h3>I Seminário em Engenharia de Computação - UFSCar</h3>
+            <p>{% trans "Talks and round table with companies like Embraer, GE, Bosh, Guenka and Embrapa" %}</p>
+        </article>
+
+        <article>
+            <time datetime="2012-07-25" class="start">25-Jul-2012</time>
+            <time datetime="2012-07-28" class="end">28-Jul-2012</time>
+            <div class="duration">48h</div>
+            <h3>{% trans "International Free Software Forum" %} (<a href="http://softwarelivre.org/fisl13">FISL13</a>)</h3>
+            <p>{% trans "Talks. Mozilla Hack Day" %}</p>
+        </article>
+    </section>
+
+    <section id="other">
+        <h2>{% trans "Other activities" %}</h2>
+        <dl>
+            <time datetime="2007-02-01" class="start">01-Feb-2007</time>
+            <time datetime="2007-12-07" class="end">07-Dec-2007</time>
+            <dt>{% trans "Alternativas sustentáveis" %}</dt>
+                <div class="duration">120h</div>
+                <dd>{% trans "Participated in a sustainability project to solve social and environmental issues. In a team of four, we projected and developed a biodigestor for generating methane gas" %}</dd>
+            
+            <time datetime="2011-02-28" class="start">28-Feb-2011</time>
+            <time datetime="2011-07-02" class="end">02-Jul-2011</time>
+            <dt>Paid Mentoring</dt>
+                <div class="duration">192h</div>
+                <dd>{% trans "Mentored undergraduate students on the Introduction to programming and database class at UFSCar and assisted the teacher." %}</dd>
+        </dl>
+    </section>
+
+    <section id="hobbies">
+        <h2>{% trans "Other interests and Hobbies:" %}</h2>
+        <ul>
+            <li>{% trans "Playing clarinet, flute and harmonica" %}
+            <li>{% trans "Listening music" %}
+            <li><a href="http://juliobs.com/gallery/">{% trans "Photography" %}</a>
+            <li>{% trans "Web development" %}
+            <li>{% trans "Cryptography" %}
+            <li>{% trans "Free and open source software" %}
+        </ul>
+    </section>
+
+    {% trans "Last update:" %} <time datetime="2012-08-07">{% trans "August 7th 2012" %}</time>
+</section>
+
+<div class="row-fluid">
+    <a href="{% static "julio_silva-cv.pdf" %}"><h3>Download PDF</h3></a>
+</div>
+{% endblock %}

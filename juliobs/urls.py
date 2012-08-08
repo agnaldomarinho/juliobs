@@ -46,6 +46,8 @@ urlpatterns = patterns('',
     url(r'^projetos/$', projetos, name="jbs-projetos"),
     (r'^projetos/(.*)$', programas),
 
+    (r'^cv/$', TemplateView.as_view(template_name='curriculum.html')),
+
     (r'^stuff-i-use/$',
         TemplateView.as_view(template_name='stuff_i_use.html')),
 

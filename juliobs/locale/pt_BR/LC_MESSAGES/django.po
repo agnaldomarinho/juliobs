@@ -1,22 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# julio <julio@juliobs.com>, 2012.
-#
+# Julio <julio@juliobs.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: 0001\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-21 15:34-0300\n"
-"PO-Revision-Date: 2012-07-21 15:36-0300\n"
-"Last-Translator: julio <julio@juliobs.com>\n"
+"POT-Creation-Date: 2012-08-07 22:59-0300\n"
+"PO-Revision-Date: 2012-08-07 22:57-0300\n"
+"Last-Translator: Julio <julio@juliobs.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.5\n"
 
 #: settings.py:37
 msgid "English"
@@ -131,6 +127,249 @@ msgstr "Sucesso!"
 msgid "Thank you for contacting me, your message has been submitted."
 msgstr "Obrigado por entrar em contato, sua mensagem foi enviada."
 
+#: templates/curriculum.html:5
+msgid "My Curriculum Vitæ"
+msgstr "Meu Curriculum Vitæ"
+
+#: templates/curriculum.html:18
+msgid "My CV"
+msgstr "Meu CV"
+
+#: templates/curriculum.html:24
+msgid "São Carlos, SP - Brazil"
+msgstr "São Carlos, SP - Brasil"
+
+#: templates/curriculum.html:29
+msgid "Summary"
+msgstr "Resumo"
+
+#: templates/curriculum.html:30
+msgid "I am a 21 years old Computer Engineering student at UFSCar, Brazil."
+msgstr ""
+"Eu sou um estudante de Engenharia de Computação de 21 anos na UFSCar, Brasil."
+
+#: templates/curriculum.html:31
+msgid ""
+"I'm a free software enthusiast with strong team working skills and that "
+"mantains interest in new technologies"
+msgstr ""
+"Sou um entusiasta do software livre com fortes habilidades de trabalho em "
+"grupo e que mantém interesse em novas tecnologias"
+
+#: templates/curriculum.html:35
+msgid "Education and Qualifications"
+msgstr "Educação e qualificações"
+
+#: templates/curriculum.html:40 templates/curriculum.html.py:48
+msgid "Embraer Juarez Wanderley High School"
+msgstr "Colégio Embraer Juarez Wanderley"
+
+#: templates/curriculum.html:41
+msgid "High school student"
+msgstr "Estudante do ensino médio"
+
+#: templates/curriculum.html:49
+msgid "Pre-engineering program"
+msgstr "Programa pré-engenharia"
+
+#: templates/curriculum.html:50
+msgid ""
+"Basic knowledge about the hidraulic, eletric mechanic and termic systems"
+msgstr ""
+"Conhecimentos básicos sobre os sistemas hidráulico, elétrico, mecânico e "
+"térmico"
+
+#: templates/curriculum.html:56
+msgid "Federal University of São Carlos (UFSCar)"
+msgstr "Universidade Federal de São Carlos (UFSCar)"
+
+#: templates/curriculum.html:57
+msgid "Computer engineering student"
+msgstr "Estudante de Engenharia de Computação"
+
+#: templates/curriculum.html:62
+msgid "Technical Skills"
+msgstr "Habilidades técnicas"
+
+#: templates/curriculum.html:64
+msgid "Operating Systems"
+msgstr "Sistemas Operacionais"
+
+#: templates/curriculum.html:65
+msgid "Very experienced with GNU/Linux"
+msgstr "Grande experiência com GNU/Linux"
+
+#: templates/curriculum.html:66
+msgid "Also a little skilled with Microsoft Windows, OpenBSD and Mac OS"
+msgstr "Também hábil com Microsoft Windows, OpenBSD e Mac OS"
+
+#: templates/curriculum.html:68
+msgid "Programming Languages"
+msgstr "Linguagens de Programação"
+
+#: templates/curriculum.html:69
+msgid "Intermediate level: C++, C, Python and Java"
+msgstr "Nível intermediário: C++, C, Python e Java"
+
+#: templates/curriculum.html:70
+msgid "Already coded in"
+msgstr "Já programei em"
+
+#: templates/curriculum.html:72
+msgid "Frameworks/Tools/other skills"
+msgstr "Frameworks/Ferramentas/outras habilidades"
+
+#: templates/curriculum.html:96
+msgid "Agile development (Scrum)"
+msgstr "Desenvolvimento ágil (Scrum)"
+
+#: templates/curriculum.html:101
+msgid "Languages"
+msgstr "Linguagens"
+
+#: templates/curriculum.html:103
+msgid "Portuguese: Fluent, native"
+msgstr "Português: Fluente, nativo"
+
+#: templates/curriculum.html:104
+msgid "English: Advanced level"
+msgstr "Inglês: Nível avançado"
+
+#: templates/curriculum.html:109
+msgid "Academic achievements:"
+msgstr "Feitos acadêmicos:"
+
+#: templates/curriculum.html:111
+msgid ""
+"Honorable mention in the 1st edition of the Brazilian Mathematical Olympiad "
+"for State Schools"
+msgstr ""
+"Menção honrosa na primeira edição da Olimpíada Brasileira de Matemática das "
+"escolas públicas"
+
+#: templates/curriculum.html:112
+msgid ""
+"Bronze medal in the 8th Brazilian Olympiad on Astronomy and Astronautics"
+msgstr ""
+"Medalha de bronze na 8a Olimpíada Brasileira de Astronomia e Astronáutica"
+
+#: templates/curriculum.html:113
+msgid ""
+"Bronze medal in the 10th Brazilian Olympiad on Astronomy and Astronautics"
+msgstr ""
+"Medalha de bronze na 10a Olimpíada Brasileira de Astronomia e Astronáutica"
+
+#: templates/curriculum.html:118
+msgid "Participation in events"
+msgstr "Participação em eventos"
+
+#: templates/curriculum.html:125 templates/curriculum.html.py:133
+msgid "Talks about new technologies and the IT labour market"
+msgstr "Palestras sobre novas tecnologias e o mercado de trabalho em TI"
+
+#: templates/curriculum.html:141
+msgid ""
+"In this hackathon my team, composed of 4 members, developed a python "
+"software for pattern recognition in images for the "
+msgstr ""
+"Neste hackathon meu time, composto de 4 membros, desenvolveu um software em "
+"Python para reconhecimento de padrões em imagens para a"
+
+#: templates/curriculum.html:150
+msgid "Talks related to technology"
+msgstr "Palestras relacionadas a tecnologia"
+
+#: templates/curriculum.html:157
+msgid "International Collegiate Programming Contest"
+msgstr "Maratona de programação"
+
+#: templates/curriculum.html:158
+msgid "Participated in ACM-ICPC as contestant"
+msgstr "Participei na ACM-ICPC como competidor"
+
+#: templates/curriculum.html:166
+msgid "Talks about Motorola, SOA, supercomputers and weather forecasting."
+msgstr ""
+"Palestras sobre a Motorola, SOA, supercomputadores e previsão do tempo."
+
+#: templates/curriculum.html:174
+msgid ""
+"Talks and round table with companies like Embraer, GE, Bosh, Guenka and "
+"Embrapa"
+msgstr ""
+"Palestras e mesa redonda com companias como Embraer, GE, Bosh, Guenka e "
+"Embrapa"
+
+#: templates/curriculum.html:181
+msgid "International Free Software Forum"
+msgstr "Fórum Internacional do Software Livre"
+
+#: templates/curriculum.html:182
+msgid "Talks. Mozilla Hack Day"
+msgstr "Palestras. Mozilla Hack Day"
+
+#: templates/curriculum.html:187
+msgid "Other activities"
+msgstr "Outras atividades"
+
+#: templates/curriculum.html:191
+msgid "Alternativas sustentáveis"
+msgstr "Alternativas sustentáveis"
+
+#: templates/curriculum.html:193
+msgid ""
+"Participated in a sustainability project to solve social and environmental "
+"issues. In a team of four, we projected and developed a biodigestor for "
+"generating methane gas"
+msgstr ""
+"Participei em um projeto de sustentabilidade visando resolver problemas "
+"sociais e ambientais. Em um time de quatro membros, nós projetamos e "
+"desenvolvemos um biodigestor para geração de gás metano"
+
+#: templates/curriculum.html:199
+msgid ""
+"Mentored undergraduate students on the Introduction to programming and "
+"database class at UFSCar and assisted the teacher."
+msgstr ""
+"Mentorei estudantes de graduação na matéria Introdução à programação e banco "
+"de dados na UFSCar e auxiliei o professor."
+
+#: templates/curriculum.html:204
+msgid "Other interests and Hobbies:"
+msgstr "Outros interesses e Hobbies:"
+
+#: templates/curriculum.html:206
+msgid "Playing clarinet, flute and harmonica"
+msgstr "Tocar clarinete, flauta e gaita"
+
+#: templates/curriculum.html:207
+msgid "Listening music"
+msgstr "Ouvir música"
+
+#: templates/curriculum.html:208
+msgid "Photography"
+msgstr "Fotografia"
+
+#: templates/curriculum.html:209
+msgid "Web development"
+msgstr "Desenvolvimento Web"
+
+#: templates/curriculum.html:210
+msgid "Cryptography"
+msgstr "Criptografia"
+
+#: templates/curriculum.html:211
+msgid "Free and open source software"
+msgstr "Software livre"
+
+#: templates/curriculum.html:215 templates/stuff_i_use.html:19
+msgid "Last update:"
+msgstr "Última atualização:"
+
+#: templates/curriculum.html:215
+msgid "August 7th 2012"
+msgstr "7 de Agosto de 2012"
+
 #: templates/homepage.html:30 templates/homepage.html.py:31
 msgid "Timetable"
 msgstr "Horário"
@@ -140,11 +379,23 @@ msgstr "Horário"
 msgid "Stuff I Use"
 msgstr "Coisas que eu uso"
 
-#: templates/homepage.html:42
+#: templates/homepage.html:39
+msgid "Restrict Access"
+msgstr "Acesso Restrito"
+
+#: templates/homepage.html:40 templates/homepage.html.py:41
+msgid "Torrents"
+msgstr "Torrents"
+
+#: templates/homepage.html:42 templates/homepage.html.py:43
+msgid "Contact List"
+msgstr "Agenda de contatos"
+
+#: templates/homepage.html:48
 msgid "About me"
 msgstr "Sobre mim"
 
-#: templates/homepage.html:50
+#: templates/homepage.html:56
 msgid ""
 "Julio Batista Silva, born in São José dos Campos - SP, graduated in\n"
 "        2008 from <a href=\"http://colegioembraer.com.br/\">Embraer Juarez "
@@ -160,7 +411,7 @@ msgstr ""
 "\"http://www.ufscar.br/\">\n"
 "            Universidade Federal de São Carlos (UFSCar)</a>."
 
-#: templates/homepage.html:57
+#: templates/homepage.html:63
 msgid "For more information, visit:"
 msgstr "Para mais informações, visite:"
 
@@ -201,10 +452,6 @@ msgid ""
 msgstr ""
 "Esta página contém uma lista atualizada de aplicativos, produtos e serviços "
 "que eu pessoalmente uso regularmente"
-
-#: templates/stuff_i_use.html:19
-msgid "Last update:"
-msgstr "Última atualização:"
 
 #: templates/stuff_i_use.html:60
 msgid ""
@@ -450,21 +697,3 @@ msgstr "Erro!"
 #: templates/registration/login.html:18
 msgid "That's not a valid username or password."
 msgstr "Usuário ou senha inválidos."
-
-#~ msgid "Afastado"
-#~ msgstr "Afastado"
-
-#~ msgid "Aprovado"
-#~ msgstr "Aprovado"
-
-#~ msgid "Reprovado"
-#~ msgstr "Reprovado"
-
-#~ msgid "Cancelado"
-#~ msgstr "Cancelado"
-
-#~ msgid "Desistente"
-#~ msgstr "Desistente"
-
-#~ msgid "Pendente"
-#~ msgstr "Pendente"
