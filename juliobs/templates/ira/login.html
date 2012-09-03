@@ -11,18 +11,29 @@
 {% endif %}
 
 <div class="row-fluid">
-    <h4>Login:</h4>
-    <form class="well" name="dados" method="post" action="">{% csrf_token %}
-        <label>RA:</label>
-        <input type="number" name="ra" min="100000" max="999999" autofocus
-        required placeholder="{% trans "Your RA" %}">
+    <div class="span6">
+        <h4>Login:</h4>
+        <form class="well" name="dados" method="post" action="">{% csrf_token %}
+            <label>RA:</label>
+            <input type="number" name="ra" min="100000" max="999999" autofocus
+            required placeholder="{% trans "Your RA" %}">
 
-        <label>Senha:</label>
-        <input type="password" name="senha" size="20" required
-        placeholder="{% trans "ProGrad Web password" %}">
-        <br>
-        <input class="btn btn-primary" type="submit" name="login" value="Login">
-    </form>
+            <label>Senha:</label>
+            <input type="password" name="senha" size="20" required
+            placeholder="{% trans "ProGrad Web password" %}">
+            <br>
+            <input class="btn btn-primary" type="submit" name="login" value="Login">
+        </form>
+    </div>
+
+    <div class="span6">
+        <h4>HTML Upload</h4>
+        <form class="well" name="html" method="post" action="">{% csrf_token %}
+            <textarea name="hist_html"></textarea>
+            <br>
+            <input class="btn btn-primary" type="submit" name="send" value="Send">
+        </form>
+    </div>
 </div>
 
 <div class="row-fluid">

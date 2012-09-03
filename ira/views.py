@@ -6,18 +6,18 @@ import re
 import mechanize
 
 
-def calcula_ira(nota_ponderada, inscritos, cancelados, desistentes):
-    if inscritos <= 0:
+def calcula_ira(nota_pond, inscr, cancel, desist):
+    if inscr <= 0:
         return 0
 
     try:
-        ira = 1000 * (nota_ponderada / inscritos) * (2 -
-                (cancelados + 2 * desistentes) / inscritos)
+        ira = 1000 * (nota_pond / inscr) * (2 - (cancel + 2 * desist) / inscr)
         ira = int(round(ira))
     except:
         ira = 0
 
     return ira
+
 
 def ira(request):
     #Se acabou de entrar no site
@@ -35,7 +35,7 @@ def ira(request):
             #RA ou senha em branco
             if errors:
                 return render(request, 'ira/ira.html',
-                        {'etapa': 'login', 'errors': errors})
+                              {'etapa': 'login', 'errors': errors})
             else:
                 ra = request.POST['ra']
                 senha = request.POST['senha']
@@ -47,7 +47,7 @@ def ira(request):
                 br.set_handle_robots(False)
 
                 br.addheaders = [('User-agent',
-                    'Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0')]
+                    'Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0')]
 
                 link = 'https://progradweb.ufscar.br/progradweb/servlet/Superior'
 
@@ -84,11 +84,11 @@ def ira(request):
                 except mechanize._mechanize.FormNotFoundError:
                     errors.append('Verifique sua senha.')
                     return render(request, 'ira/ira.html',
-                            {'etapa': 'login', 'errors': errors})
+                                  {'etapa': 'login', 'errors': errors})
                 except:
                     errors.append(sys.exc_info())
                     return render(request, 'ira/ira.html',
-                            {'etapa': 'login', 'errors': errors})
+                                  {'etapa': 'login', 'errors': errors})
                 else:
                     #Possui mais de 1 enfase?
                     if data.find("Clique em uma das &ecirc;nfases abaixo para ver") != -1:
@@ -100,15 +100,14 @@ def ira(request):
                             enfases = []
                             for link in links:
                                 nome = link.text.decode('ISO-8859-1')
-                                enfase = {'nome': nome,
-                                        'url': link.url}
+                                enfase = {'nome': nome, 'url': link.url}
                                 enfases.append(enfase)
 
                             return render(request, 'ira/ira.html',
-                                    {'enfases': enfases,
-                                        'ra': ra,
-                                        'senha': senha,
-                                        'etapa': 'selecionar_enfase'})
+                                          {'enfases': enfases,
+                                              'ra': ra,
+                                              'senha': senha,
+                                              'etapa': 'selecionar_enfase'})
                         #Já escolheu uma ênfase
                         else:
                             enfases_link = request.POST['enfase_opt']
@@ -213,9 +212,9 @@ def ira(request):
                             "Reprovado", "Cancelado", "Desistente", "Pendente"]
 
                     return render(request, 'ira/ira.html',
-                            {'etapa': 'mostrar_ira', 'ira': ira,
-                                'materias': materias,
-                                'resultados_possiveis': resultados_possiveis})
+                                  {'etapa': 'mostrar_ira', 'ira': ira,
+                                   'materias': materias,
+                                   'resultados_possiveis': resultados_possiveis})
 
         elif 'previsao' in request.POST:
             from itertools import izip
@@ -267,9 +266,9 @@ def ira(request):
 
                 # Guarda lista para depois
                 materia = {'nome': nome,
-                        'nota': nota,
-                        'resultado': resultado,
-                        'creditos': creditos}
+                           'nota': nota,
+                           'resultado': resultado,
+                           'creditos': creditos}
                 materias.append(materia)
 
             # Se ainda não fez nenhuma disciplina (bixo) faz ira = 0 e
@@ -278,14 +277,13 @@ def ira(request):
             if (creditos_inscritos <= 0):
                 ira = 0
                 materia = {'nome': '',
-                        'nota': '',
-                        'resultado': '',
-                        'creditos': ''}
+                           'nota': '',
+                           'resultado': '',
+                           'creditos': ''}
                 materias.append(materia)
             else:
                 try:
-                    ira = calcula_ira(nota_ponderada, creditos_inscritos,
-                            creditos_cancelados, creditos_desistentes)
+                    ira = calcula_ira(nota_ponderada, creditos_inscritos, creditos_cancelados, creditos_desistentes)
                 except:
                     errors.append(sys.exc_info())
                     return render(request, 'ira/ira.html',
@@ -295,6 +293,6 @@ def ira(request):
                     "Reprovado", "Cancelado", "Desistente", "Pendente"]
 
             return render(request, 'ira/ira.html',
-                    {'etapa': 'mostrar_ira', 'ira': ira,
-                        'materias': materias,
-                        'resultados_possiveis': resultados_possiveis})
+                          {'etapa': 'mostrar_ira', 'ira': ira,
+                           'materias': materias,
+                           'resultados_possiveis': resultados_possiveis})
