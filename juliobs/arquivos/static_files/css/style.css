@@ -26,25 +26,6 @@ header h1
 	border-bottom: 1px solid #dfa229;
 }
 
-/* ribbon em baixo
-header h4
-{
-	color: #F47D31;
-    overflow: hidden;
-    position: fixed;
-    bottom: 3em;
-    left: -4em;
-    text-align: center;
-    padding: 0.4em 6em;
-
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-
-    -webkit-box-shadow: 0 0 2em #888;
-    -moz-box-shadow: 0 0 2em #888;
-}
-*/
-
 header h4
 {
 	color: #F47D31;
@@ -94,6 +75,12 @@ hr
 footer
 {
 	text-align: center;
+}
+
+#logos img
+{
+    height: 32px;
+    margin: 2px;
 }
 
 /* Forms */

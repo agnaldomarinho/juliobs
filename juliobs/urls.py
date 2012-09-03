@@ -37,6 +37,9 @@ urlpatterns = patterns('',
     url(r'^horario/$', TemplateView.as_view(template_name='horario.html'),
         name="jbs-horario"),
 
+    url(r'^licenca/$', TemplateView.as_view(template_name='licenca.html'),
+        name="jbs-licenca"),
+
     url(r'^pgp/$', TemplateView.as_view(template_name='public_key.html'),
         name="jbs-pgp"),
 

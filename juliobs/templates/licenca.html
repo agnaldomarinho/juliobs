@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% url "jbs-contato" as jbs_contato %}
+
+{% block title %}{% trans "Licence" %}{% endblock %}
+
+{% block header %}
+<header>
+    <h1>{% trans "Licence" %}</h1>
+    <h4>{% trans "Licence" %}</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" title="Creative Commons License"
+        src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png">
+    </a>
+
+    <p>Except where otherwise noted, content on this site is licensed under a
+    <a rel="license"
+        href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+        Attribution-ShareAlike 3.0 Unported License</a>.</p>
+    
+    <p>This means that you are <strong>free</strong> to copy and reuse any of
+    my images and texts as long as you tell people where they're from
+    (http://juliobs.com).</p>
+
+    <p>If you're not sure whether you are violating this licence, feel free to
+    <a href="{{ jbs_contato }}" title="{% trans 'Contact' %}">contact me</a>
+    and ask.</p>
+</div>
+{% endblock %}

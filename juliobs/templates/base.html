@@ -24,9 +24,9 @@
         {% endblock %}
 
         {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
         {% endblock %}
 
         {% block scripts %}
@@ -145,61 +145,65 @@
                 {# <p>Atual: {{ lang|language_name }} ({{ lang|language_name_local }})</p> #}
             </div>
 
-            {# TODO: Usar CSS sprites #}
             <div class="row-fluid" id="logos">
                 <a href="http://www.vim.org">
                     <img src="{% static "images/logos/vim.png" %}"
-                    alt="Created with Vim" title="Created with Vim"
-                    height="32" />
+                    alt="Created with Vim" title="Created with Vim">
                 </a>
 
                 <a href="http://juliobs.com/humans.txt">
                     <img src="{% static "images/logos/humanstxt.gif" %}"
-                    alt="humans.txt" title="humans.txt"
-                    height="32" />
+                    alt="humans.txt" title="humans.txt">
                 </a>
 
                 <a href="http://www.djangoproject.com/">
                     <img src="{% static "images/logos/django_powered.gif" %}"
-                    alt="Powered by Django" title="Powered by Django"
-                    height="32" />
+                    alt="Powered by Django" title="Powered by Django">
                 </a>
 
                 <a href="http://djangopony.com/">
                     <img src="{% static "images/logos/pony.png" %}"
-                    alt="pony powered" title="Magic! Ponies!  Django! Whee!"
-                    height="32" />
+                    alt="pony powered" title="Magic! Ponies!  Django! Whee!">
                 </a>
 
                 <a href="http://validator.w3.org/check?uri=referer">
                     <img src="{% static "images/logos/i_heart_validator.png" %}"
-                    alt="Valid HTML 5" title="Valid HTML 5"
-                    height="32" />
+                    alt="Valid HTML 5" title="Valid HTML 5">
                 </a>
 
                 <a href='http://opensource.org/'>
                     <img src="{% static "images/logos/opensource.png" %}"
-                    alt="Open Source" title="Open Source"
-                    height="32" />
+                    alt="Open Source" title="Open Source">
                 </a>
 
                 <a href='http://www.catb.org/hacker-emblem/'>
                     <img src="{% static "images/logos/hacker_emblem.png" %}"
-                    alt='hacker emblem' title="hacker emblem"
-                    height="32" />
+                    alt='hacker emblem' title="hacker emblem">
                 </a>
 
                 <a href="http://www.w3.org/html/logo/">
                     <img src="{% static "images/logos/HTML5_Logo_32.png" %}"
-                    alt="HTML5 Powered" title="HTML5 Powered"
-                    height="32" />
+                    alt="HTML5 Powered" title="HTML5 Powered">
                 </a>
 
                 <a href="/qrcode">
                     <img src="{% static "images/qrcode/qrcode_l.png" %}"
-                    alt="QR Code" title="QR Code"
-                    height="32" />
+                    alt="QR Code" title="QR Code">
                 </a>
+
+                <!-- Em pt_BR: https://creativecommons.org/licenses/by-sa/3.0/deed.pt_BR -->
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+                    <img src="{% static "images/logos/creative_commons.png" %}"
+                    alt="Creative Commons License" title="Creative Commons License">
+                </a>
+
+            </div>
+
+            <div class="row-fluid well" id="licence">
+                <p>Except where otherwise noted, content on this site is
+                licensed under a <a rel="license"
+                    href="http://creativecommons.org/licenses/by-sa/3.0/">Creative
+                    Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
             </div>
         </footer>
         {% endblock %}
