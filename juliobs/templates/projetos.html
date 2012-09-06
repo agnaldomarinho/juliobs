@@ -12,46 +12,53 @@
 
 {% block content %}
 
-<blockquote class="pull-right well span8">
-    <p>The circumstance which gives authors an advantage above all great
-    artists is that they can [...] make copies of their works to what number
-    they please, which shall be as valuable as the originals themselves.</p>
-    <small>Joseph Addison, 1660</small>
-</blockquote>
+<div class="row-fluid">
+    <img src="https://projecteuler.net/profile/jbsilva.png">
 
-<ul>
+    <blockquote class="pull-right well span8">
+        <p>The circumstance which gives authors an advantage above all great
+        artists is that they can [...] make copies of their works to what number
+        they please, which shall be as valuable as the originals themselves.</p>
+        <small>Joseph Addison, 1660</small>
+    </blockquote>
+</div>
+
+
+<div class="row-fluid">
     <ul>
-        <li><p>{% blocktrans %}Here you can find some of my simplest codes. For
-        more projects, take a look at my <a href="https://github.com/jbsilva">Github</a>.{% endblocktrans %}</p>
-    </ul>
-
-    <br>
-    <li><h3>Dotfiles</h3>
-    <ul>
-        <li><a href="https://github.com/jbsilva/dotfiles">Github</a>
-    </ul>
-
-    <br>
-    <li><h3>Sites</h3>
-    <ul>
-        {% for site in sites|dictsort:"nome" %}
-        <li><a href="{{ site.link }}">{{ site.nome }}</a>
-        {% endfor %}
-    </ul>
-
-    <br>
-    <li><h3>{% trans "Programs" %}</h3>
-    <ul>
-        {% regroup programas|dictsort:"linguagem" by linguagem as linguagens %}
-
-        {% for linguagem in linguagens %}
-        <li><h4>{{ linguagem.grouper }}</h4>
         <ul>
-            {% for programa in linguagem.list|dictsort:"nome" %}
-            <li><a href="{{ programa.link }}">{{ programa.nome }}</a>
+            <li><p>{% blocktrans %}Here you can find some of my simplest codes. For
+            more projects, take a look at my <a href="https://github.com/jbsilva">Github</a>.{% endblocktrans %}</p>
+        </ul>
+
+        <br>
+        <li><h3>Dotfiles</h3>
+        <ul>
+            <li><a href="https://github.com/jbsilva/dotfiles">Github</a>
+        </ul>
+
+        <br>
+        <li><h3>Sites</h3>
+        <ul>
+            {% for site in sites|dictsort:"nome" %}
+            <li><a href="{{ site.link }}">{{ site.nome }}</a>
             {% endfor %}
         </ul>
-        {% endfor %}
+
+        <br>
+        <li><h3>{% trans "Programs" %}</h3>
+        <ul>
+            {% regroup programas|dictsort:"linguagem" by linguagem as linguagens %}
+
+            {% for linguagem in linguagens %}
+            <li><h4>{{ linguagem.grouper }}</h4>
+            <ul>
+                {% for programa in linguagem.list|dictsort:"nome" %}
+                <li><a href="{{ programa.link }}">{{ programa.nome }}</a>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </ul>
     </ul>
-</ul>
+</div>
 {% endblock %}
