@@ -9,14 +9,12 @@ __copyright__ = ""
 __license__ = "GPL"
 __version__ = "1.0"
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.http import HttpResponse
 
 
 def homepage(request):
-    return render_to_response('homepage.html', locals(),
-            context_instance=RequestContext(request))
+    return render(request, 'homepage.html', {})
 
 ### ### ### ###
 import os
@@ -32,10 +30,9 @@ def music_library(request):
     except:
         raise Http500
 
-    return render_to_response('music_library.html',
-            {'music_list': lista},
-            context_instance=RequestContext(request))
+    return render(request, 'music_library.html', {'music_list': lista})
 ### ### ### ###
+
 
 def seminario_django(request):
     caminho = os.path.join(settings.STATIC_ROOT, 'seminario_django.html')
@@ -47,3 +44,27 @@ def seminario_django(request):
         raise Http500
 
     return HttpResponse(html)
+### ### ### ###
+
+
+def horario(request):
+    ## Se alguma matéria tiver duas salas diferentes crie duas variáveis
+    nada  = ("-", "-", "-")
+    bd    = ("Banco de Dados - 025216 C", "Ricardo Ciferri", "?")
+    mic   = ("Microcontroladores - 27278 A", "Paulo Politano", "?")
+    so2   = ("SO2 - 021288 A", "Helio Guardia", "?")
+    lfa   = ("LFA - 020265 A", "Hermes Senger", "?")
+    ia    = ("Inteligência Artificial - 022705 A", "Lúcia Rino", "?")
+    a_inv = ("Análise de Investimentos - 110159 A", "Andrei Albuquerque", "?")
+    cg    = ("Computação Gráfica - 025526 B", "Mário Lizier", "?")
+    l_mic = ("Lab Microcontroladores - 027286 B", "Edilson Kato", "DC - 622")
+    projm = ("Projeto e Manufatura Assistidos por Computador 027260 A", "Paulo Politano", "?")
+
+    h = [[nada,  bd,    mic,   so2,   lfa],
+         [nada,  bd,    mic,   so2,   lfa],
+         [ia,    nada,  a_inv,  projm, cg],
+         [ia,    nada,  l_mic, projm, cg],
+         [nada,  nada,  nada,  nada,  nada],
+         [nada,  nada,  nada,  nada,  nada]]
+
+    return render(request, 'horario.html', {'h': h})
