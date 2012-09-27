@@ -53,12 +53,12 @@ def horario(request):
     bd    = ("Banco de Dados - 025216 A", "Renato Bueno", "AT9 - 217")
     mic   = ("Microcontroladores - 27278 A", "Paulo Politano", "AT9 - 199")
     so2   = ("SO2 - 021288 A", "Helio Guardia", "DC - Lab. 4")
-    lfa   = ("LFA - 020265 A", "Hermes Senger", "AT9 - 199")
+    lfa   = ("LFA - 020265 A", "Hermes Senger", "AT5 - 114")
     ia    = ("Inteligência Artificial - 022705 A", "Lúcia Rino", "AT9 - 212")
     a_inv = ("Análise de Investimentos - 110159 A", "Andrei Albuquerque", "AT7 - 162")
     cg    = ("Computação Gráfica - 025526 B", "Mário Lizier", "AT9 - 212")
     l_mic = ("Lab Microcontroladores - 027286 B", "Edilson Kato", "DC - 622")
-    projm = ("Proj. e Manufatura Assist. por Comp. - 027260 A", "Paulo Politano", "AT4 - 89")
+    projm = ("Proj. e Manufatura Assist. por Comp. - 027260 A", "Paulo Politano", "DC - LP01 - SAP")
 
     h = [[nada,  bd,    mic,   so2,   lfa],
          [nada,  bd,    mic,   so2,   lfa],
