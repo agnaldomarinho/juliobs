@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static from staticfiles %}
 
 {% block title %}{% trans "Projects" %}{% endblock %}
+
+{% block stylesheets %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/uva.css" %}">
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "js/uva.js" %}"></script>
+{% endblock %}
 
 {% block header %}
 <header>
@@ -13,8 +24,6 @@
 {% block content %}
 
 <div class="row-fluid">
-    <img src="https://projecteuler.net/profile/jbsilva.png">
-
     <blockquote class="pull-right well span8">
         <p>The circumstance which gives authors an advantage above all great
         artists is that they can [...] make copies of their works to what number
@@ -22,7 +31,6 @@
         <small>Joseph Addison, 1660</small>
     </blockquote>
 </div>
-
 
 <div class="row-fluid">
     <ul>
@@ -35,6 +43,27 @@
         <li><h3>Dotfiles</h3>
         <ul>
             <li><a href="https://github.com/jbsilva/dotfiles">Github</a>
+        </ul>
+
+        <br>
+        <li><h3>Contests</h3>
+        <ul>
+            <a href="https://projecteuler.net/progress=jbsilva">
+                <img src="https://projecteuler.net/profile/jbsilva.png"
+                alt="Project Euler" title="Project Euler"></a>
+
+            <a class="uvastats" href="https://github.com/jbsilva/Maratona-ICPC/tree/master/UVa">
+                <span class="stats username">no bot</span>
+                <span class="stats accepted"><span class="problems">no bot</span> accepted</span>
+            </a>
+
+            <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_authorstats&userid=92440">UVa</a>
+            <li><a href="http://www.urionlinejudge.com.br/urionlinejudge/ranks/profile/1180">URI</a>
+            <li><a href="http://br.spoj.pl/users/jbsilva/">SPOJ BR</a>
+            <li><a href="http://www.spoj.pl/users/jbsilva/">SPOJ</a>
+            <li><a href="https://projecteuler.net/progress=jbsilva">Project Euler</a>
+            <li><a href="http://rosalind.info/users/jbsilva/">Rosalind</a>
+            <li><a href="https://community.topcoder.com/tc?module=MemberProfile&cr=23001096">Top Coder</a>
         </ul>
 
         <br>
@@ -61,4 +90,8 @@
         </ul>
     </ul>
 </div>
+
+<hr>
+<a href="http://programming-motherfucker.com/">The Motherfucking Manifesto For Programming, Motherfuckers</a>
+
 {% endblock %}
