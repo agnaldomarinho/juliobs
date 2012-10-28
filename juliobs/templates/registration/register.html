@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Create an account" %}{% endblock %}
+
+{% block header %}
+<header>
+    <h1>{% trans "Register" %}</h1>
+    <h4>{% trans "Register" %}</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-error">
+    <button class="close" data-dismiss="alert">×</button>
+    <strong>{% trans "Error!" %}</strong>
+    {% trans "That's not a valid username or password." %}
+</div>
+{% endif %}
+
+<form class="well" method="post" action="">{% csrf_token %} 
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Login">
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{% endblock %}
