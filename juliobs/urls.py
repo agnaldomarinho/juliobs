@@ -1,7 +1,7 @@
 # -*-*- encoding: utf-8 -*-*-
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import *
 from django.views.generic.base import TemplateView
 from django.views.generic.base import RedirectView
 from django.http import HttpResponse
@@ -45,8 +45,13 @@ urlpatterns = patterns('',
         (r'^contato/ok/$', TemplateView.as_view(template_name='contato_ok.html')),
         (r'^gallery/', include('imagestore.urls', namespace='imagestore')),
         url(r'^agenda/', include('agenda.urls')),
+
         url(r'^accounts/login/$',  login),
         url(r'^accounts/logout/$', logout),
+        url(r'^accounts/password_change/$', password_change),
+        url(r'^accounts/password_change_done/$', password_change_done),
+        (r'^accounts/password_reset/$', 'password_reset'),
+
         (r'^seminario/$', seminario_django),
 )
 
