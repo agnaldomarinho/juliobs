@@ -2,8 +2,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.auth.views import *
-from django.views.generic.base import TemplateView
-from django.views.generic.base import RedirectView
+from django.views.generic.base import TemplateView, RedirectView
 from django.http import HttpResponse
 
 from views import *
@@ -40,7 +39,7 @@ urlpatterns = patterns('',
         (r'^cv/$', TemplateView.as_view(template_name='curriculum.html')),
         (r'^stuff-i-use/$', TemplateView.as_view(template_name='stuff_i_use.html')),
         (r'^torrents/$', torrents),
-        (r'^ira/$', include('ira.urls', namespace='ira')),
+        (r'^ira/', include('ira.urls', namespace='ira')),
         url(r'^contato/$', contact, name="jbs-contato"),
         (r'^contato/ok/$', TemplateView.as_view(template_name='contato_ok.html')),
         (r'^gallery/', include('imagestore.urls', namespace='imagestore')),
