@@ -1,4 +1,18 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
 {% load i18n %}
+
+{% block title %}IRA{% endblock %}
+
+{% block header %}
+<header>
+    <h1>IRA</h1>
+    <h4>{% trans "Calculate your IRA!" %}</h4>
+</header>
+{% endblock %}
+
+{% block content %}
 
 {% if errors %}
 <br>
@@ -13,7 +27,7 @@
 <div class="row-fluid">
     <div class="span6">
         <h4>Login:</h4>
-        <form class="well" name="dados" method="post" action="">{% csrf_token %}
+        <form class="well" name="dados" method="post" action="/ira/login/">{% csrf_token %}
             <label>RA:</label>
             <input type="number" name="ra" min="100000" max="999999" autofocus
             required placeholder="{% trans "Your RA" %}">
@@ -28,10 +42,10 @@
 
     <div class="span6">
         <h4>HTML Upload</h4>
-        <form class="well" name="html" method="post" action="">{% csrf_token %}
+        <form class="well" name="html" method="post" action="/ira/html_up/">{% csrf_token %}
             <textarea name="hist_html"></textarea>
             <br>
-            <input class="btn btn-primary" type="submit" name="send" value="Send">
+            <input class="btn btn-primary" type="submit" name="html_up" value="Send">
         </form>
     </div>
 </div>
@@ -54,3 +68,5 @@
             Nº 682/99, de 26 de abril de 1999</a>.
     </ul>
 </div>
+
+{% endblock %}

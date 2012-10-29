@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}{% trans "Select the emphasis:" %}{% endblock %}
+
+{% block header %}
+<header>
+    <h1>{% trans "Select the emphasis:" %}</h1>
+    <h4>{% trans "Calculate your IRA!" %}</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+<form class="well form-inline" name="enfase_form" method="post" action="/ira/historico/">{% csrf_token %}
+    <select name="enfase_opt" style="width: 300px">
+        {% for enfase in enfases %}
+        <option value='{{ enfase.url }}'>{{ enfase.nome }}</option>
+        {% endfor%}
+    </select>
+    <input class="btn btn-primary" type="submit" name="login" value="{% trans "Submit" %}">
+</form>
+{% endblock %}
