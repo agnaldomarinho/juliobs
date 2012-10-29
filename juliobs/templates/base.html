@@ -5,10 +5,8 @@
 {% get_language_info_list for LANGUAGES as languages %}
 
 {% url "jbs-home" as jbs_home %}
-{% url "jbs-music_lib" as jbs_music_lib %}
 {% url "jbs-horario" as jbs_horario %}
 {% url "jbs-pgp" as jbs_pgp %}
-{% url "jbs-qrcode" as jbs_qrcode %}
 {% url "jbs-projetos" as jbs_projetos %}
 {% url "jbs-contato" as jbs_contato %}
 
@@ -95,17 +93,9 @@
                             <a href="{{ jbs_pgp }}" title="{% trans 'Public Key' %}">
                                 <i class="icon-lock icon"></i> {% trans 'Public Key' %}</a>
 
-                            <li class="{% active request jbs_qrcode %}">
-                            <a href="{{ jbs_qrcode }}" title='QR Code'>
-                                <i class="icon-qrcode icon"></i> {% trans 'QR Code' %}</a>
-
                             <li class="{% active request jbs_contato %}">
                             <a href="{{ jbs_contato }}" title="{% trans 'Contact' %}">
                                 <i class="icon-envelope icon"></i> {% trans 'Contact' %}</a>
-
-                            <li class="{% active request jbs_music_lib %}">
-                            <a href="{{ jbs_music_lib }}" title="{% trans 'Music Lib' %}">
-                                <i class="icon-music icon"></i> {% trans 'Music Lib' %}</a>
                         </ul>
                     </div>
                 </div>
