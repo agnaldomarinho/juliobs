@@ -31,9 +31,9 @@
             <h3>Alterar velocidade:</h3>
             <form class="well" name="velocidades" method="post" action="">{% csrf_token %}
                 <label>Upload:</label>
-                <input type="number" name="up" min="0" step="5" placeholder="Upload">
+                <input type="number" name="up" min="60" placeholder="Upload">
                 <label>Download:</label>
-                <input type="number" name="down" min="0" step="10" placeholder="Download">
+                <input type="number" name="down" min="300" placeholder="Download">
                 <br>
                 <input class="btn btn-primary" type="submit" name="login" value="Limitar">
             </form>
