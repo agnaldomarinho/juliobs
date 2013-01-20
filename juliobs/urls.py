@@ -52,6 +52,7 @@ urlpatterns = patterns('',
         (r'^accounts/password_reset/$', 'password_reset'),
 
         (r'^seminario/$', seminario_django),
+        (r'^cg_t4/', include('cg_t4.urls', namespace='cg_t4')),
 )
 
 urlpatterns += patterns('',

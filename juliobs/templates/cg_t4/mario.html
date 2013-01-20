@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block favicon %}
+<link rel="shortcut icon" href="{% static "images/lizier.ico" %}">
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "Content/style.css" %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "js/mario/testlevels.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/mario/oop.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/mario/keys.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/mario/constants.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/mario/main.js" %}"></script>
+{% endblock %}
+
+{% block title %}Super Mário Lizier{% endblock %}
+
+{% block header %}
+<header>
+    <h1>Super Mário Lizier</h1>
+    <h4>Mario!</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+    <audio class="row span12" src="{% static "Content/mario.ogg" %}" autoplay loop></audio>
+    <div id="game">
+        <div id="world"></div>
+        <div id="coinNumber" class="gauge">0</div>
+        <div id="coin" class="gaugeSprite"></div>
+        <div id="liveNumber" class="gauge">0</div>
+        <div id="live" class="gaugeSprite"></div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
