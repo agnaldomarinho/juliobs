@@ -16,23 +16,6 @@ from django.http import HttpResponse
 def homepage(request):
     return render(request, 'homepage.html', {})
 
-### ### ### ###
-import os
-from django.conf import settings
-
-
-def music_library(request):
-    caminho = os.path.join(settings.STATIC_ROOT, 'music_list.txt')
-
-    try:
-        with open(caminho) as albums:
-            lista = albums.read().decode('utf-8', errors='replace')
-    except:
-        raise Http500
-
-    return render(request, 'music_library.html', {'music_list': lista})
-### ### ### ###
-
 
 def seminario_django(request):
     caminho = os.path.join(settings.STATIC_ROOT, 'seminario_django.html')
