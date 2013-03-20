@@ -33,20 +33,18 @@ def seminario_django(request):
 def horario(request):
     ## Se alguma matéria tiver duas salas diferentes crie duas variáveis
     nada  = ("-", "-", "-")
-    bd    = ("Banco de Dados - 025216 A", "Renato Bueno", "AT9 - 217")
-    mic   = ("Microcontroladores - 27278 A", "Paulo Politano", "AT9 - 199")
-    so2   = ("SO2 - 021288 A", "Helio Guardia", "DC - Lab. 4")
-    lfa   = ("LFA - 020265 A", "Hermes Senger", "AT5 - 114")
-    ia    = ("Inteligência Artificial - 022705 A", "Lúcia Rino", "AT9 - 212")
-    a_inv = ("Análise de Investimentos - 110159 A", "Andrei Albuquerque", "AT7 - 162")
-    cg    = ("Computação Gráfica - 025526 B", "Mário Lizier", "AT9 - 212")
-    l_mic = ("Lab Microcontroladores - 027286 B", "Edilson Kato", "DC - 622")
-    projm = ("Proj. e Manufatura Assist. por Comp. - 027260 A", "Paulo Politano", "DC - LP01 - SAP")
+    mcomp = ("Mat. Comp. - 023582 A", "Politano", "AT9 - 214")
+    comp1 = ("Compiladores 1 - 021130 A", "Helena Caseli", "AT9 - 199")
+    celet = ("Circuitos Eletrônicos - 024171 A", "Kato", "AT9 - 199")
+    l_ele = ("Laboratório de Circuitos Eletrônicos - 024180", "Kato", "DC - 623")
+    sd    = ("Sistemas Distribuidos - 025321 B", "Trevelin", "AT7 - 165")
+    calc2 = ("Cálculo 2 - 089206 D", "Bruna", "AT9 - 219/213")
+    mec    = ("Mecânica Aplicada - 120030 E", "", "AT5 - 97")
 
-    h = [[nada,  bd,    mic,   so2,   lfa],
-         [nada,  bd,    mic,   so2,   lfa],
-         [ia,    nada,  a_inv,  projm, cg],
-         [ia,    nada,  l_mic, projm, cg],
+    h = [[nada,  sd,    celet, nada,  comp1],
+         [nada,  sd,    celet, nada,  comp1],
+         [mcomp, nada,  l_ele, mec,   nada],
+         [mcomp, calc2, nada,  calc2, nada],
          [nada,  nada,  nada,  nada,  nada],
          [nada,  nada,  nada,  nada,  nada]]
 
