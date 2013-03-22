@@ -39,7 +39,7 @@ def horario(request):
     l_ele = ("Laboratório de Circuitos Eletrônicos - 024180", "Kato", "DC - 623")
     sd    = ("Sistemas Distribuidos - 025321 B", "Trevelin", "AT7 - 165")
     calc2 = ("Cálculo 2 - 089206 D", "Bruna", "AT9 - 219/213")
-    mec    = ("Mecânica Aplicada - 120030 E", "", "AT5 - 97")
+    mec    = ("Mecânica Aplicada - 120030 E", "Fernando", "AT5 - 97")
 
     h = [[nada,  sd,    celet, nada,  comp1],
          [nada,  sd,    celet, nada,  comp1],
