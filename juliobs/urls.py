@@ -26,7 +26,6 @@ urlpatterns = patterns('',
         (r'^blog/(?P<post>.*)$',
             RedirectView.as_view(url='http://blog.juliobs.com/%(post)s', permanent=True)),
         url(r'^$', homepage, name="jbs-home"),
-        url(r'^music_library/$', music_library, name="jbs-music_lib"),
         url(r'^horario/$', horario, name="jbs-horario"),
         url(r'^licenca/$', TemplateView.as_view(template_name='licenca.html'),
             name="jbs-licenca"),
@@ -52,6 +51,7 @@ urlpatterns = patterns('',
         (r'^accounts/password_reset/$', 'password_reset'),
 
         (r'^seminario/$', seminario_django),
+        (r'^cg_t4/', include('cg_t4.urls', namespace='cg_t4')),
 )
 
 urlpatterns += patterns('',

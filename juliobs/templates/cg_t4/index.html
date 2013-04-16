@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block title %}T4 - CG - Julio e Stefano{% endblock %}
+
+{% block header %}
+<header>
+    <h1>T4 de CG</h1>
+    <h4>HTML5!!!</h4>
+</header>
+{% endblock %}
+
+{% block content %}
+    <h2>Vídeo super legal!</h2>
+    <div class="row-fluid">
+        <div class="span6" style="min-width:500px;">
+            <video src="{% static "video/heman.webm" %}" width="480" height="360" controls preload></video>
+        </div>
+
+        <article class="well span6">
+            <h4>4 Non Blondes - What's Up</h4>
+            <p>And so I cry sometimes when I'm lying in bed<br>
+            Just to get it all out, what's in my head<br>
+            And I, I am feeling a little peculiar<br>
+            And so I wake in the morning and I step outside<br>
+            And I take A deep breath and I get real high<br>
+            And I scream from the top of my lungs,<br>
+            What's goin' on</p>
+
+            <p>And I say hey, hey, hey, hey hey<br>
+            Hey, hey, hey<br>
+            I said hey, what's goin' on<br>
+            <br>
+            And I say hey, hey, hey, hey hey<br>
+            Hey, hey, hey<br>
+            I said hey, what's goin' on</p>
+
+            <p>And he tries<br>
+            oh my God, do I try<br>
+            I try all the time in this institution</p>
+
+            <p>And he prays<br>
+            oh my God, do I pray<br>
+            I pray every single day FOR REVOLUTION!</p>
+
+            <p>And I say hey, hey, hey, hey hey<br>
+            Hey, hey, hey<br>
+            I said hey, what's goin' on</p>
+
+            <p>Don't cry out loud<br>
+            Just keep it inside<br>
+            Learn how to hide your feelings</p>
+
+            <p>(Hey, hey, hey, hey hey)<br>
+            (Hey, hey)<br>
+            HEY EY EY<br>
+            I say HEY<br>
+            What's goin' on<br>
+            YEAH</p>
+        </article>
+    </div>
+
+    <h2>Jogo super legal!</h2>
+    <div class="row-fluid">
+        <p>Agora jogue o melhor jogo do <del>mundo</del> universo:
+        <a href="mario">SUPER MÁRIO LIZIER</a></p>
+    </div>
+{% endblock %}

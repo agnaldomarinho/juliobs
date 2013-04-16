@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'contato',
     'templatelib',
     'agenda',
+    'cg_t4',
     # 3rd party Apps
     'imagestore',
     'sorl.thumbnail',
