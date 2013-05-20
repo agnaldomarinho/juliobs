@@ -22,6 +22,8 @@ DATABASES = {
     }
 }
 
+ALLOWED_HOSTS = ls.ALLOWED_HOSTS
+
 # Caminhos relativos
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 DJANGO_ROOT = os.path.realpath(os.path.dirname(django.__file__))
