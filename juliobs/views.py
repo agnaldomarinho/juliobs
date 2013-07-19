@@ -33,19 +33,12 @@ def seminario_django(request):
 def horario(request):
     ## Se alguma matéria tiver duas salas diferentes crie duas variáveis
     nada  = ("-", "-", "-")
-    mcomp = ("Mat. Comp. - 023582 A", "Politano", "AT9 - 214")
-    comp1 = ("Compiladores 1 - 021130 A", "Helena Caseli", "AT9 - 199")
-    celet = ("Circuitos Eletrônicos - 024171 A", "Kato", "AT9 - 199")
-    l_ele = ("Laboratório de Circuitos Eletrônicos - 024180", "Kato", "DC - 623")
-    sd    = ("Sistemas Distribuidos - 025321 B", "Trevelin", "AT7 - 165")
-    calc2 = ("Cálculo 2 - 089206 D", "Bruna", "AT9 - 219/213")
-    mec    = ("Mecânica Aplicada - 120030 E", "Fernando", "AT5 - 97")
 
-    h = [[nada,  sd,    celet, nada,  comp1],
-         [nada,  sd,    celet, nada,  comp1],
-         [mcomp, nada,  l_ele, mec,   nada],
-         [mcomp, calc2, nada,  calc2, nada],
-         [nada,  nada,  nada,  nada,  nada],
-         [nada,  nada,  nada,  nada,  nada]]
+    h = [[nada, nada, nada, nada, nada],
+         [nada, nada, nada, nada, nada],
+         [nada, nada, nada, nada, nada],
+         [nada, nada, nada, nada, nada],
+         [nada, nada, nada, nada, nada],
+         [nada, nada, nada, nada, nada]]
 
     return render(request, 'horario.html', {'h': h})
