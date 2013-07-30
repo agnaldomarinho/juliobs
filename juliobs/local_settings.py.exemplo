@@ -1,0 +1,23 @@
+# -*-*- encoding: utf-8 -*-*-
+DEBUG = True
+
+ADMINS = (
+        ('Julio Silva', 'admin@juliobs.com'),
+)
+
+DB_ENGINE = 'django.db.backends.postgresql_psycopg2'
+DB_NAME = 'djangodb'
+DB_USER = 'julio'
+DB_PASSWORD = 'minha_senha'
+DB_HOST = ''
+DB_PORT = ''
+
+SECRET_KEY = '012345678901234567890123456789012345678901234567890123'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+
+ALLOWED_HOSTS = ['*']
